@@ -1,0 +1,57 @@
+ÀÄmain
+   ÃÄMAIN  0/151  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄtela_iniciu  0/124  Ram=1
+   ³  ³  ÃÄ@const667  0/10  Ram=0
+   ³  ³  ÃÄ@const670  0/10  Ram=0
+   ³  ³  ÃÄ@const664  0/10  Ram=0
+   ³  ³  ÀÄ@const673  0/10  Ram=0
+   ³  ÃÄescolha_de_fase  0/102  Ram=3
+   ³  ³  ÀÄ@const688  0/14  Ram=0
+   ³  ÃÄfase1  0/45  Ram=0
+   ³  ³  ÃÄ@const676  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const685  0/9  Ram=0
+   ³  ³  ÃÄupdate_display  0/82  Ram=1
+   ³  ³  ³  ÃÄ@const688  0/14  Ram=0
+   ³  ³  ³  ÃÄ@const688  0/14  Ram=0
+   ³  ³  ³  ÃÄ@const688  0/14  Ram=0
+   ³  ³  ³  ÀÄ@const688  0/14  Ram=0
+   ³  ³  ÀÄverificabotao  0/97  Ram=0
+   ³  ÃÄfalha  0/89  Ram=2
+   ³  ³  ÃÄ@DIV1616  0/37  Ram=5
+   ³  ³  ÀÄ@DIV1616  0/37  Ram=5
+   ³  ÃÄfase2  0/45  Ram=0
+   ³  ³  ÃÄ@const676  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const685  0/9  Ram=0
+   ³  ³  ÃÄupdate_display  0/82  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÀÄverificabotao  0/97  Ram=0
+   ³  ÃÄfalha  0/89  Ram=2
+   ³  ³  ÀÄ*
+   ³  ÃÄfase3  0/45  Ram=0
+   ³  ³  ÃÄ@const676  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const685  0/9  Ram=0
+   ³  ³  ÃÄupdate_display  0/82  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÀÄverificabotao  0/97  Ram=0
+   ³  ÃÄfalha  0/89  Ram=2
+   ³  ³  ÀÄ*
+   ³  ÃÄfase4  0/45  Ram=0
+   ³  ³  ÃÄ@const676  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const679  0/9  Ram=0
+   ³  ³  ÃÄ@const685  0/9  Ram=0
+   ³  ³  ÃÄupdate_display  0/82  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÀÄverificabotao  0/97  Ram=0
+   ³  ÀÄfalha  0/89  Ram=2
+   ³     ÀÄ*
+   ÀÄTIMER0_isr  0/128  Ram=1
+      ÃÄverificaerro9  (Inline)  Ram=0
+      ÀÄverificaerro0  (Inline)  Ram=0
