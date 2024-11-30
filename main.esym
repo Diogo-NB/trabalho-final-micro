@@ -1,10 +1,9 @@
-F N "update_display" 0 625 ""
-D G "__PCM__" 0 647 ""5.076""
-D G "__DEVICE__" 0 647 "877"
-D G "__DATE__" 0 647 ""30-nov-24""
-D G "__TIME__" 0 647 ""14:25:30""
-D G "_UNICODE" 0 647 ""?""
-D G "__EVAL" 0 647 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "__PCM__" 0 661 ""5.076""
+D G "__DEVICE__" 0 661 "877"
+D G "__DATE__" 0 661 ""30-nov-24""
+D G "__TIME__" 0 661 ""18:27:30""
+D G "_UNICODE" 0 661 ""?""
+D G "__EVAL" 0 661 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 f N "set_tris_a" 2 37 ""
 v L "value" 2 37 "int8" `55 
@@ -1120,129 +1119,125 @@ V G "contador_tela_inicial" 0 24 "int16" `663
 V G "finalfase" 0 25 "int16" `664 
 V G "vez_contador_tela_inicial" 0 26 "int16" `665 
 V G "listadisplay4" 0 28 "[1]" `667 
-V G "listadisplay3" 0 30 "[1]" `670 
-V G "listadisplay2" 0 32 "[1]" `673 
-V G "listadisplay1" 0 34 "[1]" `676 
-V G "u1" 0 37 "[1]" `679 
-V G "d1" 0 39 "[1]" `682 
-V G "c1" 0 41 "[1]" `685 
-V G "m1" 0 43 "[1]" `688 
-V G "u2" 0 47 "[1]" `691 
-V G "d2" 0 49 "[1]" `694 
-V G "c2" 0 51 "[1]" `697 
-V G "m2" 0 53 "[1]" `700 
-V G "u3" 0 56 "[1]" `703 
-V G "d3" 0 59 "[1]" `706 
-V G "c3" 0 62 "[1]" `709 
-V G "m3" 0 65 "[1]" `712 
-V G "u4" 0 69 "[1]" `715 
-V G "d4" 0 71 "[1]" `718 
-V G "c4" 0 73 "[1]" `721 
-V G "m4" 0 75 "[1]" `724 
-V G "display_numbers" 0 78 "[1]" `727 
-V G "pasou_fase_1" 0 80 "int1" `729 
-V G "pasou_fase_2" 0 81 "int1" `730 
-V G "pasou_fase_3" 0 82 "int1" `731 
-V G "pasou_fase_4" 0 83 "int1" `732 
-V G "contador_ms" 0 85 "int16" `733 
-C L "jump_to_isr" 0 85 1 "FUNCTION"
-F N "verificaerro0" 0 86 ""
-f G "verificaerro0" 0 86 "void()" `734 
-F N "verificaerro9" 0 87 ""
-f G "verificaerro9" 0 87 "void()" `735 
-F N "jogo" 0 88 ""
-f G "jogo" 0 88 "void()" `736 
-F N "tela_iniciu" 0 89 ""
-f G "tela_iniciu" 0 89 "void()" `737 
-F N "escolha_de_fase" 0 90 ""
-f G "escolha_de_fase" 0 90 "void()" `738 
-F N "fase1" 0 91 ""
-f G "fase1" 0 91 "void()" `739 
-F N "fase4" 0 92 ""
-f G "fase4" 0 92 "void()" `740 
-F N "fase3" 0 93 ""
-f G "fase3" 0 93 "void()" `741 
-F N "fase2" 0 94 ""
-f G "fase2" 0 94 "void()" `742 
-F N "falha" 0 95 ""
-f G "falha" 0 95 "void()" `743 
-F N "delay" 0 96 ""
-f G "delay" 0 96 "void()" `744 
-F N "TIMER0_isr" 0 98 ""
-F G "TIMER0_isr" 0 99 "void()" `745 
-C L "TIMER0_isr" 0 85 1 "FUNCTION"
-C L "TIMER0_isr" 0 85 1 "FUNCTION"
-C L "TIMER0_isr" 0 85 1 "FUNCTION"
-C L "TIMER0_isr" 0 85 1 "FUNCTION"
-C L "TIMER0_isr" 0 85 1 "FUNCTION"
-F N "delay" 0 131 ""
-V L "milliseconds" 0 131 "int8" `747 
-F G "delay" 0 131 "void(int8 milliseconds)" `746 
-V L "i" 0 132 "int8" `748  "O número de iterações neste loop define a duração do delay"
-F N "update_display" 0 138 ""
-f G "update_display" 0 138 "void()" `749 
-F N "verificabotao" 0 140 ""
-F G "verificabotao" 0 140 "void()" `750 
-F N "verificaerro9" 0 190 ""
-F G "verificaerro9" 0 190 "void()" `735  "Se a unidade está ativa e seu valor é diferente de zero, reseta o contador"
-C L "verificaerro9" 0 85 1 "FUNCTION"
-C L "verificaerro9" 0 85 1 "FUNCTION"
-C L "verificaerro9" 0 85 1 "FUNCTION"
-F N "verificaerro0" 0 213 ""
-F G "verificaerro0" 0 213 "void()" `734  "Se a unidade está ativa e seu valor é diferente de zero, reseta o contador"
-C L "verificaerro0" 0 85 1 "FUNCTION"
-C L "verificaerro0" 0 85 1 "FUNCTION"
-C L "verificaerro0" 0 85 1 "FUNCTION"
-F N "MAIN" 0 237 ""
-F G "MAIN" 0 238 "void()" `751 
-C L "MAIN" 0 85 1 "FUNCTION"
-C L "MAIN" 0 85 1 "FUNCTION"
-C L "MAIN" 0 85 1 "FUNCTION"
-C L "MAIN" 0 85 1 "FUNCTION"
-F N "fase1" 0 357 ""
-F G "fase1" 0 357 "void()" `739 
-C L "fase1" 0 85 1 "FUNCTION"
-C L "fase1" 0 85 1 "FUNCTION"
-C L "fase1" 0 85 1 "FUNCTION"
-C L "fase1" 0 85 1 "FUNCTION"
-C L "fase1" 0 85 1 "FUNCTION"
-C L "fase1" 0 85 1 "FUNCTION"
-C L "fase1" 0 85 1 "FUNCTION"
-F N "fase2" 0 390 ""
-F G "fase2" 0 390 "void()" `742 
-C L "fase2" 0 85 1 "FUNCTION"
-C L "fase2" 0 85 1 "FUNCTION"
-C L "fase2" 0 85 1 "FUNCTION"
-C L "fase2" 0 85 1 "FUNCTION"
-C L "fase2" 0 85 1 "FUNCTION"
-C L "fase2" 0 85 1 "FUNCTION"
-C L "fase2" 0 85 1 "FUNCTION"
-F N "fase3" 0 442 ""
-F G "fase3" 0 442 "void()" `741 
-C L "fase3" 0 85 1 "FUNCTION"
-C L "fase3" 0 85 1 "FUNCTION"
-C L "fase3" 0 85 1 "FUNCTION"
-C L "fase3" 0 85 1 "FUNCTION"
-C L "fase3" 0 85 1 "FUNCTION"
-F N "fase4" 0 473 ""
-F G "fase4" 0 473 "void()" `740 
-C L "fase4" 0 85 1 "FUNCTION"
-C L "fase4" 0 85 1 "FUNCTION"
-C L "fase4" 0 85 1 "FUNCTION"
-C L "fase4" 0 85 1 "FUNCTION"
-C L "fase4" 0 85 1 "FUNCTION"
-C L "fase4" 0 85 1 "FUNCTION"
-C L "fase4" 0 85 1 "FUNCTION"
-F N "escolha_de_fase" 0 496 ""
-F G "escolha_de_fase" 0 496 "void()" `738 
-C L "escolha_de_fase" 0 85 1 "FUNCTION"
-F N "falha" 0 535 ""
-F G "falha" 0 535 "void()" `743 
-C L "falha" 0 85 1 "FUNCTION"
-F N "tela_iniciu" 0 561 ""
-F G "tela_iniciu" 0 561 "void()" `737 
-F N "update_display" 0 625 ""
-F G "update_display" 0 625 "void()" `749 
+V G "listadisplay3" 0 43 "[1]" `670 
+V G "listadisplay2" 0 58 "[1]" `673 
+V G "listadisplay1" 0 73 "[1]" `676 
+V G "u1" 0 88 "[1]" `679 
+V G "d1" 0 90 "[1]" `682 
+V G "c1" 0 92 "[1]" `685 
+V G "m1" 0 94 "[1]" `688 
+V G "u2" 0 97 "[1]" `691 
+V G "d2" 0 99 "[1]" `694 
+V G "c2" 0 101 "[1]" `697 
+V G "m2" 0 103 "[1]" `700 
+V G "u3" 0 106 "[1]" `703 
+V G "d3" 0 109 "[1]" `706 
+V G "c3" 0 112 "[1]" `709 
+V G "m3" 0 115 "[1]" `712 
+V G "u4" 0 119 "[1]" `715 
+V G "d4" 0 121 "[1]" `718 
+V G "c4" 0 123 "[1]" `721 
+V G "m4" 0 125 "[1]" `724 
+V G "display_numbers" 0 128 "[1]" `727 
+V G "pasou_fase_1" 0 144 "int1" `729 
+V G "pasou_fase_2" 0 145 "int1" `730 
+V G "pasou_fase_3" 0 146 "int1" `731 
+V G "pasou_fase_4" 0 147 "int1" `732 
+V G "contador_ms" 0 149 "int16" `733 
+C L "jump_to_isr" 0 149 1 "FUNCTION"
+F N "verificaerro0" 0 150 ""
+f G "verificaerro0" 0 150 "void()" `734 
+F N "verificaerro9" 0 151 ""
+f G "verificaerro9" 0 151 "void()" `735 
+F N "jogo" 0 152 ""
+f G "jogo" 0 152 "void()" `736 
+F N "tela_inicial" 0 153 ""
+f G "tela_inicial" 0 153 "void()" `737 
+F N "escolha_de_fase" 0 154 ""
+f G "escolha_de_fase" 0 154 "void()" `738 
+F N "fase1" 0 155 ""
+f G "fase1" 0 155 "void()" `739 
+F N "fase4" 0 156 ""
+f G "fase4" 0 156 "void()" `740 
+F N "fase3" 0 157 ""
+f G "fase3" 0 157 "void()" `741 
+F N "fase2" 0 158 ""
+f G "fase2" 0 158 "void()" `742 
+F N "falha" 0 159 ""
+f G "falha" 0 159 "void()" `743 
+F N "delay" 0 160 ""
+V L "n" 0 160 "int8" `745 
+f G "delay" 0 160 "void(int8 n)" `744 
+F N "verificabotao" 0 161 ""
+f G "verificabotao" 0 161 "void()" `746 
+F N "TIMER0_isr" 0 164 ""
+F G "TIMER0_isr" 0 164 "void()" `747 
+C L "TIMER0_isr" 0 149 1 "FUNCTION"
+C L "TIMER0_isr" 0 149 1 "FUNCTION"
+C L "TIMER0_isr" 0 149 1 "FUNCTION"
+C L "TIMER0_isr" 0 149 1 "FUNCTION"
+C L "TIMER0_isr" 0 149 1 "FUNCTION"
+F N "update_display" 0 197 ""
+f G "update_display" 0 197 "void()" `748 
+F N "MAIN" 0 200 ""
+F G "MAIN" 0 200 "void()" `749 
+C L "MAIN" 0 149 1 "FUNCTION"
+C L "MAIN" 0 149 1 "FUNCTION"
+C L "MAIN" 0 149 1 "FUNCTION"
+F N "fase1" 0 313 ""
+F G "fase1" 0 313 "void()" `739 
+C L "fase1" 0 149 1 "FUNCTION"
+C L "fase1" 0 149 1 "FUNCTION"
+C L "fase1" 0 149 1 "FUNCTION"
+C L "fase1" 0 149 1 "FUNCTION"
+C L "fase1" 0 149 1 "FUNCTION"
+C L "fase1" 0 149 1 "FUNCTION"
+C L "fase1" 0 149 1 "FUNCTION"
+F N "fase2" 0 346 ""
+F G "fase2" 0 346 "void()" `742 
+C L "fase2" 0 149 1 "FUNCTION"
+C L "fase2" 0 149 1 "FUNCTION"
+C L "fase2" 0 149 1 "FUNCTION"
+C L "fase2" 0 149 1 "FUNCTION"
+C L "fase2" 0 149 1 "FUNCTION"
+C L "fase2" 0 149 1 "FUNCTION"
+C L "fase2" 0 149 1 "FUNCTION"
+F N "fase3" 0 396 ""
+F G "fase3" 0 396 "void()" `741 
+C L "fase3" 0 149 1 "FUNCTION"
+C L "fase3" 0 149 1 "FUNCTION"
+C L "fase3" 0 149 1 "FUNCTION"
+C L "fase3" 0 149 1 "FUNCTION"
+C L "fase3" 0 149 1 "FUNCTION"
+F N "fase4" 0 423 ""
+F G "fase4" 0 423 "void()" `740 
+C L "fase4" 0 149 1 "FUNCTION"
+C L "fase4" 0 149 1 "FUNCTION"
+C L "fase4" 0 149 1 "FUNCTION"
+C L "fase4" 0 149 1 "FUNCTION"
+C L "fase4" 0 149 1 "FUNCTION"
+C L "fase4" 0 149 1 "FUNCTION"
+C L "fase4" 0 149 1 "FUNCTION"
+F N "escolha_de_fase" 0 446 ""
+F G "escolha_de_fase" 0 446 "void()" `738 
+C L "escolha_de_fase" 0 149 1 "FUNCTION"
+F N "falha" 0 484 ""
+F G "falha" 0 484 "void()" `743 
+F N "tela_inicial" 0 503 ""
+F G "tela_inicial" 0 503 "void()" `737 
+F N "update_display" 0 565 ""
+F G "update_display" 0 565 "void()" `748 
+F N "delay" 0 587 ""
+V L "n" 0 587 "int8" `769 
+F G "delay" 0 587 "void(int8 n)" `744 
+V L "i" 0 588 "int8" `768 
+C L "delay" 0 149 1 "FUNCTION"
+F N "verificabotao" 0 594 ""
+F G "verificabotao" 0 594 "void()" `746 
+F N "verificaerro9" 0 644 ""
+F G "verificaerro9" 0 644 "void()" `735  "Se a unidade está ativa e seu valor é diferente de zero, reseta o contador"
+F N "verificaerro0" 0 652 ""
+F G "verificaerro0" 0 652 "void()" `734  "Se a unidade está ativa e seu valor é diferente de zero, reseta o contador"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

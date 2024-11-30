@@ -85,6 +85,26 @@ const int8 listadisplay1[] = {
   0b01100000
 };
 
+//!const int8 u1[] = {};
+//!const int8 d1[] = {};
+//!const int8 c1[] = {};
+//!const int8 m1[] = {};
+//!
+//!const int8 u2[] = {};
+//!const int8 d2[] = {};
+//!const int8 c2[] = {};
+//!const int8 m2[] = {};
+//!
+//!const int8 u3[] = {};
+//!const int8 d3[] = {};
+//!const int8 c3[] = {};
+//!const int8 m3[] = {};
+//!
+//!const int8 u4[] = {};
+//!const int8 d4[] = {};
+//!const int8 c4[] = {};
+//!const int8 m4[] = {};
+//!
 const int8 u1 [] = {4,3,2,1,0,3,2,1,0,3,2,1,0,3,2,1,0,5,4,3,2,1,0,5,4,3,2,1,0,8,
 7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,5,4,3 ,2 ,1 ,0 ,10,11,11,12,12};
 const int8 d1 [] = {3,2,1,0,0,2,1,0,6,5,4,3,2,1,0,4,3,2,1,0,2,1,0,2,1,0,3,2,1,0,
@@ -158,7 +178,6 @@ void fase3();
 void fase2();
 void falha();
 void delay(int8 n);
-void verificabotao();
 
 #INT_TIMER0
 void TIMER0_isr(void) {
@@ -196,6 +215,71 @@ void TIMER0_isr(void) {
 
 void update_display();
 
+void verificabotao() {
+  if (!input(S4) && !unidade_ativode) {
+    unidade_ativo = 1;
+    unidade_ativode = 1;
+  }
+
+  if (!input(S3) && !dezena_ativode) {
+    dezena_ativo = 1;
+    dezena_ativode = 1;
+  }
+  if (!input(S2) && !centena_ativode) {
+    centena_ativo = 1;
+    centena_ativode = 1;
+  }
+  if (!input(S1) && !milhar_ativode) {
+    milhar_ativo = 1;
+    milhar_ativode = 1;
+  }
+
+  if (unidade_ativode) {
+    unidade_ativodecont--;
+    if (!unidade_ativodecont) {
+      unidade_ativodecont = contde;
+      unidade_ativode = 0;
+    }
+  }
+  if (dezena_ativode) {
+    dezena_ativodecont--;
+    if (!dezena_ativodecont) {
+      dezena_ativodecont = contde;
+      dezena_ativode = 0;
+    }
+  }
+  if (centena_ativode) {
+    centena_ativodecont--;
+    if (!centena_ativodecont) {
+      centena_ativodecont = contde;
+      centena_ativode = 0;
+    }
+  }
+  if (milhar_ativode) {
+    milhar_ativodecont--;
+    if (!milhar_ativodecont) {
+      milhar_ativodecont = contde;
+      milhar_ativode = 0;
+    }
+  }
+
+}
+
+void verificaerro9() {
+  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
+  if ((!unidade_ativo && unidade) || (!dezena_ativo && dezena) || (!centena_ativo && centena) || (!milhar_ativo && milhar)) {
+    fase = 0;
+  }
+
+}
+
+void verificaerro0() {
+  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
+  if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
+    fase = 0;
+  }
+
+}
 
 void main() {
   setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8 | RTCC_8_BIT); // Configuração do timer para interrupção a cada 1ms
@@ -590,71 +674,4 @@ void delay(int8 n) {
       // NOP
     }
 }
-
-void verificabotao() {
-  if (!input(S4) && !unidade_ativode) {
-    unidade_ativo = 1;
-    unidade_ativode = 1;
-  }
-
-  if (!input(S3) && !dezena_ativode) {
-    dezena_ativo = 1;
-    dezena_ativode = 1;
-  }
-  if (!input(S2) && !centena_ativode) {
-    centena_ativo = 1;
-    centena_ativode = 1;
-  }
-  if (!input(S1) && !milhar_ativode) {
-    milhar_ativo = 1;
-    milhar_ativode = 1;
-  }
-
-  if (unidade_ativode) {
-    unidade_ativodecont--;
-    if (!unidade_ativodecont) {
-      unidade_ativodecont = contde;
-      unidade_ativode = 0;
-    }
-  }
-  if (dezena_ativode) {
-    dezena_ativodecont--;
-    if (!dezena_ativodecont) {
-      dezena_ativodecont = contde;
-      dezena_ativode = 0;
-    }
-  }
-  if (centena_ativode) {
-    centena_ativodecont--;
-    if (!centena_ativodecont) {
-      centena_ativodecont = contde;
-      centena_ativode = 0;
-    }
-  }
-  if (milhar_ativode) {
-    milhar_ativodecont--;
-    if (!milhar_ativodecont) {
-      milhar_ativodecont = contde;
-      milhar_ativode = 0;
-    }
-  }
-
-}
-
-void verificaerro9() {
-  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
-  if ((!unidade_ativo && unidade) || (!dezena_ativo && dezena) || (!centena_ativo && centena) || (!milhar_ativo && milhar)) {
-    fase = 0;
-  }
-
-}
-
-void verificaerro0() {
-  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
-  if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
-    fase = 0;
-  }
-
-}
-
 

@@ -39,7 +39,6 @@ const int8 listadisplay4[] = {
   0b01000010,
   0b01000100
 };
-
 const int8 listadisplay3[] = {
   0x00,
   0x08,
@@ -54,7 +53,6 @@ const int8 listadisplay3[] = {
   0x00,
   0x00
 };
-
 const int8 listadisplay2[] = {
   0x00,
   0x01,
@@ -69,7 +67,6 @@ const int8 listadisplay2[] = {
   0x00,
   0x00
 };
-
 const int8 listadisplay1[] = {
   0x01,
   0x00,
@@ -85,45 +82,67 @@ const int8 listadisplay1[] = {
   0b01100000
 };
 
-const int8 u1 [] = {4,3,2,1,0,3,2,1,0,3,2,1,0,3,2,1,0,5,4,3,2,1,0,5,4,3,2,1,0,8,
-7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,5,4,3 ,2 ,1 ,0 ,10,11,11,12,12};
-const int8 d1 [] = {3,2,1,0,0,2,1,0,6,5,4,3,2,1,0,4,3,2,1,0,2,1,0,2,1,0,3,2,1,0,
-2,1,0,1,0,1,0,4,3,2,1,0,2,1,0,5,4,3,2,1 ,0 ,10,10,10,11,11,12,12};
-const int8 c1 [] = {3,2,1,0,0,2,1,0,6,5,4,3,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,
-7,6,5,4,3,2,1,0,5,4,3,2,1,0,2,1,0,1,0,10,10,10,10,10,11,11,12,12};
-const int8 m1 [] = {2,1,0,1,0,1,0,1,0,9,8,7,6,5,4,3,2,1,0,5,4,3,2,1,0,3,2,1,0,3,
-2,1,0,2,1,0,4,3,2,1,0,8,7,6,5,4,3,2,1,0 ,10,10,10,10,11,11,12,12};
+const int8 u1[] = {};
+const int8 d1[] = {};
+const int8 c1[] = {};
+const int8 m1[] = {};
 
-const int8 u2 [] = {1,0,5,4,3,2,1,0,2,1,0,1,0,5,4,3,2,1,0,2,1,0,1,0,2,1,0,1,0,1,
-0,1,0,1,0,8,7,6,5,4,3,2,1,0,7,6,5,4,3,2,1,0,10,10,10,10,11,11,11,12,12};
-const int8 d2 [] = {2,1,0,3,2,1,0,2,1,0,1,0,1,0,3,2,1,0,2,1,0,1,0,2,1,0,1,0,1,0,
-1,0,3,2,1,0,8,7,6,5,4,2,1,0,6,5,4,3,2,1,0,1,0 ,10,10,10,11,11,11,12,12};
-const int8 c2 [] = {3,2,1,0,1,0,3,2,1,0,1,0,2,1,0,1,0,3,2,1,0,1,0,3,2,1,0,1,0,7,
-6,5,4,3,2,1,0,1,0,1,0,2,1,0,5,4,3,2,1,0,3,2,1 ,0 ,10,10,11,11,11,12,12};
-const int8 m2 [] = {4,3,2,1,0,5,4,3,2,1,0,4,3,2,1,0,5,4,3,2,1,0,3,2,1,0,1,0,1,0,
-7,6,5,4,3,2,1,0,1,0,1,0,1,0,4,3,2,1,0,5,4,3,2 ,1 ,0 ,10,11,11,11,12,12};
+const int8 u2[] = {};
+const int8 d2[] = {};
+const int8 c2[] = {};
+const int8 m2[] = {};
 
-const int8 u3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,3,2,1,0,2,1,0,1,0,1,0,1,0,1,
-0,3,2,1,0,1,0,4,3,2,1,0,6,5,4,3,2,1,0,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,
-2,1,0,4,3,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,1,0,1,0,1 ,0 ,1 ,0 ,1 ,0 ,11,11,11,12,12};
-const int8 d3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,3,2,1,0,4,3,2,1,0,3,2,1,0,3,
-2,1,0,1,0,1,0,2,1,0,1,0,1,0,4,3,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,
-2,1,0,3,2,1,0,1,0,2,1,0,3,2,1,0,2,1,0,2,1,0,1,0,10,10,10,10,10,10,11,11,11,12,12};
-const int8 c3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,6,5,4,3,2,1,0,3,2,1,0,1,0,1,
-0,1,0,2,1,0,1,0,1,0,3,2,1,0,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,
-2,1,0,2,1,0,3,2,1,0,2,1,0,1,0,2,1,0,3,2,1,0,1,0,1 ,0 ,10,10,10,10,11,11,11,12,12};
-const int8 m3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,3,2,1,0,2,1,0,1,0,1,0,3,2,1,
-0,1,0,2,1,0,1,0,7,6,5,4,3,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,
-2,1,0,1,0,5,4,3,2,1,0,2,1,0,2,1,0,4,3,2,1,0,1,0,1 ,0 ,1 ,0 ,10,10,11,11,11,12,12};
+const int8 u3[] = {};
+const int8 d3[] = {};
+const int8 c3[] = {};
+const int8 m3[] = {};
 
-const int8 u4 [] = {6,5,4,3,2,1,0,1,0,7,6,5,4,3,2,1,0,3,2,1,0,2,1,0,3,2,1,0,7,6,
-5,4,3,2,1,0,7,6,5,4,3,2,1,0,5,4,3,2,1,0,10,10,11,11,12,12};
-const int8 d4 [] = {5,4,3,2,1,0,1,0,1,0,5,4,3,2,1,0,3,2,1,0,4,3,2,1,0,3,2,1,0,3,
-2,1,0,1,0,1,0,1,0,3,2,1,0,6,5,4,3,2,1,0,10,10,11,11,12,12};
-const int8 c4 [] = {4,3,2,1,0,5,4,3,2,1,0,1,0,1,0,3,2,1,0,6,5,4,3,2,1,0,3,2,1,0,
-1,0,1,0,3,2,1,0,1,0,1,0,7,6,5,4,3,2,1,0,10,10,11,11,12,12};
-const int8 m4 [] = {3,2,1,0,7,6,5,4,3,2,1,0,1,0,3,2,1,0,8,7,6,5,4,3,2,1,0,3,2,1,
-0,9,8,7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,10,10,11,11,12,12};
+const int8 u4[] = {};
+const int8 d4[] = {};
+const int8 c4[] = {};
+const int8 m4[] = {};
+
+//!const int8 u1 [] = {4,3,2,1,0,3,2,1,0,3,2,1,0,3,2,1,0,5,4,3,2,1,0,5,4,3,2,1,0,8,
+//!7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,5,4,3 ,2 ,1 ,0 ,10,11,11,12,12};
+//!const int8 d1 [] = {3,2,1,0,0,2,1,0,6,5,4,3,2,1,0,4,3,2,1,0,2,1,0,2,1,0,3,2,1,0,
+//!2,1,0,1,0,1,0,4,3,2,1,0,2,1,0,5,4,3,2,1 ,0 ,10,10,10,11,11,12,12};
+//!const int8 c1 [] = {3,2,1,0,0,2,1,0,6,5,4,3,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,
+//!7,6,5,4,3,2,1,0,5,4,3,2,1,0,2,1,0,1,0,10,10,10,10,10,11,11,12,12};
+//!const int8 m1 [] = {2,1,0,1,0,1,0,1,0,9,8,7,6,5,4,3,2,1,0,5,4,3,2,1,0,3,2,1,0,3,
+//!2,1,0,2,1,0,4,3,2,1,0,8,7,6,5,4,3,2,1,0 ,10,10,10,10,11,11,12,12};
+//!
+//!
+//!const int8 u2 [] = {1,0,5,4,3,2,1,0,2,1,0,1,0,5,4,3,2,1,0,2,1,0,1,0,2,1,0,1,0,1,
+//!0,1,0,1,0,8,7,6,5,4,3,2,1,0,7,6,5,4,3,2,1,0,10,10,10,10,11,11,11,12,12};
+//!const int8 d2 [] = {2,1,0,3,2,1,0,2,1,0,1,0,1,0,3,2,1,0,2,1,0,1,0,2,1,0,1,0,1,0,
+//!1,0,3,2,1,0,8,7,6,5,4,2,1,0,6,5,4,3,2,1,0,1,0 ,10,10,10,11,11,11,12,12};
+//!const int8 c2 [] = {3,2,1,0,1,0,3,2,1,0,1,0,2,1,0,1,0,3,2,1,0,1,0,3,2,1,0,1,0,7,
+//!6,5,4,3,2,1,0,1,0,1,0,2,1,0,5,4,3,2,1,0,3,2,1 ,0 ,10,10,11,11,11,12,12};
+//!const int8 m2 [] = {4,3,2,1,0,5,4,3,2,1,0,4,3,2,1,0,5,4,3,2,1,0,3,2,1,0,1,0,1,0,
+//!7,6,5,4,3,2,1,0,1,0,1,0,1,0,4,3,2,1,0,5,4,3,2 ,1 ,0 ,10,11,11,11,12,12};
+//!
+//!const int8 u3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,3,2,1,0,2,1,0,1,0,1,0,1,0,1,
+//!0,3,2,1,0,1,0,4,3,2,1,0,6,5,4,3,2,1,0,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,
+//!2,1,0,4,3,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,1,0,1,0,1 ,0 ,1 ,0 ,1 ,0 ,11,11,11,12,12};
+//!const int8 d3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,3,2,1,0,4,3,2,1,0,3,2,1,0,3,
+//!2,1,0,1,0,1,0,2,1,0,1,0,1,0,4,3,2,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,
+//!2,1,0,3,2,1,0,1,0,2,1,0,3,2,1,0,2,1,0,2,1,0,1,0,10,10,10,10,10,10,11,11,11,12,12};
+//!const int8 c3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,6,5,4,3,2,1,0,3,2,1,0,1,0,1,
+//!0,1,0,2,1,0,1,0,1,0,3,2,1,0,1,0,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,
+//!2,1,0,2,1,0,3,2,1,0,2,1,0,1,0,2,1,0,3,2,1,0,1,0,1 ,0 ,10,10,10,10,11,11,11,12,12};
+//!const int8 m3 [] = {2,1,0,2,1,0,2,1,0,2,1,0,3,2,1,0,3,2,1,0,2,1,0,1,0,1,0,3,2,1,
+//!0,1,0,2,1,0,1,0,7,6,5,4,3,2,1,0,5,4,3,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,2,1,0,
+//!2,1,0,1,0,5,4,3,2,1,0,2,1,0,2,1,0,4,3,2,1,0,1,0,1 ,0 ,1 ,0 ,10,10,11,11,11,12,12};
+//!
+//!const int8 u4 [] = {6,5,4,3,2,1,0,1,0,7,6,5,4,3,2,1,0,3,2,1,0,2,1,0,3,2,1,0,7,6,
+//!5,4,3,2,1,0,7,6,5,4,3,2,1,0,5,4,3,2,1,0,10,10,11,11,12,12};
+//!const int8 d4 [] = {5,4,3,2,1,0,1,0,1,0,5,4,3,2,1,0,3,2,1,0,4,3,2,1,0,3,2,1,0,3,
+//!2,1,0,1,0,1,0,1,0,3,2,1,0,6,5,4,3,2,1,0,10,10,11,11,12,12};
+//!const int8 c4 [] = {4,3,2,1,0,5,4,3,2,1,0,1,0,1,0,3,2,1,0,6,5,4,3,2,1,0,3,2,1,0,
+//!1,0,1,0,3,2,1,0,1,0,1,0,7,6,5,4,3,2,1,0,10,10,11,11,12,12};
+//!const int8 m4 [] = {3,2,1,0,7,6,5,4,3,2,1,0,1,0,3,2,1,0,8,7,6,5,4,3,2,1,0,3,2,1,
+//!0,9,8,7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,10,10,11,11,12,12};
+//!
 
 const int8 display_numbers[] = {
   0x3F,
@@ -150,15 +169,14 @@ int16 contador_ms = 0; // Contador de milissegundos para controle de intervalo
 void verificaerro0();
 void verificaerro9();
 void jogo();
-void tela_inicial();
+void tela_iniciu();
 void escolha_de_fase();
 void fase1();
 void fase4();
 void fase3();
 void fase2();
 void falha();
-void delay(int8 n);
-void verificabotao();
+void delay();
 
 #INT_TIMER0
 void TIMER0_isr(void) {
@@ -196,6 +214,86 @@ void TIMER0_isr(void) {
 
 void update_display();
 
+void verificabotao() {
+  if (!input(S4) && !unidade_ativode) {
+    unidade_ativo = 1;
+    unidade_ativode = 1;
+  }
+
+  if (!input(S3) && !dezena_ativode) {
+    dezena_ativo = 1;
+    dezena_ativode = 1;
+  }
+  if (!input(S2) && !centena_ativode) {
+    centena_ativo = 1;
+    centena_ativode = 1;
+  }
+  if (!input(S1) && !milhar_ativode) {
+    milhar_ativo = 1;
+    milhar_ativode = 1;
+  }
+
+  if (unidade_ativode) {
+    unidade_ativodecont--;
+    if (!unidade_ativodecont) {
+      unidade_ativodecont = contde;
+      unidade_ativode = 0;
+    }
+  }
+  if (dezena_ativode) {
+    dezena_ativodecont--;
+    if (!dezena_ativodecont) {
+      dezena_ativodecont = contde;
+      dezena_ativode = 0;
+    }
+  }
+  if (centena_ativode) {
+    centena_ativodecont--;
+    if (!centena_ativodecont) {
+      centena_ativodecont = contde;
+      centena_ativode = 0;
+    }
+  }
+  if (milhar_ativode) {
+    milhar_ativodecont--;
+    if (!milhar_ativodecont) {
+      milhar_ativodecont = contde;
+      milhar_ativode = 0;
+    }
+  }
+
+}
+
+void verificaerro9() {
+  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
+  if (unidade_ativo && unidade != 0) {
+    fase = 0;
+  }
+
+  // Se a dezena está ativa e seu valor é diferente de zero, reseta o contador
+  if (dezena_ativo && dezena != 0) {
+    fase = 0;
+  }
+
+  // Se a centena está ativa e seu valor é diferente de zero, reseta o contador
+  if (centena_ativo && centena != 0) {
+    fase = 0;
+  }
+
+  // Se o milhar está ativo e seu valor é diferente de zero, reseta o contador
+  if (milhar_ativo && milhar != 0) {
+    fase = 0;
+  }
+
+}
+
+void verificaerro0() {
+  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
+  if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
+    fase = 0;
+  }
+
+}
 
 void main() {
   setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8 | RTCC_8_BIT); // Configuração do timer para interrupção a cada 1ms
@@ -207,9 +305,9 @@ void main() {
   fase = 0;
   while (TRUE) {
 
-    if (!fase) {
+    if (fase == 0) {
       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
-      tela_inicial();
+      tela_iniciu();
       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
       escolha_de_fase();
 
@@ -236,7 +334,6 @@ void main() {
         fase = 0;
 
       }
-      
       if (fase == 2) {
         contador = 0;
         comeca = 1;
@@ -258,7 +355,6 @@ void main() {
         V_INTERVALO_INCREMENTO = velocidade;
         fase = 0;
       }
-      
       if (fase == 3) {
         contador = 0;
         comeca = 1;
@@ -281,7 +377,6 @@ void main() {
         fase = 0;
 
       }
-      
       if (fase == 4) {
         contador = 0;
         comeca = 1;
@@ -304,9 +399,10 @@ void main() {
         V_INTERVALO_INCREMENTO = velocidade;
         fase = 0;
       }
-      
     }
     contador = 0;
+    //jogo();
+
   }
 }
 
@@ -337,9 +433,8 @@ void fase1() {
     para_2 = 1;
   }
 
-  if (contador == finalfase + 5) {
+  if (contador == finalfase + 5)
     fase = 0;
-  }  
 
 }
 
@@ -387,10 +482,8 @@ void fase2() {
     para_1 = 1;
   }
 
-  if (contador == finalfase + 5) {
+  if (contador == finalfase + 5)
     fase = 0;
-  }
-    
 }
 
 void fase3() {
@@ -414,10 +507,8 @@ void fase3() {
     para_2 = 1;
   }
 
-  if (contador == finalfase + 5) {
+  if (contador == finalfase + 5)
     fase = 0;
-  }
-    
 }
 
 void fase4() {
@@ -437,10 +528,9 @@ void fase4() {
   update_display(); // Atualiza o display
   verificabotao();
 
-  if (contador == finalfase + 5) {
-   fase = 0;
-  }
-    
+  if (contador == finalfase + 5)
+    fase = 0;
+
 }
 
 void escolha_de_fase() {
@@ -474,7 +564,7 @@ void escolha_de_fase() {
       centena = 12; // Unidades
       milhar = inicio;
       update_display();
-      delay(30);
+      delay_ms(30);
     }
 
     V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO / 2;
@@ -496,11 +586,12 @@ void falha() {
 
   while (inicio) {
     update_display();
-    delay(15);
+
+    delay_ms(15);
   }
 }
 
-void tela_inicial() {
+void tela_iniciu() {
 
   if (contador_tela_inicial == 1 || contador_tela_inicial == 2) {
     output_low(DM);
@@ -558,12 +649,12 @@ void tela_inicial() {
       vez_contador_tela_inicial = 1;
     }
   }
-  delay(35);
+  delay_ms(35);
 
 }
 
 void update_display() {
-  delay(25);
+  delay_ms(25);
   if (input_state(DU)) {
     output_low(DU);
     output_high(DD);
@@ -582,79 +673,3 @@ void update_display() {
     output_d(display_numbers[unidade]);
   }
 }
-
-
-void delay(int8 n) {
-    int8 i;
-    for(i = 0; i < n; i++) {
-      // NOP
-    }
-}
-
-void verificabotao() {
-  if (!input(S4) && !unidade_ativode) {
-    unidade_ativo = 1;
-    unidade_ativode = 1;
-  }
-
-  if (!input(S3) && !dezena_ativode) {
-    dezena_ativo = 1;
-    dezena_ativode = 1;
-  }
-  if (!input(S2) && !centena_ativode) {
-    centena_ativo = 1;
-    centena_ativode = 1;
-  }
-  if (!input(S1) && !milhar_ativode) {
-    milhar_ativo = 1;
-    milhar_ativode = 1;
-  }
-
-  if (unidade_ativode) {
-    unidade_ativodecont--;
-    if (!unidade_ativodecont) {
-      unidade_ativodecont = contde;
-      unidade_ativode = 0;
-    }
-  }
-  if (dezena_ativode) {
-    dezena_ativodecont--;
-    if (!dezena_ativodecont) {
-      dezena_ativodecont = contde;
-      dezena_ativode = 0;
-    }
-  }
-  if (centena_ativode) {
-    centena_ativodecont--;
-    if (!centena_ativodecont) {
-      centena_ativodecont = contde;
-      centena_ativode = 0;
-    }
-  }
-  if (milhar_ativode) {
-    milhar_ativodecont--;
-    if (!milhar_ativodecont) {
-      milhar_ativodecont = contde;
-      milhar_ativode = 0;
-    }
-  }
-
-}
-
-void verificaerro9() {
-  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
-  if ((!unidade_ativo && unidade) || (!dezena_ativo && dezena) || (!centena_ativo && centena) || (!milhar_ativo && milhar)) {
-    fase = 0;
-  }
-
-}
-
-void verificaerro0() {
-  // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador
-  if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
-    fase = 0;
-  }
-
-}
-
-

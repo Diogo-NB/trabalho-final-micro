@@ -49,16 +49,16 @@
 049-04A vez_contador_tela_inicial
 04B-04C contador_ms
 04D-050 @SFTOI.P1
-04D-050 @MULFF.P2
-04D-04E @ITOF.P3
-04D     delay.milliseconds
+04D     delay.n
+04D-050 @MULFF.P1
+04D-04E @ITOF.P2
 04D     MAIN.@SCRATCH1
 04D     fase1.@SCRATCH1
 04D     fase2.@SCRATCH1
 04D     fase3.@SCRATCH1
 04D     fase4.@SCRATCH1
 04D     falha.@SCRATCH1
-04D     tela_iniciu.@SCRATCH1
+04D     tela_inicial.@SCRATCH1
 04D     update_display.@SCRATCH1
 04E     delay.i
 04E     MAIN.@SCRATCH2
@@ -67,17 +67,17 @@
 04E     fase3.@SCRATCH2
 04E     fase4.@SCRATCH2
 04E     falha.@SCRATCH2
-04E     tela_iniciu.@SCRATCH2
+04E     tela_inicial.@SCRATCH2
 04F     MAIN.@SCRATCH3
-04F     tela_iniciu.@SCRATCH3
+04F     tela_inicial.@SCRATCH3
 050     MAIN.@SCRATCH4
 051-052 @DIV1616.P1
-051-054 @MULFF.P2
+051     @MUL88.P2
 051-052 @MUL1616.P3
-051     @MUL88.P4
+051-054 @MULFF.P4
 052     @MUL88.P1
-053-054 @MUL1616.P1
-053-054 @DIV1616.P2
+053-054 @DIV1616.P1
+053-054 @MUL1616.P2
 055     @DIV1616.@SCRATCH1
 055     @MUL1616.@SCRATCH1
 055     @MULFF.@SCRATCH1
@@ -205,39 +205,39 @@ ROM Allocation:
 000522  display_numbers.data
 00052F  TIMER0_isr
 000558  verificaerro9
-000580  verificaerro0
-0005B9  @MUL88
-0005DE  @DIV1616
-000603  delay
-00060B  tela_iniciu
-0006DA  @MUL1616
-0006F1  update_display
-000746  escolha_de_fase
-0007A2  @ITOF
-0007BF  @SFTOI
-000800  verificabotao
-000861  @MULFF
-0008D6  fase1
-0009DC  falha
-000A6B  fase2
-000BDE  fase3
-000C9C  fase4
-000D40  MAIN
-000D40  @cinit1
-000D7E  @cinit2
+000572  verificaerro0
+00059D  @MUL88
+0005C2  @DIV1616
+0005E7  delay
+0005EF  tela_inicial
+0006BE  @MUL1616
+0006D5  update_display
+00072A  escolha_de_fase
+000786  verificabotao
+000800  @ITOF
+00081D  @MULFF
+000892  @SFTOI
+0008B1  fase1
+0009B1  falha
+000A40  fase2
+000BA5  fase3
+000C61  fase4
+000D07  MAIN
+000D07  @cinit1
+000D45  @cinit2
 
 Project Directory:
     C:\projects\trabalho_final_microcontroladores\
 
 Project Files:
-    main.c                                                  [30-nov-24 14:25  CRC=DF4B0F6C]
+    main.c                                                  [30-nov-24 18:27  CRC=33460591]
     main.h                                                  [24-nov-24 21:33  CRC=47E4B9EC]
     ..\..\Program Files (x86)\PICC\Devices\16F877A.h        [15-jan-18 15:53  CRC=63418C39]
 
-Source signature=EDB2E1CA
+Source signature=41ADD7EF
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=477E
+Hex file CRC=C36D
 
 Units:
     main (main)

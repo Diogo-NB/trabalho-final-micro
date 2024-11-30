@@ -158,7 +158,6 @@ void fase3();
 void fase2();
 void falha();
 void delay(int8 n);
-void verificabotao();
 
 #INT_TIMER0
 void TIMER0_isr(void) {

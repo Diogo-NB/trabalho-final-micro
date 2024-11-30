@@ -85,6 +85,26 @@ const int8 listadisplay1[] = {
   0b01100000
 };
 
+//!const int8 u1[] = {};
+//!const int8 d1[] = {};
+//!const int8 c1[] = {};
+//!const int8 m1[] = {};
+//!
+//!const int8 u2[] = {};
+//!const int8 d2[] = {};
+//!const int8 c2[] = {};
+//!const int8 m2[] = {};
+//!
+//!const int8 u3[] = {};
+//!const int8 d3[] = {};
+//!const int8 c3[] = {};
+//!const int8 m3[] = {};
+//!
+//!const int8 u4[] = {};
+//!const int8 d4[] = {};
+//!const int8 c4[] = {};
+//!const int8 m4[] = {};
+//!
 const int8 u1 [] = {4,3,2,1,0,3,2,1,0,3,2,1,0,3,2,1,0,5,4,3,2,1,0,5,4,3,2,1,0,8,
 7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,5,4,3 ,2 ,1 ,0 ,10,11,11,12,12};
 const int8 d1 [] = {3,2,1,0,0,2,1,0,6,5,4,3,2,1,0,4,3,2,1,0,2,1,0,2,1,0,3,2,1,0,
@@ -158,7 +178,6 @@ void fase3();
 void fase2();
 void falha();
 void delay(int8 n);
-void verificabotao();
 
 #INT_TIMER0
 void TIMER0_isr(void) {
