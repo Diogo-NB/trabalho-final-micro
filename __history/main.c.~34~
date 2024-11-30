@@ -75,7 +75,13 @@ const int8 c4 [] = {4,3,2,1,0,5,4,3,2,1,0,1,0,1,0,3,2,1,0,6,5,4,3,2,1,0,3,2,1,0,
 const int8 m4 [] = {3,2,1,0,7,6,5,4,3,2,1,0,1,0,3,2,1,0,8,7,6,5,4,3,2,1,0,3,2,1,
 0,9,8,7,6,5,4,3,2,1,0,8,7,6,5,4,3,2,1,0,10,10,11,11,12,12};
 
+
+
+
+
+
 const int8 display_numbers[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0b00001000,0b01001000,0b01001001};
+
 
 int1 pasou_fase_1=0;
 int1 pasou_fase_2=0;
@@ -460,8 +466,14 @@ void fase3 (){
       para_2=1;
       }
       
+      
+      
+      
+
       if (contador == finalfase+5)
       fase=0;
+
+   
 }
 
 void fase4 (){
@@ -615,6 +627,8 @@ void tela_iniciu(){
     
       
 }
+
+
 
 void update_display() {
    delay(25);

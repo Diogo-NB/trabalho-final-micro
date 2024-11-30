@@ -460,8 +460,14 @@ void fase3 (){
       para_2=1;
       }
       
+      
+      
+      
+
       if (contador == finalfase+5)
       fase=0;
+
+   
 }
 
 void fase4 (){
@@ -615,6 +621,8 @@ void tela_iniciu(){
     
       
 }
+
+
 
 void update_display() {
    delay(25);
