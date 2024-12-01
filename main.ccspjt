@@ -17,7 +17,7 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=2
+Days=3
 D1=22-11-2024
 D1_L=6
 D1_L1=[76160]Project Opened.
@@ -25,19 +25,19 @@ D1_L2=[76176]Project Closed.
 D1_L3=[76229]Project Opened.
 D1_L4=[76247]Started Editing.
 D1_L5=[76888]Stopped Editing.
-TotalEdit=19
+TotalEdit=72
 TotalDebug=0
 D1_E=11
 D1_D=0
 D1_L6=[76888]Project Closed.
 D2=30-11-2024
-D2_L=14
+D2_L=24
 D2_L1=[51366]Project Opened.
 D2_L2=[51383]Project Closed.
 D2_L3=[51657]Project Opened.
 D2_L4=[51759]Started Editing.
 D2_L5=[52201]Stopped Editing.
-D2_E=8
+D2_E=57
 D2_D=0
 D2_L6=[52201]Project Closed.
 D2_L7=[52211]Project Opened.
@@ -48,16 +48,38 @@ D2_L11=[64064]Project Opened.
 D2_L12=[64635]Started Editing.
 D2_L13=[66295]Stopped Editing.
 D2_L14=[66376]Started Editing.
+D2_L15=[67454]Stopped Editing.
+D2_L16=[68088]Started Editing.
+D2_L17=[68774]Stopped Editing.
+D2_L18=[68951]Started Editing.
+D2_L19=[69285]Stopped Editing.
+D2_L20=[69616]Started Editing.
+D2_L21=[70257]Stopped Editing.
+D2_L22=[70682]Project Closed.
+D2_L23=[70713]Project Opened.
+D2_L24=[70751]Project Closed.
+D3=01-12-2024
+D3_L=6
+D3_L1=[33502]Project Opened.
+D3_L2=[33814]Started Editing.
+D3_L3=[34042]Stopped Editing.
+D3_E=4
+D3_D=0
+D3_L4=[34042]Project Closed.
+D3_L5=[34063]Project Opened.
+D3_L6=[34071]Started Editing.
 
 [Opened Files]
 1=main.c
-t1=140
+t1=1
 Count=1
+2=..\..\Program Files (x86)\PICC\Drivers\string.h
+t2=12
 [main.c]
 Type=4
 
 [defines]
-buildcount=15
+buildcount=34
 [Units]
 Count=1
 1=main (main)

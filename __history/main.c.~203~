@@ -1,6 +1,6 @@
 #include <main.h>
 
-#define contde 200
+#define contde 200;
 
 int16 V_INTERVALO_INCREMENTO = 1000;
 int16 contador = 0;

@@ -1,30 +1,33 @@
 #include <main.h>
 
-#define contde 200
+#define contde 200;
 
 int16 V_INTERVALO_INCREMENTO = 1000;
 int16 contador = 0;
-int8 unidade, dezena, centena, milhar;
+int16 unidade;
+int16 dezena;
+int16 centena;
+int16 milhar;
 
-int8 fase = 0;
-int8 inicio;
+int16 fase = 0;
+int16 inicio;
 int16 velocidade;
 int1 unidade_ativo = 0, dezena_ativo = 0, centena_ativo = 0, milhar_ativo = 0;
 int1 unidade_ativode = 0, dezena_ativode = 0, centena_ativode = 0, milhar_ativode = 0;
 int1 comeca = 0;
 
-int8 mostra_u, mostra_d, mostra_c, mostra_m;
-int8 contador_u = 0, contador_d = 0, contador_c = 0, contador_m = 0;
-int8 decremento_u = 0, decremento_d = 0, decremento_c = 0, decremento_m = 0;
+int16 mostra_u, mostra_d, mostra_c, mostra_m;
+int16 contador_u = 0, contador_d = 0, contador_c = 0, contador_m = 0;
+int16 decremento_u = 0, decremento_d = 0, decremento_c = 0, decremento_m = 0;
 
 int1 para_1 = 0, para_2 = 0, para_3 = 0;
 
 int16 unidade_ativodecont, dezena_ativodecont, centena_ativodecont, milhar_ativodecont;
 
-int8 contador_tela_inicial = 0;
-int8 finalfase = 100;
-int1 vez_contador_tela_inicial = 0;
-
+int16 contador_tela_inicial = 0;
+int16 finalfase = 100;
+int16 vez_contador_tela_inicial = 0;
+//!
 const int8 listadisplay4[] = {0x08,0x00,0x00,0x01,0x02,0x04,0b01001000,0b01000000,0b01000000,0b01000001,0b01000010,0b01000100};
 const int8 listadisplay3[] = {0x00,0x08,0x01,0x00,0x00,0x00,0x00,0b01001000,0b01000001,0x00,0x00,0x00};
 const int8 listadisplay2[] = {0x00,0x01,0x08,0x00,0x00,0x00,0x00,0b01000001,0b01001000,0x00,0x00,0x00};
