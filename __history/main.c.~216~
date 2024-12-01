@@ -7,7 +7,7 @@ int16 contador_fase = 0;
 int8 unidade, dezena, centena, milhar;
 
 int8 fase = 0;
-int8 tempo_inicio;
+int8 inicio;
 int16 velocidade;
 int1 unidade_ativo = 0, dezena_ativo = 0, centena_ativo = 0, milhar_ativo = 0;
 int1 unidade_ativode = 0, dezena_ativode = 0, centena_ativode = 0, milhar_ativode = 0;
@@ -23,7 +23,7 @@ int16 unidade_ativodecont, dezena_ativodecont, centena_ativodecont, milhar_ativo
 
 int8 contador_tela_inicial = 0;
 int8 finalfase = 100;
-int1 alternar_tela_inicial = 0;
+int1 vez_contador_tela_inicial = 0;
 
 const int8 listadisplay4[] = {0x08,0x00,0x00,0x01,0x02,0x04,0b01001000,0b01000000,0b01000000,0b01000001,0b01000010,0b01000100};
 const int8 listadisplay3[] = {0x00,0x08,0x01,0x00,0x00,0x00,0x00,0b01001000,0b01000001,0x00,0x00,0x00};
@@ -59,10 +59,10 @@ int1 pasou_fase_4 = 0;
 
 int16 contador_ms = 0;
 
-void verificar_erro_zero();
-void verificar_erro_nove();
+void verificaerro0();
+void verificaerro9();
 
-void mostrar_tela_inicial();
+void tela_inicial();
 
 void escolha_de_fase();
 
@@ -71,19 +71,19 @@ void fase4();
 void fase3();
 void fase2();
 
-void mostrar_falha();
+void falha();
 
 void delay(int8 n);
-void verificar_botoes();
+void verificabotao();
 void atualiza_display();
 
-void atualizar_unidade();
-void atualizar_dezena();
-void atualizar_centena();
-void atualizar_milhar();
-void testar_listas();
+void lista_u();
+void lista_d();
+void lista_c();
+void lista_m();
+void testalista();
 
-void atualiza_valores();
+void chama();
 
 #INT_TIMER0
 void TIMER0_isr(void) {
@@ -98,8 +98,8 @@ void TIMER0_isr(void) {
 
       contador_tela_inicial++;
 
-      if (tempo_inicio) {
-         tempo_inicio--;
+      if (inicio) {
+         inicio--;
          decremento_u = 0;
          contador_u = 0;
          decremento_d = 0;
@@ -112,8 +112,8 @@ void TIMER0_isr(void) {
 
       if (fase && comeca) {
          contador_fase++;
-         verificar_erro_nove();
-         verificar_erro_zero();
+         verificaerro9();
+         verificaerro0();
          unidade_ativo = 0;
          dezena_ativo = 0;
          centena_ativo = 0;
@@ -123,7 +123,7 @@ void TIMER0_isr(void) {
       if (contador_tela_inicial > 5) { // Se o contador_fase atingir 0, reseta para 9999
          contador_tela_inicial = 0;
       }
-      testar_listas();
+      testalista();
 
    }
 }
@@ -144,7 +144,7 @@ void main() {
 
       if (!fase) {
          intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
-         mostrar_tela_inicial();
+         tela_inicial();
          intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
          escolha_de_fase();
 
@@ -160,7 +160,7 @@ void main() {
             comeca = 0;
 
             if (contador_fase < finalfase) {
-               mostrar_falha();
+               falha();
                contador_fase = 0;
             }
 
@@ -184,7 +184,7 @@ void main() {
             comeca = 0;
 
             if (contador_fase < finalfase) {
-               mostrar_falha();
+               falha();
                contador_fase = 0;
             }
             if (contador_fase >= finalfase + 4)
@@ -206,7 +206,7 @@ void main() {
             comeca = 0;
 
             if (contador_fase < finalfase) {
-               mostrar_falha();
+               falha();
                contador_fase = 0;
             }
             if (contador_fase >= finalfase + 4)
@@ -230,7 +230,7 @@ void main() {
             comeca = 0;
 
             if (contador_fase < finalfase) {
-               mostrar_falha();
+               falha();
                contador_fase = 0;
             }
             if (contador_fase >= finalfase + 4)
@@ -246,10 +246,10 @@ void main() {
 }
 
 void fase1() {
-   atualiza_valores();
+   chama();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if (contador_fase == 50 && !pausa_fase_1) {
       intervalo_incremento = intervalo_incremento * 0.85;
@@ -267,10 +267,10 @@ void fase1() {
 }
 
 void fase2() {
-   atualiza_valores();
+   chama();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if (contador_fase == 12 && !pausa_fase_1) {
       intervalo_incremento = intervalo_incremento * 0.90;
@@ -306,9 +306,9 @@ void fase2() {
 
 void fase3() {
 
-   atualiza_valores();
+   chama();
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if ((contador_fase + 1) % 3 == 0 && !pausa_fase_1 && contador_fase < 30) {
       intervalo_incremento = intervalo_incremento * 0.94;
@@ -328,17 +328,17 @@ void fase3() {
 
 void fase4() {
 
-   atualiza_valores();
+   chama();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if (contador_fase == finalfase + 5)
       fase = 0;
 
 }
 
-void atualiza_valores() {
+void chama() {
    unidade = unidade_atual;
    dezena = dezena_atual;
    centena = centena_atual;
@@ -367,15 +367,15 @@ void escolha_de_fase() {
       output_low(DD);
       output_low(DC);
       output_low(DU);
-      tempo_inicio = 3;
+      inicio = 3;
       intervalo_incremento = intervalo_incremento * 2;
       output_high(DU);
 
-      while (tempo_inicio > 0) {
-         unidade = tempo_inicio;
+      while (inicio > 0) {
+         unidade = inicio;
          dezena = 12;
          centena = 12; 
-         milhar = tempo_inicio;
+         milhar = inicio;
          atualiza_display();
          delay(30);
 
@@ -384,9 +384,9 @@ void escolha_de_fase() {
    }
 }
 
-void mostrar_falha() {
+void falha() {
 
-   tempo_inicio = 7;
+   inicio = 7;
 
    unidade = 12;
    if ((contador_fase % 10)) {
@@ -399,21 +399,21 @@ void mostrar_falha() {
 
    milhar = 12;
 
-   while (tempo_inicio) {
+   while (inicio) {
       atualiza_display();
 
       delay(15);
    }
 }
 
-void mostrar_tela_inicial() {
+void tela_inicial() {
 
    if (contador_tela_inicial == 1 || contador_tela_inicial == 2) {
 
       output_low(DM);
       output_low(DU);
 
-      if (alternar_tela_inicial) {
+      if (vez_contador_tela_inicial) {
          output_low(DC);
          output_high(DD);
          if (!pasou_fase_3) {
@@ -422,7 +422,7 @@ void mostrar_tela_inicial() {
             output_d(listadisplay3[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 0;
+         vez_contador_tela_inicial = 0;
       } else {
          output_low(DD);
          output_high(DC);
@@ -433,14 +433,14 @@ void mostrar_tela_inicial() {
             output_d(listadisplay2[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 1;
+         vez_contador_tela_inicial = 1;
       }
 
    } else {
       output_low(DD);
       output_low(DC);
 
-      if (alternar_tela_inicial) {
+      if (vez_contador_tela_inicial) {
          output_low(DM);
          output_high(DU);
 
@@ -450,7 +450,7 @@ void mostrar_tela_inicial() {
             output_d(listadisplay4[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 0;
+         vez_contador_tela_inicial = 0;
       } else {
          output_low(DU);
          output_high(DM);
@@ -461,7 +461,7 @@ void mostrar_tela_inicial() {
             output_d(listadisplay1[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 1;
+         vez_contador_tela_inicial = 1;
       }
    }
    delay(35);
@@ -496,7 +496,7 @@ void delay(int8 n) {
    }
 }
 
-void verificar_botoes() {
+void verificabotao() {
    if (!input(S4) && !unidade_ativode) {
       unidade_ativo = 1;
       unidade_ativode = 1;
@@ -546,28 +546,28 @@ void verificar_botoes() {
 
 }
 
-void verificar_erro_nove() {
+void verificaerro9() {
    if ((unidade_ativo && unidade) || (dezena_ativo && dezena) || (centena_ativo && centena) || (milhar_ativo && milhar)) {
       fase = 0;
    }
 }
 
-void verificar_erro_zero() {
+void verificaerro0() {
    if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
       fase = 0;
    }
 
 }
 
-void testar_listas() {
-   atualizar_unidade();
-   atualizar_dezena();
-   atualizar_centena();
-   atualizar_milhar();
+void testalista() {
+   lista_u();
+   lista_d();
+   lista_c();
+   lista_m();
 
 }
 
-void atualizar_unidade() {
+void lista_u() {
 
    if (fase == 1)
       unidade_atual = u1[contador_u] - decremento_u;
@@ -593,7 +593,7 @@ void atualizar_unidade() {
    }
 
 }
-void atualizar_dezena() {
+void lista_d() {
 
    if (fase == 1)
       dezena_atual = d1[contador_d] - decremento_d;
@@ -619,7 +619,7 @@ void atualizar_dezena() {
    }
 
 }
-void atualizar_centena() {
+void lista_c() {
 
    if (fase == 1)
       centena_atual = c1[contador_c] - decremento_c;
@@ -645,7 +645,7 @@ void atualizar_centena() {
    }
 
 }
-void atualizar_milhar() {
+void lista_m() {
 
    if (fase == 1)
       milhar_atual = m1[contador_m] - decremento_m;

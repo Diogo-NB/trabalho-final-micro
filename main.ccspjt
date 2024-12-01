@@ -59,7 +59,7 @@ D2_L22=[70682]Project Closed.
 D2_L23=[70713]Project Opened.
 D2_L24=[70751]Project Closed.
 D3=01-12-2024
-D3_L=6
+D3_L=9
 D3_L1=[33502]Project Opened.
 D3_L2=[33814]Started Editing.
 D3_L3=[34042]Stopped Editing.
@@ -68,10 +68,13 @@ D3_D=0
 D3_L4=[34042]Project Closed.
 D3_L5=[34063]Project Opened.
 D3_L6=[34071]Started Editing.
+D3_L7=[37208]Stopped Editing.
+D3_L8=[37479]Started Editing.
+D3_L9=[38101]Stopped Editing.
 
 [Opened Files]
 1=main.c
-t1=1
+t1=409
 Count=1
 2=..\..\Program Files (x86)\PICC\Drivers\string.h
 t2=12
@@ -79,7 +82,7 @@ t2=12
 Type=4
 
 [defines]
-buildcount=34
+buildcount=40
 [Units]
 Count=1
 1=main (main)

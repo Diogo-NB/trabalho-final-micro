@@ -1,29 +1,29 @@
 #include <main.h>
 
-#define V_CONTADOR_DECREMENTO 200
+#define contde 200
 
-int16 intervalo_incremento = 1000;
-int16 contador_fase = 0;
+int16 V_INTERVALO_INCREMENTO = 1000;
+int16 contador = 0;
 int8 unidade, dezena, centena, milhar;
 
 int8 fase = 0;
-int8 tempo_inicio;
+int8 inicio;
 int16 velocidade;
 int1 unidade_ativo = 0, dezena_ativo = 0, centena_ativo = 0, milhar_ativo = 0;
 int1 unidade_ativode = 0, dezena_ativode = 0, centena_ativode = 0, milhar_ativode = 0;
 int1 comeca = 0;
 
-int8 unidade_atual, dezena_atual, centena_atual, milhar_atual;
+int8 mostra_u, mostra_d, mostra_c, mostra_m;
 int8 contador_u = 0, contador_d = 0, contador_c = 0, contador_m = 0;
 int8 decremento_u = 0, decremento_d = 0, decremento_c = 0, decremento_m = 0;
 
-int1 pausa_fase_1 = 0, pausa_fase_2 = 0, pausa_fase_3 = 0;
+int1 para_1 = 0, para_2 = 0, para_3 = 0;
 
 int16 unidade_ativodecont, dezena_ativodecont, centena_ativodecont, milhar_ativodecont;
 
 int8 contador_tela_inicial = 0;
 int8 finalfase = 100;
-int1 alternar_tela_inicial = 0;
+int1 vez_contador_tela_inicial = 0;
 
 const int8 listadisplay4[] = {0x08,0x00,0x00,0x01,0x02,0x04,0b01001000,0b01000000,0b01000000,0b01000001,0b01000010,0b01000100};
 const int8 listadisplay3[] = {0x00,0x08,0x01,0x00,0x00,0x00,0x00,0b01001000,0b01000001,0x00,0x00,0x00};
@@ -59,10 +59,10 @@ int1 pasou_fase_4 = 0;
 
 int16 contador_ms = 0;
 
-void verificar_erro_zero();
-void verificar_erro_nove();
+void verificaerro0();
+void verificaerro9();
 
-void mostrar_tela_inicial();
+void tela_inicial();
 
 void escolha_de_fase();
 
@@ -71,19 +71,19 @@ void fase4();
 void fase3();
 void fase2();
 
-void mostrar_falha();
+void falha();
 
 void delay(int8 n);
-void verificar_botoes();
+void verificabotao();
 void atualiza_display();
 
-void atualizar_unidade();
-void atualizar_dezena();
-void atualizar_centena();
-void atualizar_milhar();
-void testar_listas();
+void lista_u();
+void lista_d();
+void lista_c();
+void lista_m();
+void testalista();
 
-void atualiza_valores();
+void chama();
 
 #INT_TIMER0
 void TIMER0_isr(void) {
@@ -91,15 +91,15 @@ void TIMER0_isr(void) {
 
    contador_ms++;
 
-   if (contador_ms >= intervalo_incremento) { // Se atingir o intervalo de 1 segundo
+   if (contador_ms >= V_INTERVALO_INCREMENTO) { // Se atingir o intervalo de 1 segundo
       contador_ms = 0;
 
-      pausa_fase_3 = 0;
+      para_3 = 0;
 
       contador_tela_inicial++;
 
-      if (tempo_inicio) {
-         tempo_inicio--;
+      if (inicio) {
+         inicio--;
          decremento_u = 0;
          contador_u = 0;
          decremento_d = 0;
@@ -111,19 +111,19 @@ void TIMER0_isr(void) {
       }
 
       if (fase && comeca) {
-         contador_fase++;
-         verificar_erro_nove();
-         verificar_erro_zero();
+         contador++;
+         verificaerro9();
+         verificaerro0();
          unidade_ativo = 0;
          dezena_ativo = 0;
          centena_ativo = 0;
          milhar_ativo = 0;
       }
 
-      if (contador_tela_inicial > 5) { // Se o contador_fase atingir 0, reseta para 9999
+      if (contador_tela_inicial > 5) { // Se o contador atingir 0, reseta para 9999
          contador_tela_inicial = 0;
       }
-      testar_listas();
+      testalista();
 
    }
 }
@@ -135,214 +135,214 @@ void main() {
    output_d(0);
 
    fase = 0;
-   unidade_ativodecont = V_CONTADOR_DECREMENTO;
-   dezena_ativodecont = V_CONTADOR_DECREMENTO;
-   centena_ativodecont = V_CONTADOR_DECREMENTO;
-   milhar_ativodecont = V_CONTADOR_DECREMENTO;
+   unidade_ativodecont = contde;
+   dezena_ativodecont = contde;
+   centena_ativodecont = contde;
+   milhar_ativodecont = contde;
 
    while (TRUE) {
 
       if (!fase) {
-         intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
-         mostrar_tela_inicial();
-         intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
+         V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
+         tela_inicial();
+         V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
          escolha_de_fase();
 
          if (fase == 1) {
-            contador_fase = 0;
+            contador = 0;
             comeca = 1;
-            velocidade = intervalo_incremento;
-            pausa_fase_1 = 0;
-            pausa_fase_2 = 0;
+            velocidade = V_INTERVALO_INCREMENTO;
+            para_1 = 0;
+            para_2 = 0;
             while (fase) {
                fase1();
             }
             comeca = 0;
 
-            if (contador_fase < finalfase) {
-               mostrar_falha();
-               contador_fase = 0;
+            if (contador < finalfase) {
+               falha();
+               contador = 0;
             }
 
-            if (contador_fase >= finalfase + 4)
+            if (contador >= finalfase + 4)
                pasou_fase_1 = 1;
 
-            intervalo_incremento = velocidade;
+            V_INTERVALO_INCREMENTO = velocidade;
             fase = 0;
 
          }
 
          if (fase == 2) {
-            contador_fase = 0;
+            contador = 0;
             comeca = 1;
-            velocidade = intervalo_incremento;
-            pausa_fase_1 = 0;
-            pausa_fase_2 = 0;
+            velocidade = V_INTERVALO_INCREMENTO;
+            para_1 = 0;
+            para_2 = 0;
             while (fase) {
                fase2();
             }
             comeca = 0;
 
-            if (contador_fase < finalfase) {
-               mostrar_falha();
-               contador_fase = 0;
+            if (contador < finalfase) {
+               falha();
+               contador = 0;
             }
-            if (contador_fase >= finalfase + 4)
+            if (contador >= finalfase + 4)
                pasou_fase_2 = 1;
 
-            intervalo_incremento = velocidade;
+            V_INTERVALO_INCREMENTO = velocidade;
             fase = 0;
          }
 
          if (fase == 3) {
-            contador_fase = 0;
+            contador = 0;
             comeca = 1;
-            velocidade = intervalo_incremento;
-            pausa_fase_1 = 0;
-            pausa_fase_2 = 0;
+            velocidade = V_INTERVALO_INCREMENTO;
+            para_1 = 0;
+            para_2 = 0;
             while (fase) {
                fase3();
             }
             comeca = 0;
 
-            if (contador_fase < finalfase) {
-               mostrar_falha();
-               contador_fase = 0;
+            if (contador < finalfase) {
+               falha();
+               contador = 0;
             }
-            if (contador_fase >= finalfase + 4)
+            if (contador >= finalfase + 4)
                pasou_fase_3 = 1;
 
-            intervalo_incremento = velocidade;
+            V_INTERVALO_INCREMENTO = velocidade;
             fase = 0;
 
          }
 
          if (fase == 4) {
-            contador_fase = 0;
+            contador = 0;
             comeca = 1;
-            velocidade = intervalo_incremento;
-            pausa_fase_1 = 0;
-            pausa_fase_2 = 0;
-            intervalo_incremento = intervalo_incremento * 0.60;
+            velocidade = V_INTERVALO_INCREMENTO;
+            para_1 = 0;
+            para_2 = 0;
+            V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.60;
             while (fase) {
                fase4();
             }
             comeca = 0;
 
-            if (contador_fase < finalfase) {
-               mostrar_falha();
-               contador_fase = 0;
+            if (contador < finalfase) {
+               falha();
+               contador = 0;
             }
-            if (contador_fase >= finalfase + 4)
+            if (contador >= finalfase + 4)
                pasou_fase_4 = 1;
 
-            intervalo_incremento = velocidade;
+            V_INTERVALO_INCREMENTO = velocidade;
             fase = 0;
          }
 
       }
-      contador_fase = 0;
+      contador = 0;
    }
 }
 
 void fase1() {
-   atualiza_valores();
+   chama();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
-   if (contador_fase == 50 && !pausa_fase_1) {
-      intervalo_incremento = intervalo_incremento * 0.85;
-      pausa_fase_1 = 1;
+   if (contador == 50 && !para_1) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.85;
+      para_1 = 1;
    }
 
-   if (contador_fase == 75 && !pausa_fase_2) {
-      intervalo_incremento = intervalo_incremento * 0.85;
-      pausa_fase_2 = 1;
+   if (contador == 75 && !para_2) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.85;
+      para_2 = 1;
    }
 
-   if (contador_fase == finalfase + 5)
+   if (contador == finalfase + 5)
       fase = 0;
 
 }
 
 void fase2() {
-   atualiza_valores();
+   chama();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
-   if (contador_fase == 12 && !pausa_fase_1) {
-      intervalo_incremento = intervalo_incremento * 0.90;
-      pausa_fase_1 = 1;
+   if (contador == 12 && !para_1) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.90;
+      para_1 = 1;
    }
 
-   if (contador_fase == 24 && !pausa_fase_2) {
-      intervalo_incremento = velocidade;
-      pausa_fase_2 = 1;
-      pausa_fase_1 = 0;
+   if (contador == 24 && !para_2) {
+      V_INTERVALO_INCREMENTO = velocidade;
+      para_2 = 1;
+      para_1 = 0;
    }
 
-   if (contador_fase == 48 && !pausa_fase_1) {
-      intervalo_incremento = intervalo_incremento * 0.80;
-      pausa_fase_2 = 0;
-      pausa_fase_1 = 1;
+   if (contador == 48 && !para_1) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.80;
+      para_2 = 0;
+      para_1 = 1;
    }
 
-   if (contador_fase == 72 && !pausa_fase_2) {
-      intervalo_incremento = intervalo_incremento * 0.90;
-      pausa_fase_2 = 1;
-      pausa_fase_1 = 0;
+   if (contador == 72 && !para_2) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.90;
+      para_2 = 1;
+      para_1 = 0;
    }
 
-   if (contador_fase == 96 && !pausa_fase_1) {
-      intervalo_incremento = intervalo_incremento * 0.90;
-      pausa_fase_1 = 1;
+   if (contador == 96 && !para_1) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.90;
+      para_1 = 1;
    }
 
-   if (contador_fase == finalfase + 5)
+   if (contador == finalfase + 5)
       fase = 0;
 }
 
 void fase3() {
 
-   atualiza_valores();
+   chama();
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
-   if ((contador_fase + 1) % 3 == 0 && !pausa_fase_1 && contador_fase < 30) {
-      intervalo_incremento = intervalo_incremento * 0.94;
-      pausa_fase_1 = 1;
-      pausa_fase_2 = 0;
+   if ((contador + 1) % 3 == 0 && !para_1 && contador < 30) {
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.94;
+      para_1 = 1;
+      para_2 = 0;
    }
 
-   if ((contador_fase + 1) % 4 == 0 && !pausa_fase_2 && (contador_fase + 1) % 12) {
-      pausa_fase_1 = 0;
-      pausa_fase_2 = 1;
+   if ((contador + 1) % 4 == 0 && !para_2 && (contador + 1) % 12) {
+      para_1 = 0;
+      para_2 = 1;
    }
 
-   if (contador_fase == finalfase + 5)
+   if (contador == finalfase + 5)
       fase = 0;
 
 }
 
 void fase4() {
 
-   atualiza_valores();
+   chama();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
-   if (contador_fase == finalfase + 5)
+   if (contador == finalfase + 5)
       fase = 0;
 
 }
 
-void atualiza_valores() {
-   unidade = unidade_atual;
-   dezena = dezena_atual;
-   centena = centena_atual;
-   milhar = milhar_atual;
+void chama() {
+   unidade = mostra_u;
+   dezena = mostra_d;
+   centena = mostra_c;
+   milhar = mostra_m;
 }
 
 void escolha_de_fase() {
@@ -367,53 +367,53 @@ void escolha_de_fase() {
       output_low(DD);
       output_low(DC);
       output_low(DU);
-      tempo_inicio = 3;
-      intervalo_incremento = intervalo_incremento * 2;
+      inicio = 3;
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 2;
       output_high(DU);
 
-      while (tempo_inicio > 0) {
-         unidade = tempo_inicio;
+      while (inicio > 0) {
+         unidade = inicio;
          dezena = 12;
          centena = 12; 
-         milhar = tempo_inicio;
+         milhar = inicio;
          atualiza_display();
          delay(30);
 
       }
-      intervalo_incremento = intervalo_incremento / 2;
+      V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO / 2;
    }
 }
 
-void mostrar_falha() {
+void falha() {
 
-   tempo_inicio = 7;
+   inicio = 7;
 
    unidade = 12;
-   if ((contador_fase % 10)) {
-      dezena = -(contador_fase % 10) + 10;
-      centena = -((contador_fase / 10) % 10) + 9;
+   if ((contador % 10)) {
+      dezena = -(contador % 10) + 10;
+      centena = -((contador / 10) % 10) + 9;
    } else {
       dezena = 0;
-      centena = -((contador_fase / 10) % 10) + 10;
+      centena = -((contador / 10) % 10) + 10;
    }
 
    milhar = 12;
 
-   while (tempo_inicio) {
+   while (inicio) {
       atualiza_display();
 
       delay(15);
    }
 }
 
-void mostrar_tela_inicial() {
+void tela_inicial() {
 
    if (contador_tela_inicial == 1 || contador_tela_inicial == 2) {
 
       output_low(DM);
       output_low(DU);
 
-      if (alternar_tela_inicial) {
+      if (vez_contador_tela_inicial) {
          output_low(DC);
          output_high(DD);
          if (!pasou_fase_3) {
@@ -422,7 +422,7 @@ void mostrar_tela_inicial() {
             output_d(listadisplay3[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 0;
+         vez_contador_tela_inicial = 0;
       } else {
          output_low(DD);
          output_high(DC);
@@ -433,14 +433,14 @@ void mostrar_tela_inicial() {
             output_d(listadisplay2[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 1;
+         vez_contador_tela_inicial = 1;
       }
 
    } else {
       output_low(DD);
       output_low(DC);
 
-      if (alternar_tela_inicial) {
+      if (vez_contador_tela_inicial) {
          output_low(DM);
          output_high(DU);
 
@@ -450,7 +450,7 @@ void mostrar_tela_inicial() {
             output_d(listadisplay4[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 0;
+         vez_contador_tela_inicial = 0;
       } else {
          output_low(DU);
          output_high(DM);
@@ -461,7 +461,7 @@ void mostrar_tela_inicial() {
             output_d(listadisplay1[contador_tela_inicial + 6]);
          }
 
-         alternar_tela_inicial = 1;
+         vez_contador_tela_inicial = 1;
       }
    }
    delay(35);
@@ -496,7 +496,7 @@ void delay(int8 n) {
    }
 }
 
-void verificar_botoes() {
+void verificabotao() {
    if (!input(S4) && !unidade_ativode) {
       unidade_ativo = 1;
       unidade_ativode = 1;
@@ -518,71 +518,71 @@ void verificar_botoes() {
    if (unidade_ativode) {
       unidade_ativodecont--;
       if (!unidade_ativodecont) {
-         unidade_ativodecont = V_CONTADOR_DECREMENTO;
+         unidade_ativodecont = contde;
          unidade_ativode = 0;
       }
    }
    if (dezena_ativode) {
       dezena_ativodecont--;
       if (!dezena_ativodecont) {
-         dezena_ativodecont = V_CONTADOR_DECREMENTO;
+         dezena_ativodecont = contde;
          dezena_ativode = 0;
       }
    }
    if (centena_ativode) {
       centena_ativodecont--;
       if (!centena_ativodecont) {
-         centena_ativodecont = V_CONTADOR_DECREMENTO;
+         centena_ativodecont = contde;
          centena_ativode = 0;
       }
    }
    if (milhar_ativode) {
       milhar_ativodecont--;
       if (!milhar_ativodecont) {
-         milhar_ativodecont = V_CONTADOR_DECREMENTO;
+         milhar_ativodecont = contde;
          milhar_ativode = 0;
       }
    }
 
 }
 
-void verificar_erro_nove() {
+void verificaerro9() {
    if ((unidade_ativo && unidade) || (dezena_ativo && dezena) || (centena_ativo && centena) || (milhar_ativo && milhar)) {
       fase = 0;
    }
 }
 
-void verificar_erro_zero() {
+void verificaerro0() {
    if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
       fase = 0;
    }
 
 }
 
-void testar_listas() {
-   atualizar_unidade();
-   atualizar_dezena();
-   atualizar_centena();
-   atualizar_milhar();
+void testalista() {
+   lista_u();
+   lista_d();
+   lista_c();
+   lista_m();
 
 }
 
-void atualizar_unidade() {
+void lista_u() {
 
    if (fase == 1)
-      unidade_atual = u1[contador_u] - decremento_u;
+      mostra_u = u1[contador_u] - decremento_u;
 
    if (fase == 2)
-      unidade_atual = u2[contador_u] - decremento_u;
+      mostra_u = u2[contador_u] - decremento_u;
 
    if (fase == 3)
-      unidade_atual = u3[contador_u] - decremento_u;
+      mostra_u = u3[contador_u] - decremento_u;
 
    if (fase == 4)
-      unidade_atual = u4[contador_u] - decremento_u;
+      mostra_u = u4[contador_u] - decremento_u;
 
-   if (unidade_atual <= 9) {
-      if (!unidade_atual) {
+   if (mostra_u <= 9) {
+      if (!mostra_u) {
          contador_u++;
          decremento_u = 0;
       } else {
@@ -593,22 +593,22 @@ void atualizar_unidade() {
    }
 
 }
-void atualizar_dezena() {
+void lista_d() {
 
    if (fase == 1)
-      dezena_atual = d1[contador_d] - decremento_d;
+      mostra_d = d1[contador_d] - decremento_d;
 
    if (fase == 2)
-      dezena_atual = d2[contador_d] - decremento_d;
+      mostra_d = d2[contador_d] - decremento_d;
 
    if (fase == 3)
-      dezena_atual = d3[contador_d] - decremento_d;
+      mostra_d = d3[contador_d] - decremento_d;
 
    if (fase == 4)
-      dezena_atual = d4[contador_d] - decremento_d;
+      mostra_d = d4[contador_d] - decremento_d;
 
-   if (dezena_atual <= 9) {
-      if (!dezena_atual) {
+   if (mostra_d <= 9) {
+      if (!mostra_d) {
          contador_d++;
          decremento_d = 0;
       } else {
@@ -619,22 +619,22 @@ void atualizar_dezena() {
    }
 
 }
-void atualizar_centena() {
+void lista_c() {
 
    if (fase == 1)
-      centena_atual = c1[contador_c] - decremento_c;
+      mostra_c = c1[contador_c] - decremento_c;
 
    if (fase == 2)
-      centena_atual = c2[contador_c] - decremento_c;
+      mostra_c = c2[contador_c] - decremento_c;
 
    if (fase == 3)
-      centena_atual = c3[contador_c] - decremento_c;
+      mostra_c = c3[contador_c] - decremento_c;
 
    if (fase == 4)
-      centena_atual = c4[contador_c] - decremento_c;
+      mostra_c = c4[contador_c] - decremento_c;
 
-   if (centena_atual <= 9) {
-      if (!centena_atual) {
+   if (mostra_c <= 9) {
+      if (!mostra_c) {
          contador_c++;
          decremento_c = 0;
       } else {
@@ -645,22 +645,22 @@ void atualizar_centena() {
    }
 
 }
-void atualizar_milhar() {
+void lista_m() {
 
    if (fase == 1)
-      milhar_atual = m1[contador_m] - decremento_m;
+      mostra_m = m1[contador_m] - decremento_m;
 
    if (fase == 2)
-      milhar_atual = m2[contador_m] - decremento_m;
+      mostra_m = m2[contador_m] - decremento_m;
 
    if (fase == 3)
-      milhar_atual = m3[contador_m] - decremento_m;
+      mostra_m = m3[contador_m] - decremento_m;
 
    if (fase == 4)
-      milhar_atual = m4[contador_m] - decremento_m;
+      mostra_m = m4[contador_m] - decremento_m;
 
-   if (milhar_atual <= 9) {
-      if (!milhar_atual) {
+   if (mostra_m <= 9) {
+      if (!mostra_m) {
          contador_m++;
          decremento_m = 0;
       } else {

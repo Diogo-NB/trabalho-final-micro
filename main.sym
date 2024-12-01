@@ -14,14 +14,14 @@
 024     @INTERRUPT_AREA
 025     @INTERRUPT_AREA
 026     @INTERRUPT_AREA
-027-028 V_INTERVALO_INCREMENTO
-029-02A contador
+027-028 intervalo_incremento
+029-02A contador_fase
 02B     unidade
 02C     dezena
 02D     centena
 02E     milhar
 02F     fase
-030     inicio
+030     tempo_inicio
 031-032 velocidade
 033.0   unidade_ativo
 033.1   dezena_ativo
@@ -32,17 +32,17 @@
 033.6   centena_ativode
 033.7   milhar_ativode
 034.0   comeca
-034.1   para_1
-034.2   para_2
-034.3   para_3
-034.4   vez_contador_tela_inicial
+034.1   pausa_fase_1
+034.2   pausa_fase_2
+034.3   pausa_fase_3
+034.4   alternar_tela_inicial
 034.5   pasou_fase_1
 034.6   pasou_fase_2
 034.7   pasou_fase_3
-035     mostra_u
-036     mostra_d
-037     mostra_c
-038     mostra_m
+035     unidade_atual
+036     dezena_atual
+037     centena_atual
+038     milhar_atual
 039     contador_u
 03A     contador_d
 03B     contador_c
@@ -65,13 +65,13 @@
 04E     delay.n
 04E     MAIN.@SCRATCH1
 04E     fase3.@SCRATCH1
-04E     falha.@SCRATCH1
-04E     tela_inicial.@SCRATCH1
+04E     mostrar_falha.@SCRATCH1
+04E     mostrar_tela_inicial.@SCRATCH1
 04E     atualiza_display.@SCRATCH1
 04F     delay.i
 04F     MAIN.@SCRATCH2
 04F     fase3.@SCRATCH2
-04F     falha.@SCRATCH2
+04F     mostrar_falha.@SCRATCH2
 050     MAIN.@SCRATCH3
 051     MAIN.@SCRATCH4
 052-053 @DIV1616.P1
@@ -89,10 +89,10 @@
 059     @MULFF.@SCRATCH4
 05A     @MULFF.@SCRATCH5
 05B     TIMER0_isr.@SCRATCH1
-05B     lista_u.@SCRATCH1
-05B     lista_d.@SCRATCH1
-05B     lista_c.@SCRATCH1
-05B     lista_m.@SCRATCH1
+05B     atualizar_unidade.@SCRATCH1
+05B     atualizar_dezena.@SCRATCH1
+05B     atualizar_centena.@SCRATCH1
+05B     atualizar_milhar.@SCRATCH1
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -211,27 +211,27 @@ ROM Allocation:
 0002BA  display_numbers.call
 0002BE  display_numbers.data
 0002CB  TIMER0_isr
-0002F5  verificaerro9
-000309  verificaerro0
-000325  lista_u
-000325  testalista
-000358  lista_d
-00038B  lista_c
-0003BE  lista_m
+0002F5  verificar_erro_nove
+000309  verificar_erro_zero
+000325  atualizar_unidade
+000325  testar_listas
+000358  atualizar_dezena
+00038B  atualizar_centena
+0003BE  atualizar_milhar
 0003F5  @MUL88
 00041A  @DIV1616
 00043F  delay
-000447  tela_inicial
+000447  mostrar_tela_inicial
 0004DF  @MUL1616
 0004F6  atualiza_display
 000543  escolha_de_fase
-000590  chama
-000599  verificabotao
+000590  atualiza_valores
+000599  verificar_botoes
 0005F6  @ITOF
 000613  @MULFF
 000688  @SFTOI
 0006A7  fase1
-00070F  falha
+00070F  mostrar_falha
 00077D  fase4
 000800  fase2
 0008EC  fase3
@@ -243,11 +243,11 @@ Project Directory:
     C:\projects\trabalho_final_microcontroladores\
 
 Project Files:
-    main.c                                                  [01-dez-24 10:10  CRC=A62B3954]
+    main.c                                                  [01-dez-24 10:37  CRC=D9698E73]
     main.h                                                  [24-nov-24 21:33  CRC=47E4B9EC]
     ..\..\Program Files (x86)\PICC\Devices\16F877A.h        [15-jan-18 15:53  CRC=63418C39]
 
-Source signature=B4930BB2
+Source signature=E7D160D1
 Program memory checksum=0000
 Program memory CRC=0000
 Hex file CRC=E0D2

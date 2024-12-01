@@ -62,7 +62,7 @@ int16 contador_ms = 0;
 void verificar_erro_zero();
 void verificar_erro_nove();
 
-void mostrar_tela_inicial();
+void tela_inicial();
 
 void escolha_de_fase();
 
@@ -78,9 +78,9 @@ void verificar_botoes();
 void atualiza_display();
 
 void atualizar_unidade();
-void atualizar_dezena();
-void atualizar_centena();
-void atualizar_milhar();
+void lista_d();
+void lista_c();
+void lista_m();
 void testar_listas();
 
 void atualiza_valores();
@@ -144,7 +144,7 @@ void main() {
 
       if (!fase) {
          intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
-         mostrar_tela_inicial();
+         tela_inicial();
          intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
          escolha_de_fase();
 
@@ -406,7 +406,7 @@ void mostrar_falha() {
    }
 }
 
-void mostrar_tela_inicial() {
+void tela_inicial() {
 
    if (contador_tela_inicial == 1 || contador_tela_inicial == 2) {
 
@@ -561,9 +561,9 @@ void verificar_erro_zero() {
 
 void testar_listas() {
    atualizar_unidade();
-   atualizar_dezena();
-   atualizar_centena();
-   atualizar_milhar();
+   lista_d();
+   lista_c();
+   lista_m();
 
 }
 
@@ -593,7 +593,7 @@ void atualizar_unidade() {
    }
 
 }
-void atualizar_dezena() {
+void lista_d() {
 
    if (fase == 1)
       dezena_atual = d1[contador_d] - decremento_d;
@@ -619,7 +619,7 @@ void atualizar_dezena() {
    }
 
 }
-void atualizar_centena() {
+void lista_c() {
 
    if (fase == 1)
       centena_atual = c1[contador_c] - decremento_c;
@@ -645,7 +645,7 @@ void atualizar_centena() {
    }
 
 }
-void atualizar_milhar() {
+void lista_m() {
 
    if (fase == 1)
       milhar_atual = m1[contador_m] - decremento_m;

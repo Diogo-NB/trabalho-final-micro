@@ -59,10 +59,10 @@ int1 pasou_fase_4 = 0;
 
 int16 contador_ms = 0;
 
-void verificar_erro_zero();
-void verificar_erro_nove();
+void verificaerro0();
+void verificaerro9();
 
-void mostrar_tela_inicial();
+void tela_inicial();
 
 void escolha_de_fase();
 
@@ -74,14 +74,14 @@ void fase2();
 void mostrar_falha();
 
 void delay(int8 n);
-void verificar_botoes();
+void verificabotao();
 void atualiza_display();
 
-void atualizar_unidade();
-void atualizar_dezena();
-void atualizar_centena();
-void atualizar_milhar();
-void testar_listas();
+void lista_u();
+void lista_d();
+void lista_c();
+void lista_m();
+void testalista();
 
 void atualiza_valores();
 
@@ -112,8 +112,8 @@ void TIMER0_isr(void) {
 
       if (fase && comeca) {
          contador_fase++;
-         verificar_erro_nove();
-         verificar_erro_zero();
+         verificaerro9();
+         verificaerro0();
          unidade_ativo = 0;
          dezena_ativo = 0;
          centena_ativo = 0;
@@ -123,7 +123,7 @@ void TIMER0_isr(void) {
       if (contador_tela_inicial > 5) { // Se o contador_fase atingir 0, reseta para 9999
          contador_tela_inicial = 0;
       }
-      testar_listas();
+      testalista();
 
    }
 }
@@ -144,7 +144,7 @@ void main() {
 
       if (!fase) {
          intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
-         mostrar_tela_inicial();
+         tela_inicial();
          intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
          escolha_de_fase();
 
@@ -249,7 +249,7 @@ void fase1() {
    atualiza_valores();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if (contador_fase == 50 && !pausa_fase_1) {
       intervalo_incremento = intervalo_incremento * 0.85;
@@ -270,7 +270,7 @@ void fase2() {
    atualiza_valores();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if (contador_fase == 12 && !pausa_fase_1) {
       intervalo_incremento = intervalo_incremento * 0.90;
@@ -308,7 +308,7 @@ void fase3() {
 
    atualiza_valores();
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if ((contador_fase + 1) % 3 == 0 && !pausa_fase_1 && contador_fase < 30) {
       intervalo_incremento = intervalo_incremento * 0.94;
@@ -331,7 +331,7 @@ void fase4() {
    atualiza_valores();
 
    atualiza_display();
-   verificar_botoes();
+   verificabotao();
 
    if (contador_fase == finalfase + 5)
       fase = 0;
@@ -406,7 +406,7 @@ void mostrar_falha() {
    }
 }
 
-void mostrar_tela_inicial() {
+void tela_inicial() {
 
    if (contador_tela_inicial == 1 || contador_tela_inicial == 2) {
 
@@ -496,7 +496,7 @@ void delay(int8 n) {
    }
 }
 
-void verificar_botoes() {
+void verificabotao() {
    if (!input(S4) && !unidade_ativode) {
       unidade_ativo = 1;
       unidade_ativode = 1;
@@ -546,28 +546,28 @@ void verificar_botoes() {
 
 }
 
-void verificar_erro_nove() {
+void verificaerro9() {
    if ((unidade_ativo && unidade) || (dezena_ativo && dezena) || (centena_ativo && centena) || (milhar_ativo && milhar)) {
       fase = 0;
    }
 }
 
-void verificar_erro_zero() {
+void verificaerro0() {
    if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) {
       fase = 0;
    }
 
 }
 
-void testar_listas() {
-   atualizar_unidade();
-   atualizar_dezena();
-   atualizar_centena();
-   atualizar_milhar();
+void testalista() {
+   lista_u();
+   lista_d();
+   lista_c();
+   lista_m();
 
 }
 
-void atualizar_unidade() {
+void lista_u() {
 
    if (fase == 1)
       unidade_atual = u1[contador_u] - decremento_u;
@@ -593,7 +593,7 @@ void atualizar_unidade() {
    }
 
 }
-void atualizar_dezena() {
+void lista_d() {
 
    if (fase == 1)
       dezena_atual = d1[contador_d] - decremento_d;
@@ -619,7 +619,7 @@ void atualizar_dezena() {
    }
 
 }
-void atualizar_centena() {
+void lista_c() {
 
    if (fase == 1)
       centena_atual = c1[contador_c] - decremento_c;
@@ -645,7 +645,7 @@ void atualizar_centena() {
    }
 
 }
-void atualizar_milhar() {
+void lista_m() {
 
    if (fase == 1)
       milhar_atual = m1[contador_m] - decremento_m;

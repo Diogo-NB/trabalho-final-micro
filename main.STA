@@ -13,11 +13,11 @@ Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  675   428 100  main.c
+  674   428 100  main.c
    26     0   0  main.h
   684     0   0  ..\..\Program Files (x86)\PICC\Devices\16F877A.h
 ----- -----
- 1385   428 Total
+ 1384   428 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -54,33 +54,33 @@ Page ROM  %  RAM    Vol Diff  Functions:
 1    236   9    0    768  4.7  fase2
 1    140   5    2    466  5.5  fase3
 0     14   1    0     90  2.8  fase4
-0      9   0    0     67  1.8  chama
+0      9   0    0     67  1.8  atualiza_valores
 0     77   3    0    679  4.8  escolha_de_fase
-0    110   4    2    396  5.1  falha
-0    152   6    1   1141  5.4  tela_inicial
+0    110   4    2    396  5.1  mostrar_falha
+0    152   6    1   1141  5.4  mostrar_tela_inicial
 0     77   3    1    459  2.8  atualiza_display
 0      8   0    2     82  3.1  delay
-0     93   3    0    931  3.9  verificabotao
- Inline         0    119  2.9  verificaerro9
- Inline         0    156  3.3  verificaerro0
- Inline         0     42  1.2  testalista
- Inline         1    453  5.6  lista_u
- Inline         1    453  5.6  lista_d
- Inline         1    453  5.6  lista_c
- Inline         1    453  5.6  lista_m
+0     93   3    0    931  3.9  verificar_botoes
+ Inline         0    119  2.9  verificar_erro_nove
+ Inline         0    156  3.3  verificar_erro_zero
+ Inline         0     42  1.2  testar_listas
+ Inline         1    453  5.6  atualizar_unidade
+ Inline         1    453  5.6  atualizar_dezena
+ Inline         1    453  5.6  atualizar_centena
+ Inline         1    453  5.6  atualizar_milhar
  Inline         0             @cinit1
 
 Program metrics:
     Functions               42
     Statements              428
-    Comments                136
+    Comments                126
     Volume (V)              44074
     Difficulty (D)          213.1
     Effort to implement (E) 9392316
     Time to implement (T)   144 hours, 57 minutes
     Est Delivered Bugs (B)  15
     Cyclomatic Complexity   224
-    Maintainability (MI)    113
+    Maintainability (MI)    118
 
  Segment     Used  Free
 -----------  ----  ----

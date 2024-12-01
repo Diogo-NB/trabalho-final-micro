@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
+CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 
                Filename:   C:\projects\trabalho_final_microcontroladores\main.lst
 
@@ -1044,30 +1044,30 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 .................... #define BUZZER   PIN_A5 
 ....................  
 ....................  
-.................... #define contde 200 
+.................... #define V_CONTADOR_DECREMENTO 200 
 ....................  
-.................... int16 V_INTERVALO_INCREMENTO = 1000; 
-.................... int16 contador = 0; 
+.................... int16 intervalo_incremento = 1000; 
+.................... int16 contador_fase = 0; 
 .................... int8 unidade, dezena, centena, milhar; 
 ....................  
 .................... int8 fase = 0; 
-.................... int8 inicio; 
+.................... int8 tempo_inicio; 
 .................... int16 velocidade; 
 .................... int1 unidade_ativo = 0, dezena_ativo = 0, centena_ativo = 0, milhar_ativo = 0; 
 .................... int1 unidade_ativode = 0, dezena_ativode = 0, centena_ativode = 0, milhar_ativode = 0; 
 .................... int1 comeca = 0; 
 ....................  
-.................... int8 mostra_u, mostra_d, mostra_c, mostra_m; 
+.................... int8 unidade_atual, dezena_atual, centena_atual, milhar_atual; 
 .................... int8 contador_u = 0, contador_d = 0, contador_c = 0, contador_m = 0; 
 .................... int8 decremento_u = 0, decremento_d = 0, decremento_c = 0, decremento_m = 0; 
 ....................  
-.................... int1 para_1 = 0, para_2 = 0, para_3 = 0; 
+.................... int1 pausa_fase_1 = 0, pausa_fase_2 = 0, pausa_fase_3 = 0; 
 ....................  
 .................... int16 unidade_ativodecont, dezena_ativodecont, centena_ativodecont, milhar_ativodecont; 
 ....................  
 .................... int8 contador_tela_inicial = 0; 
 .................... int8 finalfase = 100; 
-.................... int1 vez_contador_tela_inicial = 0; 
+.................... int1 alternar_tela_inicial = 0; 
 ....................  
 .................... const int8 listadisplay4[] = {0x08,0x00,0x00,0x01,0x02,0x04,0b01001000,0b01000000,0b01000000,0b01000001,0b01000010,0b01000100}; 
 .................... const int8 listadisplay3[] = {0x00,0x08,0x01,0x00,0x00,0x00,0x00,0b01001000,0b01000001,0x00,0x00,0x00}; 
@@ -1103,10 +1103,10 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 .................... int16 contador_ms = 0; 
 ....................  
-.................... void verificaerro0(); 
-.................... void verificaerro9(); 
+.................... void verificar_erro_zero(); 
+.................... void verificar_erro_nove(); 
 ....................  
-.................... void tela_inicial(); 
+.................... void mostrar_tela_inicial(); 
 ....................  
 .................... void escolha_de_fase(); 
 ....................  
@@ -1115,23 +1115,23 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 .................... void fase3(); 
 .................... void fase2(); 
 ....................  
-.................... void falha(); 
+.................... void mostrar_falha(); 
 ....................  
 .................... void delay(int8 n); 
-.................... void verificabotao(); 
+.................... void verificar_botoes(); 
 .................... void atualiza_display(); 
 ....................  
-.................... void lista_u(); 
-.................... void lista_d(); 
-.................... void lista_c(); 
-.................... void lista_m(); 
-.................... void testalista(); 
+.................... void atualizar_unidade(); 
+.................... void atualizar_dezena(); 
+.................... void atualizar_centena(); 
+.................... void atualizar_milhar(); 
+.................... void testar_listas(); 
 ....................  
-.................... void chama(); 
+.................... void atualiza_valores(); 
 ....................  
 .................... #INT_TIMER0 
 .................... void TIMER0_isr(void) { 
-....................    set_timer0(get_timer0() + 131); // Ajuste do temporizador para 1ms 
+....................    set_timer0(get_timer0() + 131); 
 *
 02CB:  MOVF   01,W
 02CC:  ADDLW  83
@@ -1139,12 +1139,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 02CE:  MOVF   5B,W
 02CF:  MOVWF  01
 ....................  
-....................    contador_ms++; // Incrementa o contador de milissegundos 
+....................    contador_ms++; 
 02D0:  INCF   4C,F
 02D1:  BTFSC  03.2
 02D2:  INCF   4D,F
 ....................  
-....................    if (contador_ms >= V_INTERVALO_INCREMENTO) { // Se atingir o intervalo de 1 segundo 
+....................    if (contador_ms >= intervalo_incremento) { // Se atingir o intervalo de 1 segundo 
 02D3:  MOVF   28,W
 02D4:  SUBWF  4D,W
 02D5:  BTFSS  03.0
@@ -1155,21 +1155,21 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 02DA:  SUBWF  4C,W
 02DB:  BTFSS  03.0
 02DC:  GOTO   3F1
-....................       contador_ms = 0; // Reseta o contador de milissegundos 
+....................       contador_ms = 0; 
 02DD:  CLRF   4D
 02DE:  CLRF   4C
 ....................  
-....................       para_3 = 0; 
+....................       pausa_fase_3 = 0; 
 02DF:  BCF    34.3
 ....................  
 ....................       contador_tela_inicial++; 
 02E0:  INCF   49,F
 ....................  
-....................       if (inicio) { 
+....................       if (tempo_inicio) { 
 02E1:  MOVF   30,F
 02E2:  BTFSC  03.2
 02E3:  GOTO   2ED
-....................          inicio--; 
+....................          tempo_inicio--; 
 02E4:  DECF   30,F
 ....................          decremento_u = 0; 
 02E5:  CLRF   3D
@@ -1195,12 +1195,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 02EF:  GOTO   321
 02F0:  BTFSS  34.0
 02F1:  GOTO   321
-....................          contador++; 
+....................          contador_fase++; 
 02F2:  INCF   29,F
 02F3:  BTFSC  03.2
 02F4:  INCF   2A,F
-....................          verificaerro9(); 
-....................          verificaerro0(); 
+....................          verificar_erro_nove(); 
+....................          verificar_erro_zero(); 
 ....................          unidade_ativo = 0; 
 *
 031D:  BCF    33.0
@@ -1212,14 +1212,14 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0320:  BCF    33.3
 ....................       } 
 ....................  
-....................       if (contador_tela_inicial > 5) { // Se o contador atingir 0, reseta para 9999 
+....................       if (contador_tela_inicial > 5) { // Se o contador_fase atingir 0, reseta para 9999 
 0321:  MOVF   49,W
 0322:  SUBLW  05
 0323:  BTFSS  03.0
 ....................          contador_tela_inicial = 0; 
 0324:  CLRF   49
 ....................       } 
-....................       testalista(); 
+....................       testar_listas(); 
 ....................  
 ....................    } 
 *
@@ -1286,7 +1286,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................    enable_interrupts(INT_TIMER0); 
 09AC:  BCF    03.5
 09AD:  BSF    0B.5
-....................    enable_interrupts(GLOBAL); // Habilita interrupções globais 
+....................    enable_interrupts(GLOBAL); 
 09AE:  MOVLW  C0
 09AF:  IORWF  0B,F
 ....................  
@@ -1298,17 +1298,17 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 ....................    fase = 0; 
 09B4:  CLRF   2F
-....................    unidade_ativodecont = contde; 
+....................    unidade_ativodecont = V_CONTADOR_DECREMENTO; 
 09B5:  CLRF   42
 09B6:  MOVLW  C8
 09B7:  MOVWF  41
-....................    dezena_ativodecont = contde; 
+....................    dezena_ativodecont = V_CONTADOR_DECREMENTO; 
 09B8:  CLRF   44
 09B9:  MOVWF  43
-....................    centena_ativodecont = contde; 
+....................    centena_ativodecont = V_CONTADOR_DECREMENTO; 
 09BA:  CLRF   46
 09BB:  MOVWF  45
-....................    milhar_ativodecont = contde; 
+....................    milhar_ativodecont = V_CONTADOR_DECREMENTO; 
 09BC:  CLRF   48
 09BD:  MOVWF  47
 ....................  
@@ -1318,7 +1318,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 09BE:  MOVF   2F,F
 09BF:  BTFSS  03.2
 09C0:  GOTO   2F8
-....................          V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5); 
+....................          intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5); 
 09C1:  MOVLW  00
 09C2:  BTFSC  34.5
 09C3:  MOVLW  01
@@ -1362,11 +1362,11 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 09E9:  MOVWF  28
 09EA:  MOVF   78,W
 09EB:  MOVWF  27
-....................          tela_inicial(); 
+....................          mostrar_tela_inicial(); 
 09EC:  BCF    0A.3
 09ED:  GOTO   447
 09EE:  BSF    0A.3
-....................          V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5); 
+....................          intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5); 
 09EF:  MOVLW  00
 09F0:  BTFSC  34.5
 09F1:  MOVLW  01
@@ -1418,19 +1418,19 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................          if (fase == 1) { 
 0A1D:  DECFSZ 2F,W
 0A1E:  GOTO   249
-....................             contador = 0; 
+....................             contador_fase = 0; 
 0A1F:  CLRF   2A
 0A20:  CLRF   29
 ....................             comeca = 1; 
 0A21:  BSF    34.0
-....................             velocidade = V_INTERVALO_INCREMENTO; 
+....................             velocidade = intervalo_incremento; 
 0A22:  MOVF   28,W
 0A23:  MOVWF  32
 0A24:  MOVF   27,W
 0A25:  MOVWF  31
-....................             para_1 = 0; 
+....................             pausa_fase_1 = 0; 
 0A26:  BCF    34.1
-....................             para_2 = 0; 
+....................             pausa_fase_2 = 0; 
 0A27:  BCF    34.2
 ....................             while (fase) { 
 0A28:  MOVF   2F,F
@@ -1445,7 +1445,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................             comeca = 0; 
 0A2F:  BCF    34.0
 ....................  
-....................             if (contador < finalfase) { 
+....................             if (contador_fase < finalfase) { 
 0A30:  MOVF   2A,F
 0A31:  BTFSS  03.2
 0A32:  GOTO   23C
@@ -1453,16 +1453,16 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0A34:  SUBWF  29,W
 0A35:  BTFSC  03.0
 0A36:  GOTO   23C
-....................                falha(); 
+....................                mostrar_falha(); 
 0A37:  BCF    0A.3
 0A38:  CALL   70F
 0A39:  BSF    0A.3
-....................                contador = 0; 
+....................                contador_fase = 0; 
 0A3A:  CLRF   2A
 0A3B:  CLRF   29
 ....................             } 
 ....................  
-....................             if (contador >= finalfase + 4) 
+....................             if (contador_fase >= finalfase + 4) 
 0A3C:  MOVLW  04
 0A3D:  ADDWF  4A,W
 0A3E:  MOVF   2A,F
@@ -1473,7 +1473,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................                pasou_fase_1 = 1; 
 0A43:  BSF    34.5
 ....................  
-....................             V_INTERVALO_INCREMENTO = velocidade; 
+....................             intervalo_incremento = velocidade; 
 0A44:  MOVF   32,W
 0A45:  MOVWF  28
 0A46:  MOVF   31,W
@@ -1488,19 +1488,19 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0A4A:  SUBLW  02
 0A4B:  BTFSS  03.2
 0A4C:  GOTO   275
-....................             contador = 0; 
+....................             contador_fase = 0; 
 0A4D:  CLRF   2A
 0A4E:  CLRF   29
 ....................             comeca = 1; 
 0A4F:  BSF    34.0
-....................             velocidade = V_INTERVALO_INCREMENTO; 
+....................             velocidade = intervalo_incremento; 
 0A50:  MOVF   28,W
 0A51:  MOVWF  32
 0A52:  MOVF   27,W
 0A53:  MOVWF  31
-....................             para_1 = 0; 
+....................             pausa_fase_1 = 0; 
 0A54:  BCF    34.1
-....................             para_2 = 0; 
+....................             pausa_fase_2 = 0; 
 0A55:  BCF    34.2
 ....................             while (fase) { 
 0A56:  MOVF   2F,F
@@ -1513,7 +1513,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................             comeca = 0; 
 0A5B:  BCF    34.0
 ....................  
-....................             if (contador < finalfase) { 
+....................             if (contador_fase < finalfase) { 
 0A5C:  MOVF   2A,F
 0A5D:  BTFSS  03.2
 0A5E:  GOTO   268
@@ -1521,15 +1521,15 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0A60:  SUBWF  29,W
 0A61:  BTFSC  03.0
 0A62:  GOTO   268
-....................                falha(); 
+....................                mostrar_falha(); 
 0A63:  BCF    0A.3
 0A64:  CALL   70F
 0A65:  BSF    0A.3
-....................                contador = 0; 
+....................                contador_fase = 0; 
 0A66:  CLRF   2A
 0A67:  CLRF   29
 ....................             } 
-....................             if (contador >= finalfase + 4) 
+....................             if (contador_fase >= finalfase + 4) 
 0A68:  MOVLW  04
 0A69:  ADDWF  4A,W
 0A6A:  MOVF   2A,F
@@ -1540,7 +1540,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................                pasou_fase_2 = 1; 
 0A6F:  BSF    34.6
 ....................  
-....................             V_INTERVALO_INCREMENTO = velocidade; 
+....................             intervalo_incremento = velocidade; 
 0A70:  MOVF   32,W
 0A71:  MOVWF  28
 0A72:  MOVF   31,W
@@ -1554,19 +1554,19 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0A76:  SUBLW  03
 0A77:  BTFSS  03.2
 0A78:  GOTO   2A1
-....................             contador = 0; 
+....................             contador_fase = 0; 
 0A79:  CLRF   2A
 0A7A:  CLRF   29
 ....................             comeca = 1; 
 0A7B:  BSF    34.0
-....................             velocidade = V_INTERVALO_INCREMENTO; 
+....................             velocidade = intervalo_incremento; 
 0A7C:  MOVF   28,W
 0A7D:  MOVWF  32
 0A7E:  MOVF   27,W
 0A7F:  MOVWF  31
-....................             para_1 = 0; 
+....................             pausa_fase_1 = 0; 
 0A80:  BCF    34.1
-....................             para_2 = 0; 
+....................             pausa_fase_2 = 0; 
 0A81:  BCF    34.2
 ....................             while (fase) { 
 0A82:  MOVF   2F,F
@@ -1579,7 +1579,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................             comeca = 0; 
 0A87:  BCF    34.0
 ....................  
-....................             if (contador < finalfase) { 
+....................             if (contador_fase < finalfase) { 
 0A88:  MOVF   2A,F
 0A89:  BTFSS  03.2
 0A8A:  GOTO   294
@@ -1587,15 +1587,15 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0A8C:  SUBWF  29,W
 0A8D:  BTFSC  03.0
 0A8E:  GOTO   294
-....................                falha(); 
+....................                mostrar_falha(); 
 0A8F:  BCF    0A.3
 0A90:  CALL   70F
 0A91:  BSF    0A.3
-....................                contador = 0; 
+....................                contador_fase = 0; 
 0A92:  CLRF   2A
 0A93:  CLRF   29
 ....................             } 
-....................             if (contador >= finalfase + 4) 
+....................             if (contador_fase >= finalfase + 4) 
 0A94:  MOVLW  04
 0A95:  ADDWF  4A,W
 0A96:  MOVF   2A,F
@@ -1606,7 +1606,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................                pasou_fase_3 = 1; 
 0A9B:  BSF    34.7
 ....................  
-....................             V_INTERVALO_INCREMENTO = velocidade; 
+....................             intervalo_incremento = velocidade; 
 0A9C:  MOVF   32,W
 0A9D:  MOVWF  28
 0A9E:  MOVF   31,W
@@ -1621,21 +1621,21 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0AA2:  SUBLW  04
 0AA3:  BTFSS  03.2
 0AA4:  GOTO   2F8
-....................             contador = 0; 
+....................             contador_fase = 0; 
 0AA5:  CLRF   2A
 0AA6:  CLRF   29
 ....................             comeca = 1; 
 0AA7:  BSF    34.0
-....................             velocidade = V_INTERVALO_INCREMENTO; 
+....................             velocidade = intervalo_incremento; 
 0AA8:  MOVF   28,W
 0AA9:  MOVWF  32
 0AAA:  MOVF   27,W
 0AAB:  MOVWF  31
-....................             para_1 = 0; 
+....................             pausa_fase_1 = 0; 
 0AAC:  BCF    34.1
-....................             para_2 = 0; 
+....................             pausa_fase_2 = 0; 
 0AAD:  BCF    34.2
-....................             V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.60; 
+....................             intervalo_incremento = intervalo_incremento * 0.60; 
 0AAE:  MOVF   28,W
 0AAF:  MOVWF  4F
 0AB0:  MOVF   27,W
@@ -1690,7 +1690,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................             comeca = 0; 
 0ADE:  BCF    34.0
 ....................  
-....................             if (contador < finalfase) { 
+....................             if (contador_fase < finalfase) { 
 0ADF:  MOVF   2A,F
 0AE0:  BTFSS  03.2
 0AE1:  GOTO   2EB
@@ -1698,15 +1698,15 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0AE3:  SUBWF  29,W
 0AE4:  BTFSC  03.0
 0AE5:  GOTO   2EB
-....................                falha(); 
+....................                mostrar_falha(); 
 0AE6:  BCF    0A.3
 0AE7:  CALL   70F
 0AE8:  BSF    0A.3
-....................                contador = 0; 
+....................                contador_fase = 0; 
 0AE9:  CLRF   2A
 0AEA:  CLRF   29
 ....................             } 
-....................             if (contador >= finalfase + 4) 
+....................             if (contador_fase >= finalfase + 4) 
 0AEB:  MOVLW  04
 0AEC:  ADDWF  4A,W
 0AED:  MOVF   2A,F
@@ -1717,7 +1717,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................                pasou_fase_4 = 1; 
 0AF2:  BSF    4B.0
 ....................  
-....................             V_INTERVALO_INCREMENTO = velocidade; 
+....................             intervalo_incremento = velocidade; 
 0AF3:  MOVF   32,W
 0AF4:  MOVWF  28
 0AF5:  MOVF   31,W
@@ -1727,7 +1727,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................          } 
 ....................  
 ....................       } 
-....................       contador = 0; 
+....................       contador_fase = 0; 
 0AF8:  CLRF   2A
 0AF9:  CLRF   29
 0AFA:  GOTO   1BE
@@ -1736,16 +1736,16 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 0AFB:  SLEEP
 .................... void fase1() { 
-....................    chama(); 
+....................    atualiza_valores(); 
 *
 06A7:  CALL   590
 ....................  
-....................    atualiza_display(); // Atualiza o display 
+....................    atualiza_display(); 
 06A8:  CALL   4F6
-....................    verificabotao(); 
+....................    verificar_botoes(); 
 06A9:  CALL   599
 ....................  
-....................    if (contador == 50 && !para_1) { 
+....................    if (contador_fase == 50 && !pausa_fase_1) { 
 06AA:  MOVF   29,W
 06AB:  SUBLW  32
 06AC:  BTFSS  03.2
@@ -1755,7 +1755,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 06B0:  GOTO   6D7
 06B1:  BTFSC  34.1
 06B2:  GOTO   6D7
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.85; 
+....................       intervalo_incremento = intervalo_incremento * 0.85; 
 06B3:  MOVF   28,W
 06B4:  MOVWF  4F
 06B5:  MOVF   27,W
@@ -1791,11 +1791,11 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 06D3:  MOVWF  28
 06D4:  MOVF   78,W
 06D5:  MOVWF  27
-....................       para_1 = 1; 
+....................       pausa_fase_1 = 1; 
 06D6:  BSF    34.1
 ....................    } 
 ....................  
-....................    if (contador == 75 && !para_2) { 
+....................    if (contador_fase == 75 && !pausa_fase_2) { 
 06D7:  MOVF   29,W
 06D8:  SUBLW  4B
 06D9:  BTFSS  03.2
@@ -1805,7 +1805,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 06DD:  GOTO   704
 06DE:  BTFSC  34.2
 06DF:  GOTO   704
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.85; 
+....................       intervalo_incremento = intervalo_incremento * 0.85; 
 06E0:  MOVF   28,W
 06E1:  MOVWF  4F
 06E2:  MOVF   27,W
@@ -1841,11 +1841,11 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0700:  MOVWF  28
 0701:  MOVF   78,W
 0702:  MOVWF  27
-....................       para_2 = 1; 
+....................       pausa_fase_2 = 1; 
 0703:  BSF    34.2
 ....................    } 
 ....................  
-....................    if (contador == finalfase + 5) 
+....................    if (contador_fase == finalfase + 5) 
 0704:  MOVLW  05
 0705:  ADDWF  4A,W
 0706:  SUBWF  29,W
@@ -1862,22 +1862,22 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 .................... } 
 ....................  
 .................... void fase2() { 
-....................    chama(); 
+....................    atualiza_valores(); 
 *
 0800:  BCF    0A.3
 0801:  CALL   590
 0802:  BSF    0A.3
 ....................  
-....................    atualiza_display(); // Atualiza o display 
+....................    atualiza_display(); 
 0803:  BCF    0A.3
 0804:  CALL   4F6
 0805:  BSF    0A.3
-....................    verificabotao(); 
+....................    verificar_botoes(); 
 0806:  BCF    0A.3
 0807:  CALL   599
 0808:  BSF    0A.3
 ....................  
-....................    if (contador == 12 && !para_1) { 
+....................    if (contador_fase == 12 && !pausa_fase_1) { 
 0809:  MOVF   29,W
 080A:  SUBLW  0C
 080B:  BTFSS  03.2
@@ -1887,7 +1887,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 080F:  GOTO   03A
 0810:  BTFSC  34.1
 0811:  GOTO   03A
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.90; 
+....................       intervalo_incremento = intervalo_incremento * 0.90; 
 0812:  MOVF   28,W
 0813:  MOVWF  4F
 0814:  MOVF   27,W
@@ -1927,11 +1927,11 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0836:  MOVWF  28
 0837:  MOVF   78,W
 0838:  MOVWF  27
-....................       para_1 = 1; 
+....................       pausa_fase_1 = 1; 
 0839:  BSF    34.1
 ....................    } 
 ....................  
-....................    if (contador == 24 && !para_2) { 
+....................    if (contador_fase == 24 && !pausa_fase_2) { 
 083A:  MOVF   29,W
 083B:  SUBLW  18
 083C:  BTFSS  03.2
@@ -1941,18 +1941,18 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0840:  GOTO   049
 0841:  BTFSC  34.2
 0842:  GOTO   049
-....................       V_INTERVALO_INCREMENTO = velocidade; 
+....................       intervalo_incremento = velocidade; 
 0843:  MOVF   32,W
 0844:  MOVWF  28
 0845:  MOVF   31,W
 0846:  MOVWF  27
-....................       para_2 = 1; 
+....................       pausa_fase_2 = 1; 
 0847:  BSF    34.2
-....................       para_1 = 0; 
+....................       pausa_fase_1 = 0; 
 0848:  BCF    34.1
 ....................    } 
 ....................  
-....................    if (contador == 48 && !para_1) { 
+....................    if (contador_fase == 48 && !pausa_fase_1) { 
 0849:  MOVF   29,W
 084A:  SUBLW  30
 084B:  BTFSS  03.2
@@ -1962,7 +1962,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 084F:  GOTO   07D
 0850:  BTFSC  34.1
 0851:  GOTO   07D
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.80; 
+....................       intervalo_incremento = intervalo_incremento * 0.80; 
 0852:  MOVF   28,W
 0853:  MOVWF  4F
 0854:  MOVF   27,W
@@ -2004,13 +2004,13 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0878:  MOVWF  28
 0879:  MOVF   78,W
 087A:  MOVWF  27
-....................       para_2 = 0; 
+....................       pausa_fase_2 = 0; 
 087B:  BCF    34.2
-....................       para_1 = 1; 
+....................       pausa_fase_1 = 1; 
 087C:  BSF    34.1
 ....................    } 
 ....................  
-....................    if (contador == 72 && !para_2) { 
+....................    if (contador_fase == 72 && !pausa_fase_2) { 
 087D:  MOVF   29,W
 087E:  SUBLW  48
 087F:  BTFSS  03.2
@@ -2020,7 +2020,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0883:  GOTO   0AF
 0884:  BTFSC  34.2
 0885:  GOTO   0AF
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.90; 
+....................       intervalo_incremento = intervalo_incremento * 0.90; 
 0886:  MOVF   28,W
 0887:  MOVWF  4F
 0888:  MOVF   27,W
@@ -2060,13 +2060,13 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 08AA:  MOVWF  28
 08AB:  MOVF   78,W
 08AC:  MOVWF  27
-....................       para_2 = 1; 
+....................       pausa_fase_2 = 1; 
 08AD:  BSF    34.2
-....................       para_1 = 0; 
+....................       pausa_fase_1 = 0; 
 08AE:  BCF    34.1
 ....................    } 
 ....................  
-....................    if (contador == 96 && !para_1) { 
+....................    if (contador_fase == 96 && !pausa_fase_1) { 
 08AF:  MOVF   29,W
 08B0:  SUBLW  60
 08B1:  BTFSS  03.2
@@ -2076,7 +2076,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 08B5:  GOTO   0E0
 08B6:  BTFSC  34.1
 08B7:  GOTO   0E0
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.90; 
+....................       intervalo_incremento = intervalo_incremento * 0.90; 
 08B8:  MOVF   28,W
 08B9:  MOVWF  4F
 08BA:  MOVF   27,W
@@ -2116,11 +2116,11 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 08DC:  MOVWF  28
 08DD:  MOVF   78,W
 08DE:  MOVWF  27
-....................       para_1 = 1; 
+....................       pausa_fase_1 = 1; 
 08DF:  BSF    34.1
 ....................    } 
 ....................  
-....................    if (contador == finalfase + 5) 
+....................    if (contador_fase == finalfase + 5) 
 08E0:  MOVLW  05
 08E1:  ADDWF  4A,W
 08E2:  SUBWF  29,W
@@ -2138,20 +2138,20 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 .................... void fase3() { 
 ....................  
-....................    chama(); 
+....................    atualiza_valores(); 
 08EC:  BCF    0A.3
 08ED:  CALL   590
 08EE:  BSF    0A.3
-....................    atualiza_display(); // Atualiza o display 
+....................    atualiza_display(); 
 08EF:  BCF    0A.3
 08F0:  CALL   4F6
 08F1:  BSF    0A.3
-....................    verificabotao(); 
+....................    verificar_botoes(); 
 08F2:  BCF    0A.3
 08F3:  CALL   599
 08F4:  BSF    0A.3
 ....................  
-....................    if ((contador + 1) % 3 == 0 && !para_1 && contador < 30) { 
+....................    if ((contador_fase + 1) % 3 == 0 && !pausa_fase_1 && contador_fase < 30) { 
 08F5:  MOVLW  01
 08F6:  ADDWF  29,W
 08F7:  MOVWF  4E
@@ -2188,7 +2188,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0916:  SUBLW  1D
 0917:  BTFSS  03.0
 0918:  GOTO   144
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 0.94; 
+....................       intervalo_incremento = intervalo_incremento * 0.94; 
 0919:  MOVF   28,W
 091A:  MOVWF  4F
 091B:  MOVF   27,W
@@ -2230,13 +2230,13 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 093F:  MOVWF  28
 0940:  MOVF   78,W
 0941:  MOVWF  27
-....................       para_1 = 1; 
+....................       pausa_fase_1 = 1; 
 0942:  BSF    34.1
-....................       para_2 = 0; 
+....................       pausa_fase_2 = 0; 
 0943:  BCF    34.2
 ....................    } 
 ....................  
-....................    if ((contador + 1) % 4 == 0 && !para_2 && (contador + 1) % 12) { 
+....................    if ((contador_fase + 1) % 4 == 0 && !pausa_fase_2 && (contador_fase + 1) % 12) { 
 0944:  MOVLW  01
 0945:  ADDWF  29,W
 0946:  MOVWF  4E
@@ -2276,13 +2276,13 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0968:  IORWF  7A,W
 0969:  BTFSC  03.2
 096A:  GOTO   16D
-....................       para_1 = 0; 
+....................       pausa_fase_1 = 0; 
 096B:  BCF    34.1
-....................       para_2 = 1; 
+....................       pausa_fase_2 = 1; 
 096C:  BSF    34.2
 ....................    } 
 ....................  
-....................    if (contador == finalfase + 5) 
+....................    if (contador_fase == finalfase + 5) 
 096D:  MOVLW  05
 096E:  ADDWF  4A,W
 096F:  SUBWF  29,W
@@ -2300,16 +2300,16 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 .................... void fase4() { 
 ....................  
-....................    chama(); 
+....................    atualiza_valores(); 
 *
 077D:  CALL   590
 ....................  
-....................    atualiza_display(); // Atualiza o display 
+....................    atualiza_display(); 
 077E:  CALL   4F6
-....................    verificabotao(); 
+....................    verificar_botoes(); 
 077F:  CALL   599
 ....................  
-....................    if (contador == finalfase + 5) 
+....................    if (contador_fase == finalfase + 5) 
 0780:  MOVLW  05
 0781:  ADDWF  4A,W
 0782:  SUBWF  29,W
@@ -2325,18 +2325,18 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 .................... } 
 ....................  
-.................... void chama() { 
-....................    unidade = mostra_u; 
+.................... void atualiza_valores() { 
+....................    unidade = unidade_atual; 
 *
 0590:  MOVF   35,W
 0591:  MOVWF  2B
-....................    dezena = mostra_d; 
+....................    dezena = dezena_atual; 
 0592:  MOVF   36,W
 0593:  MOVWF  2C
-....................    centena = mostra_c; 
+....................    centena = centena_atual; 
 0594:  MOVF   37,W
 0595:  MOVWF  2D
-....................    milhar = mostra_m; 
+....................    milhar = milhar_atual; 
 0596:  MOVF   38,W
 0597:  MOVWF  2E
 0598:  RETURN
@@ -2412,10 +2412,10 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 056F:  BCF    06.4
 0570:  BCF    03.5
 0571:  BCF    06.4
-....................       inicio = 3; 
+....................       tempo_inicio = 3; 
 0572:  MOVLW  03
 0573:  MOVWF  30
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO * 2; 
+....................       intervalo_incremento = intervalo_incremento * 2; 
 0574:  BCF    03.0
 0575:  RLF    27,F
 0576:  RLF    28,F
@@ -2425,19 +2425,19 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0579:  BCF    03.5
 057A:  BSF    06.4
 ....................  
-....................       while (inicio > 0) { 
+....................       while (tempo_inicio > 0) { 
 057B:  MOVF   30,F
 057C:  BTFSC  03.2
 057D:  GOTO   58A
-....................          unidade = inicio; 
+....................          unidade = tempo_inicio; 
 057E:  MOVF   30,W
 057F:  MOVWF  2B
 ....................          dezena = 12; 
 0580:  MOVLW  0C
 0581:  MOVWF  2C
-....................          centena = 12; // Unidades 
+....................          centena = 12;  
 0582:  MOVWF  2D
-....................          milhar = inicio; 
+....................          milhar = tempo_inicio; 
 0583:  MOVF   30,W
 0584:  MOVWF  2E
 ....................          atualiza_display(); 
@@ -2449,7 +2449,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0589:  GOTO   57B
 ....................  
 ....................       } 
-....................       V_INTERVALO_INCREMENTO = V_INTERVALO_INCREMENTO / 2; 
+....................       intervalo_incremento = intervalo_incremento / 2; 
 058A:  BCF    03.0
 058B:  RRF    28,F
 058C:  RRF    27,F
@@ -2459,9 +2459,9 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 058F:  GOTO   21C (RETURN)
 .................... } 
 ....................  
-.................... void falha() { 
+.................... void mostrar_falha() { 
 ....................  
-....................    inicio = 7; 
+....................    tempo_inicio = 7; 
 *
 070F:  MOVLW  07
 0710:  MOVWF  30
@@ -2469,7 +2469,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................    unidade = 12; 
 0711:  MOVLW  0C
 0712:  MOVWF  2B
-....................    if ((contador % 10)) { 
+....................    if ((contador_fase % 10)) { 
 0713:  MOVF   2A,W
 0714:  MOVWF  53
 0715:  MOVF   29,W
@@ -2482,7 +2482,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 071C:  IORWF  7A,W
 071D:  BTFSC  03.2
 071E:  GOTO   752
-....................       dezena = -(contador % 10) + 10; 
+....................       dezena = -(contador_fase % 10) + 10; 
 071F:  MOVF   2A,W
 0720:  MOVWF  53
 0721:  MOVF   29,W
@@ -2502,7 +2502,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 072F:  MOVLW  0A
 0730:  ADDWF  4E,W
 0731:  MOVWF  2C
-....................       centena = -((contador / 10) % 10) + 9; 
+....................       centena = -((contador_fase / 10) % 10) + 9; 
 0732:  MOVF   2A,W
 0733:  MOVWF  53
 0734:  MOVF   29,W
@@ -2538,7 +2538,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0751:  GOTO   772
 ....................       dezena = 0; 
 0752:  CLRF   2C
-....................       centena = -((contador / 10) % 10) + 10; 
+....................       centena = -((contador_fase / 10) % 10) + 10; 
 0753:  MOVF   2A,W
 0754:  MOVWF  53
 0755:  MOVF   29,W
@@ -2576,7 +2576,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0772:  MOVLW  0C
 0773:  MOVWF  2E
 ....................  
-....................    while (inicio) { 
+....................    while (tempo_inicio) { 
 0774:  MOVF   30,F
 0775:  BTFSC  03.2
 0776:  GOTO   77C
@@ -2592,7 +2592,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 077C:  RETURN
 .................... } 
 ....................  
-.................... void tela_inicial() { 
+.................... void mostrar_tela_inicial() { 
 ....................  
 ....................    if (contador_tela_inicial == 1 || contador_tela_inicial == 2) { 
 *
@@ -2615,7 +2615,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0454:  BCF    03.5
 0455:  BCF    06.4
 ....................  
-....................       if (vez_contador_tela_inicial) { 
+....................       if (alternar_tela_inicial) { 
 0456:  BTFSS  34.4
 0457:  GOTO   476
 ....................          output_low(DC); 
@@ -2654,7 +2654,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0473:  MOVWF  08
 ....................          } 
 ....................  
-....................          vez_contador_tela_inicial = 0; 
+....................          alternar_tela_inicial = 0; 
 0474:  BCF    34.4
 ....................       } else { 
 0475:  GOTO   493
@@ -2695,7 +2695,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0491:  MOVWF  08
 ....................          } 
 ....................  
-....................          vez_contador_tela_inicial = 1; 
+....................          alternar_tela_inicial = 1; 
 0492:  BSF    34.4
 ....................       } 
 ....................  
@@ -2712,7 +2712,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 049A:  BCF    03.5
 049B:  BCF    06.6
 ....................  
-....................       if (vez_contador_tela_inicial) { 
+....................       if (alternar_tela_inicial) { 
 049C:  BTFSS  34.4
 049D:  GOTO   4BC
 ....................          output_low(DM); 
@@ -2752,7 +2752,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 04B9:  MOVWF  08
 ....................          } 
 ....................  
-....................          vez_contador_tela_inicial = 0; 
+....................          alternar_tela_inicial = 0; 
 04BA:  BCF    34.4
 ....................       } else { 
 04BB:  GOTO   4D9
@@ -2793,7 +2793,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 04D7:  MOVWF  08
 ....................          } 
 ....................  
-....................          vez_contador_tela_inicial = 1; 
+....................          alternar_tela_inicial = 1; 
 04D8:  BSF    34.4
 ....................       } 
 ....................    } 
@@ -2922,7 +2922,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0446:  RETURN
 .................... } 
 ....................  
-.................... void verificabotao() { 
+.................... void verificar_botoes() { 
 ....................    if (!input(S4) && !unidade_ativode) { 
 *
 0599:  BSF    03.5
@@ -2991,7 +2991,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 05C4:  IORWF  42,W
 05C5:  BTFSS  03.2
 05C6:  GOTO   5CB
-....................          unidade_ativodecont = contde; 
+....................          unidade_ativodecont = V_CONTADOR_DECREMENTO; 
 05C7:  CLRF   42
 05C8:  MOVLW  C8
 05C9:  MOVWF  41
@@ -3012,7 +3012,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 05D2:  IORWF  44,W
 05D3:  BTFSS  03.2
 05D4:  GOTO   5D9
-....................          dezena_ativodecont = contde; 
+....................          dezena_ativodecont = V_CONTADOR_DECREMENTO; 
 05D5:  CLRF   44
 05D6:  MOVLW  C8
 05D7:  MOVWF  43
@@ -3033,7 +3033,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 05E0:  IORWF  46,W
 05E1:  BTFSS  03.2
 05E2:  GOTO   5E7
-....................          centena_ativodecont = contde; 
+....................          centena_ativodecont = V_CONTADOR_DECREMENTO; 
 05E3:  CLRF   46
 05E4:  MOVLW  C8
 05E5:  MOVWF  45
@@ -3054,7 +3054,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 05EE:  IORWF  48,W
 05EF:  BTFSS  03.2
 05F0:  GOTO   5F5
-....................          milhar_ativodecont = contde; 
+....................          milhar_ativodecont = V_CONTADOR_DECREMENTO; 
 05F1:  CLRF   48
 05F2:  MOVLW  C8
 05F3:  MOVWF  47
@@ -3066,7 +3066,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 .................... } 
 ....................  
-.................... void verificaerro9() { 
+.................... void verificar_erro_nove() { 
 ....................    if ((unidade_ativo && unidade) || (dezena_ativo && dezena) || (centena_ativo && centena) || (milhar_ativo && milhar)) { 
 *
 02F5:  BTFSS  33.0
@@ -3093,8 +3093,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................    } 
 .................... } 
 ....................  
-.................... void verificaerro0() { 
-....................    // Se a unidade está ativa e seu valor é diferente de zero, reseta o contador 
+.................... void verificar_erro_zero() { 
 ....................    if ((!unidade_ativo && !unidade) || (!dezena_ativo && !dezena) || (!centena_ativo && !centena) || (!milhar_ativo && !milhar)) { 
 0309:  BTFSC  33.0
 030A:  GOTO   30E
@@ -3121,21 +3120,21 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................  
 .................... } 
 ....................  
-.................... void testalista() { 
-....................    lista_u(); 
-....................    lista_d(); 
-....................    lista_c(); 
-....................    lista_m(); 
+.................... void testar_listas() { 
+....................    atualizar_unidade(); 
+....................    atualizar_dezena(); 
+....................    atualizar_centena(); 
+....................    atualizar_milhar(); 
 ....................  
 .................... } 
 ....................  
-.................... void lista_u() { 
+.................... void atualizar_unidade() { 
 ....................  
 ....................    if (fase == 1) 
 *
 0325:  DECFSZ 2F,W
 0326:  GOTO   32D
-....................       mostra_u = u1[contador_u] - decremento_u; 
+....................       unidade_atual = u1[contador_u] - decremento_u; 
 0327:  MOVF   39,W
 0328:  CALL   06F
 0329:  MOVWF  78
@@ -3148,7 +3147,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 032E:  SUBLW  02
 032F:  BTFSS  03.2
 0330:  GOTO   337
-....................       mostra_u = u2[contador_u] - decremento_u; 
+....................       unidade_atual = u2[contador_u] - decremento_u; 
 0331:  MOVF   39,W
 0332:  CALL   0F4
 0333:  MOVWF  78
@@ -3161,7 +3160,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0338:  SUBLW  03
 0339:  BTFSS  03.2
 033A:  GOTO   341
-....................       mostra_u = u3[contador_u] - decremento_u; 
+....................       unidade_atual = u3[contador_u] - decremento_u; 
 033B:  MOVF   39,W
 033C:  CALL   190
 033D:  MOVWF  78
@@ -3174,7 +3173,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0342:  SUBLW  04
 0343:  BTFSS  03.2
 0344:  GOTO   34B
-....................       mostra_u = u4[contador_u] - decremento_u; 
+....................       unidade_atual = u4[contador_u] - decremento_u; 
 0345:  MOVF   39,W
 0346:  CALL   23C
 0347:  MOVWF  78
@@ -3182,12 +3181,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0349:  SUBWF  78,W
 034A:  MOVWF  35
 ....................  
-....................    if (mostra_u <= 9) { 
+....................    if (unidade_atual <= 9) { 
 034B:  MOVF   35,W
 034C:  SUBLW  09
 034D:  BTFSS  03.0
 034E:  GOTO   357
-....................       if (!mostra_u) { 
+....................       if (!unidade_atual) { 
 034F:  MOVF   35,F
 0350:  BTFSS  03.2
 0351:  GOTO   355
@@ -3207,12 +3206,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................    } 
 ....................  
 .................... } 
-.................... void lista_d() { 
+.................... void atualizar_dezena() { 
 ....................  
 ....................    if (fase == 1) 
 0358:  DECFSZ 2F,W
 0359:  GOTO   360
-....................       mostra_d = d1[contador_d] - decremento_d; 
+....................       dezena_atual = d1[contador_d] - decremento_d; 
 035A:  MOVF   3A,W
 035B:  CALL   089
 035C:  MOVWF  78
@@ -3225,7 +3224,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0361:  SUBLW  02
 0362:  BTFSS  03.2
 0363:  GOTO   36A
-....................       mostra_d = d2[contador_d] - decremento_d; 
+....................       dezena_atual = d2[contador_d] - decremento_d; 
 0364:  MOVF   3A,W
 0365:  CALL   11F
 0366:  MOVWF  78
@@ -3238,7 +3237,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 036B:  SUBLW  03
 036C:  BTFSS  03.2
 036D:  GOTO   374
-....................       mostra_d = d3[contador_d] - decremento_d; 
+....................       dezena_atual = d3[contador_d] - decremento_d; 
 036E:  MOVF   3A,W
 036F:  CALL   1B8
 0370:  MOVWF  78
@@ -3251,7 +3250,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0375:  SUBLW  04
 0376:  BTFSS  03.2
 0377:  GOTO   37E
-....................       mostra_d = d4[contador_d] - decremento_d; 
+....................       dezena_atual = d4[contador_d] - decremento_d; 
 0378:  MOVF   3A,W
 0379:  CALL   258
 037A:  MOVWF  78
@@ -3259,12 +3258,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 037C:  SUBWF  78,W
 037D:  MOVWF  36
 ....................  
-....................    if (mostra_d <= 9) { 
+....................    if (dezena_atual <= 9) { 
 037E:  MOVF   36,W
 037F:  SUBLW  09
 0380:  BTFSS  03.0
 0381:  GOTO   38A
-....................       if (!mostra_d) { 
+....................       if (!dezena_atual) { 
 0382:  MOVF   36,F
 0383:  BTFSS  03.2
 0384:  GOTO   388
@@ -3284,12 +3283,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................    } 
 ....................  
 .................... } 
-.................... void lista_c() { 
+.................... void atualizar_centena() { 
 ....................  
 ....................    if (fase == 1) 
 038B:  DECFSZ 2F,W
 038C:  GOTO   393
-....................       mostra_c = c1[contador_c] - decremento_c; 
+....................       centena_atual = c1[contador_c] - decremento_c; 
 038D:  MOVF   3B,W
 038E:  CALL   0AF
 038F:  MOVWF  78
@@ -3302,7 +3301,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 0394:  SUBLW  02
 0395:  BTFSS  03.2
 0396:  GOTO   39D
-....................       mostra_c = c2[contador_c] - decremento_c; 
+....................       centena_atual = c2[contador_c] - decremento_c; 
 0397:  MOVF   3B,W
 0398:  CALL   149
 0399:  MOVWF  78
@@ -3315,7 +3314,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 039E:  SUBLW  03
 039F:  BTFSS  03.2
 03A0:  GOTO   3A7
-....................       mostra_c = c3[contador_c] - decremento_c; 
+....................       centena_atual = c3[contador_c] - decremento_c; 
 03A1:  MOVF   3B,W
 03A2:  CALL   1E4
 03A3:  MOVWF  78
@@ -3328,7 +3327,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 03A8:  SUBLW  04
 03A9:  BTFSS  03.2
 03AA:  GOTO   3B1
-....................       mostra_c = c4[contador_c] - decremento_c; 
+....................       centena_atual = c4[contador_c] - decremento_c; 
 03AB:  MOVF   3B,W
 03AC:  CALL   27C
 03AD:  MOVWF  78
@@ -3336,12 +3335,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 03AF:  SUBWF  78,W
 03B0:  MOVWF  37
 ....................  
-....................    if (mostra_c <= 9) { 
+....................    if (centena_atual <= 9) { 
 03B1:  MOVF   37,W
 03B2:  SUBLW  09
 03B3:  BTFSS  03.0
 03B4:  GOTO   3BD
-....................       if (!mostra_c) { 
+....................       if (!centena_atual) { 
 03B5:  MOVF   37,F
 03B6:  BTFSS  03.2
 03B7:  GOTO   3BB
@@ -3361,12 +3360,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 ....................    } 
 ....................  
 .................... } 
-.................... void lista_m() { 
+.................... void atualizar_milhar() { 
 ....................  
 ....................    if (fase == 1) 
 03BE:  DECFSZ 2F,W
 03BF:  GOTO   3C6
-....................       mostra_m = m1[contador_m] - decremento_m; 
+....................       milhar_atual = m1[contador_m] - decremento_m; 
 03C0:  MOVF   3C,W
 03C1:  CALL   0D3
 03C2:  MOVWF  78
@@ -3379,7 +3378,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 03C7:  SUBLW  02
 03C8:  BTFSS  03.2
 03C9:  GOTO   3D0
-....................       mostra_m = m2[contador_m] - decremento_m; 
+....................       milhar_atual = m2[contador_m] - decremento_m; 
 03CA:  MOVF   3C,W
 03CB:  CALL   170
 03CC:  MOVWF  78
@@ -3392,7 +3391,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 03D1:  SUBLW  03
 03D2:  BTFSS  03.2
 03D3:  GOTO   3DA
-....................       mostra_m = m3[contador_m] - decremento_m; 
+....................       milhar_atual = m3[contador_m] - decremento_m; 
 03D4:  MOVF   3C,W
 03D5:  CALL   213
 03D6:  MOVWF  78
@@ -3405,7 +3404,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 03DB:  SUBLW  04
 03DC:  BTFSS  03.2
 03DD:  GOTO   3E4
-....................       mostra_m = m4[contador_m] - decremento_m; 
+....................       milhar_atual = m4[contador_m] - decremento_m; 
 03DE:  MOVF   3C,W
 03DF:  CALL   2A0
 03E0:  MOVWF  78
@@ -3413,12 +3412,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:10
 03E2:  SUBWF  78,W
 03E3:  MOVWF  38
 ....................  
-....................    if (mostra_m <= 9) { 
+....................    if (milhar_atual <= 9) { 
 03E4:  MOVF   38,W
 03E5:  SUBLW  09
 03E6:  BTFSS  03.0
 03E7:  GOTO   3F0
-....................       if (!mostra_m) { 
+....................       if (!milhar_atual) { 
 03E8:  MOVF   38,F
 03E9:  BTFSS  03.2
 03EA:  GOTO   3EE
