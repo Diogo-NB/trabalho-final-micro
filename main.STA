@@ -1,66 +1,67 @@
 
-ROM used:   2695/8192 (33%)
-            2812/8192 (34%) including unused fragments
+ROM used:   2494/8192 (30%)
+            2600/8192 (32%) including unused fragments
 
             1.9 Average locations per line
-            6.3 Average locations per statement
+            6.9 Average locations per statement
 
 RAM used:   55/368 (15%) at main() level
             65/368 (18%) worst case
 
-Stack used: 5 worst case (3 in main + 2 for interrupts)
+Stack used: 4 worst case (2 in main + 2 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  674   428 100  main.c
+  597   362 100  main.c
    26     0   0  main.h
   684     0   0  ..\..\Program Files (x86)\PICC\Devices\16F877A.h
 ----- -----
- 1384   428 Total
+ 1307   362 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
-0     16   1    0    453  5.6  @const678
-0     16   1    0    453  5.6  @const681
+0     16   1    0             @const678
+0     16   1    0             @const681
 0     16   1    0             @const684
 0     16   1    0             @const687
 0     26   1    0             @const690
-0     38   1    0             @const693
-0     36   1    0    453  5.6  @const696
-0     33   1    0    453  5.6  @const699
-0     43   2    0    453  5.6  @const702
-0     42   2    0    768  4.7  @const705
-0     39   1    0    453  5.6  @const708
-0     32   1    0    453  5.6  @const711
-0     40   1    0    453  5.6  @const714
-0     44   2    0    453  5.6  @const717
-0     47   2    0    453  5.6  @const720
-0     41   2    0    453  5.6  @const723
-0     28   1    0    453  5.6  @const726
-0     36   1    0    453  5.6  @const729
-0     36   1    0    453  5.6  @const732
-0     26   1    0    453  5.6  @const735
-0     17   1    0    453  5.6  @const738
-0    298  11    1    670  5.3  TIMER0_isr
-1    388  14    4   2845  6.9  MAIN
-0     37   1    2    453  5.6  @MUL88
-0     37   1    5    453  5.6  @DIV1616
-0     23   1    5    453  5.6  @MUL1616
-0     29   1    2    453  5.6  @ITOF
-0    117   4   13   2875  6.9  @MULFF
-0     31   1    4             @SFTOI
-0    104   4    0    313  4.4  fase1
-1    236   9    0    768  4.7  fase2
-1    140   5    2    466  5.5  fase3
-0     14   1    0     90  2.8  fase4
-0      9   0    0     67  1.8  atualiza_valores
+0     38   2    0             @const693
+0     36   1    0             @const696
+0     33   1    0             @const699
+0     43   2    0             @const702
+0     42   2    0             @const705
+0     39   2    0             @const708
+0     32   1    0             @const711
+0     40   2    0             @const714
+0     44   2    0             @const717
+0     47   2    0             @const720
+0     41   2    0             @const723
+0     28   1    0             @const726
+0     36   1    0             @const729
+0     36   1    0             @const732
+0     26   1    0             @const735
+0     17   1    0             @const738
+0    298  12    1    670  5.3  TIMER0_isr
+0    195   8    4    969  6.8  MAIN
+0     37   1    2    339  6.4  @MUL88
+0     37   1    5             @DIV1616
+0     23   1    5    313  4.4  @MUL1616
+0     34   1    6    339  6.4  @WRITEBITA
+1    544  22    0    272  4.2  executar_fase
+0     29   1    2    313  4.4  @ITOF
+0    117   5   13    259  4.4  @MULFF
+0     31   1    4    705  4.7  @SFTOI
+1      8   0    0    409  5.5  @goto3993
+ Inline         0    259  4.4  fase1
+ Inline         0    705  4.7  fase2
+ Inline         2    409  5.5  fase3
+ Inline         0     49  2.5  fase4
 0     77   3    0    679  4.8  escolha_de_fase
-0    110   4    2    396  5.1  mostrar_falha
-0    152   6    1   1141  5.4  mostrar_tela_inicial
+0    112   4    2    396  5.1  mostrar_falha
+0    152   6    1   1204  5.4  mostrar_tela_inicial
 0     77   3    1    459  2.8  atualiza_display
 0      8   0    2     82  3.1  delay
-0     93   3    0    931  3.9  verificar_botoes
  Inline         0    119  2.9  verificar_erro_nove
  Inline         0    156  3.3  verificar_erro_zero
  Inline         0     42  1.2  testar_listas
@@ -68,26 +69,26 @@ Page ROM  %  RAM    Vol Diff  Functions:
  Inline         1    453  5.6  atualizar_dezena
  Inline         1    453  5.6  atualizar_centena
  Inline         1    453  5.6  atualizar_milhar
- Inline         0             @cinit1
+ Inline         0    453  5.6  @cinit1
 
 Program metrics:
-    Functions               42
-    Statements              428
+    Functions               27
+    Statements              362
     Comments                126
-    Volume (V)              44074
-    Difficulty (D)          213.1
-    Effort to implement (E) 9392316
-    Time to implement (T)   144 hours, 57 minutes
-    Est Delivered Bugs (B)  15
-    Cyclomatic Complexity   224
-    Maintainability (MI)    118
+    Volume (V)              20764
+    Difficulty (D)          125.6
+    Effort to implement (E) 2608847
+    Time to implement (T)   40 hours, 16 minutes
+    Est Delivered Bugs (B)  6
+    Cyclomatic Complexity   102
+    Maintainability (MI)    83
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
 00004-0002E    43  0  
-0002F-007FF  1884  117  
-00800-00FFF   764  1284  
+0002F-007FF  1895  106  
+00800-00FFF   552  1496  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  
 

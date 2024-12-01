@@ -1,5 +1,5 @@
 ÀÄmain
-   ÃÄMAIN  1/388  Ram=4
+   ÃÄMAIN  0/195  Ram=4
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄ@MUL88  0/37  Ram=2
    ³  ÃÄ@DIV1616  0/37  Ram=5
@@ -23,18 +23,39 @@
    ³  ³  ³  ÃÄ@const738  0/17  Ram=0
    ³  ³  ³  ÀÄ@const738  0/17  Ram=0
    ³  ³  ÀÄdelay  0/8  Ram=2
-   ³  ÃÄfase1  0/104  Ram=0
-   ³  ³  ÃÄatualiza_valores  0/9  Ram=0
-   ³  ³  ÃÄatualiza_display  0/77  Ram=1
-   ³  ³  ³  ÀÄ*
-   ³  ³  ÃÄverificar_botoes  0/93  Ram=0
+   ³  ÃÄexecutar_fase  1/544  Ram=0
+   ³  ³  ÃÄ@goto3993  1/8  Ram=0
+   ³  ³  ÃÄfase1  (Inline)  Ram=0
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÀÄ@SFTOI  0/31  Ram=4
+   ³  ³  ÃÄfase2  (Inline)  Ram=0
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÀÄ@SFTOI  0/31  Ram=4
+   ³  ³  ÃÄfase3  (Inline)  Ram=2
+   ³  ³  ³  ÃÄ@DIV1616  0/37  Ram=5
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÀÄ@DIV1616  0/37  Ram=5
    ³  ³  ÃÄ@ITOF  0/29  Ram=2
    ³  ³  ÃÄ@MULFF  0/117  Ram=13
    ³  ³  ÃÄ@SFTOI  0/31  Ram=4
-   ³  ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ³  ÀÄ@SFTOI  0/31  Ram=4
-   ³  ÃÄmostrar_falha  0/110  Ram=2
+   ³  ³  ÀÄfase4  (Inline)  Ram=0
+   ³  ÃÄmostrar_falha  0/112  Ram=2
    ³  ³  ÃÄ@DIV1616  0/37  Ram=5
    ³  ³  ÃÄ@DIV1616  0/37  Ram=5
    ³  ³  ÃÄ@DIV1616  0/37  Ram=5
@@ -44,47 +65,7 @@
    ³  ³  ÃÄatualiza_display  0/77  Ram=1
    ³  ³  ³  ÀÄ*
    ³  ³  ÀÄdelay  0/8  Ram=2
-   ³  ÃÄfase2  1/236  Ram=0
-   ³  ³  ÃÄatualiza_valores  0/9  Ram=0
-   ³  ³  ÃÄatualiza_display  0/77  Ram=1
-   ³  ³  ³  ÀÄ*
-   ³  ³  ÃÄverificar_botoes  0/93  Ram=0
-   ³  ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ³  ÃÄ@SFTOI  0/31  Ram=4
-   ³  ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ³  ÃÄ@SFTOI  0/31  Ram=4
-   ³  ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ³  ÃÄ@SFTOI  0/31  Ram=4
-   ³  ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ³  ÀÄ@SFTOI  0/31  Ram=4
-   ³  ÃÄmostrar_falha  0/110  Ram=2
-   ³  ³  ÀÄ*
-   ³  ÃÄfase3  1/140  Ram=2
-   ³  ³  ÃÄatualiza_valores  0/9  Ram=0
-   ³  ³  ÃÄatualiza_display  0/77  Ram=1
-   ³  ³  ³  ÀÄ*
-   ³  ³  ÃÄverificar_botoes  0/93  Ram=0
-   ³  ³  ÃÄ@DIV1616  0/37  Ram=5
-   ³  ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ³  ÃÄ@SFTOI  0/31  Ram=4
-   ³  ³  ÀÄ@DIV1616  0/37  Ram=5
-   ³  ÃÄmostrar_falha  0/110  Ram=2
-   ³  ³  ÀÄ*
-   ³  ÃÄ@ITOF  0/29  Ram=2
-   ³  ÃÄ@MULFF  0/117  Ram=13
-   ³  ÃÄ@SFTOI  0/31  Ram=4
-   ³  ÃÄfase4  0/14  Ram=0
-   ³  ³  ÃÄatualiza_valores  0/9  Ram=0
-   ³  ³  ÃÄatualiza_display  0/77  Ram=1
-   ³  ³  ³  ÀÄ*
-   ³  ³  ÀÄverificar_botoes  0/93  Ram=0
-   ³  ÀÄmostrar_falha  0/110  Ram=2
-   ³     ÀÄ*
+   ³  ÀÄ@WRITEBITA  0/34  Ram=6
    ÀÄTIMER0_isr  0/298  Ram=1
       ÃÄverificar_erro_nove  (Inline)  Ram=0
       ÃÄverificar_erro_zero  (Inline)  Ram=0

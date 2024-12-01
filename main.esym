@@ -1,10 +1,9 @@
-F N "nG" 0 28 ""
-D G "__PCM__" 0 29 ""5.076""
-D G "__DEVICE__" 0 29 "877"
-D G "__DATE__" 0 29 ""01-dez-24""
-D G "__TIME__" 0 29 ""10:37:05""
-D G "_UNICODE" 0 29 ""?""
-D G "__EVAL" 0 29 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "__PCM__" 0 596 ""5.076""
+D G "__DEVICE__" 0 596 "877"
+D G "__DATE__" 0 596 ""01-dez-24""
+D G "__TIME__" 0 596 ""12:59:42""
+D G "_UNICODE" 0 596 ""?""
+D G "__EVAL" 0 596 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 f N "set_tris_a" 2 37 ""
 v L "value" 2 37 "int8" `55 
@@ -1152,94 +1151,95 @@ V G "d4" 0 49 "[1]" `729
 V G "c4" 0 50 "[1]" `732 
 V G "m4" 0 51 "[1]" `735 
 V G "display_numbers" 0 53 "[1]" `738 
-V G "pasou_fase_1" 0 55 "int1" `740 
-V G "pasou_fase_2" 0 56 "int1" `741 
-V G "pasou_fase_3" 0 57 "int1" `742 
-V G "pasou_fase_4" 0 58 "int1" `743 
-V G "contador_ms" 0 60 "int16" `744 
-F N "verificar_erro_zero" 0 62 ""
-f G "verificar_erro_zero" 0 62 "void()" `745 
-F N "verificar_erro_nove" 0 63 ""
-f G "verificar_erro_nove" 0 63 "void()" `746 
-F N "mostrar_tela_inicial" 0 65 ""
-f G "mostrar_tela_inicial" 0 65 "void()" `747 
-F N "escolha_de_fase" 0 67 ""
-f G "escolha_de_fase" 0 67 "void()" `748 
-F N "fase1" 0 69 ""
-f G "fase1" 0 69 "void()" `749 
-F N "fase4" 0 70 ""
-f G "fase4" 0 70 "void()" `750 
-F N "fase3" 0 71 ""
-f G "fase3" 0 71 "void()" `751 
-F N "fase2" 0 72 ""
-f G "fase2" 0 72 "void()" `752 
-F N "mostrar_falha" 0 74 ""
-f G "mostrar_falha" 0 74 "void()" `753 
-F N "delay" 0 76 ""
-V L "n" 0 76 "int8" `755 
-f G "delay" 0 76 "void(int8 n)" `754 
-F N "verificar_botoes" 0 77 ""
-f G "verificar_botoes" 0 77 "void()" `756 
-F N "atualiza_display" 0 78 ""
-f G "atualiza_display" 0 78 "void()" `757 
-F N "atualizar_unidade" 0 80 ""
-f G "atualizar_unidade" 0 80 "void()" `758 
-F N "atualizar_dezena" 0 81 ""
-f G "atualizar_dezena" 0 81 "void()" `759 
-F N "atualizar_centena" 0 82 ""
-f G "atualizar_centena" 0 82 "void()" `760 
-F N "atualizar_milhar" 0 83 ""
-f G "atualizar_milhar" 0 83 "void()" `761 
-F N "testar_listas" 0 84 ""
-f G "testar_listas" 0 84 "void()" `762 
-F N "atualiza_valores" 0 86 ""
-f G "atualiza_valores" 0 86 "void()" `763 
-F N "TIMER0_isr" 0 89 ""
-F G "TIMER0_isr" 0 89 "void()" `764 
-C L "TIMER0_isr" 0 94 1 "FUNCTION"
-C L "TIMER0_isr" 0 94 1 "FUNCTION"
+V G "passou_fase" 0 55 "int1[1]" `740 
+V G "contador_ms" 0 57 "int16" `741 
+F N "verificar_erro_zero" 0 59 ""
+f G "verificar_erro_zero" 0 59 "void()" `742 
+F N "verificar_erro_nove" 0 60 ""
+f G "verificar_erro_nove" 0 60 "void()" `743 
+F N "mostrar_tela_inicial" 0 62 ""
+f G "mostrar_tela_inicial" 0 62 "void()" `744 
+F N "escolha_de_fase" 0 64 ""
+f G "escolha_de_fase" 0 64 "void()" `745 
+F N "fase1" 0 66 ""
+f G "fase1" 0 66 "void()" `746 
+F N "fase4" 0 67 ""
+f G "fase4" 0 67 "void()" `747 
+F N "fase3" 0 68 ""
+f G "fase3" 0 68 "void()" `748 
+F N "fase2" 0 69 ""
+f G "fase2" 0 69 "void()" `749 
+F N "mostrar_falha" 0 71 ""
+f G "mostrar_falha" 0 71 "void()" `750 
+F N "delay" 0 73 ""
+V L "n" 0 73 "int8" `752 
+f G "delay" 0 73 "void(int8 n)" `751 
+F N "verificar_botoes" 0 74 ""
+f G "verificar_botoes" 0 74 "void()" `753 
+F N "atualiza_display" 0 75 ""
+f G "atualiza_display" 0 75 "void()" `754 
+F N "atualizar_unidade" 0 77 ""
+f G "atualizar_unidade" 0 77 "void()" `755 
+F N "atualizar_dezena" 0 78 ""
+f G "atualizar_dezena" 0 78 "void()" `756 
+F N "atualizar_centena" 0 79 ""
+f G "atualizar_centena" 0 79 "void()" `757 
+F N "atualizar_milhar" 0 80 ""
+f G "atualizar_milhar" 0 80 "void()" `758 
+F N "testar_listas" 0 81 ""
+f G "testar_listas" 0 81 "void()" `759 
+F N "atualiza_valores" 0 83 ""
+f G "atualiza_valores" 0 83 "void()" `760 
+F N "executar_fase" 0 85 ""
+f G "executar_fase" 0 85 "void()" `761 
+F N "TIMER0_isr" 0 88 ""
+F G "TIMER0_isr" 0 88 "void()" `762 
+C L "TIMER0_isr" 0 93 1 "FUNCTION"
+C L "TIMER0_isr" 0 93 1 "FUNCTION"
 F N "MAIN" 0 130 ""
-F G "MAIN" 0 130 "void()" `765 
-C L "MAIN" 0 94 1 "FUNCTION"
-F N "fase1" 0 248 ""
-F G "fase1" 0 248 "void()" `749 
-F N "fase2" 0 269 ""
-F G "fase2" 0 269 "void()" `752 
-F N "fase3" 0 307 ""
-F G "fase3" 0 307 "void()" `751 
-F N "fase4" 0 329 ""
-F G "fase4" 0 329 "void()" `750 
-F N "atualiza_valores" 0 341 ""
-F G "atualiza_valores" 0 341 "void()" `763 
-F N "escolha_de_fase" 0 348 ""
-F G "escolha_de_fase" 0 348 "void()" `748 
-F N "mostrar_falha" 0 387 ""
-F G "mostrar_falha" 0 387 "void()" `753 
-F N "mostrar_tela_inicial" 0 409 ""
-F G "mostrar_tela_inicial" 0 409 "void()" `747 
-F N "atualiza_display" 0 471 ""
-F G "atualiza_display" 0 471 "void()" `757 
-F N "delay" 0 492 ""
-V L "n" 0 492 "int8" `785 
-F G "delay" 0 492 "void(int8 n)" `754 
-V L "i" 0 493 "int8" `784 
-C L "delay" 0 94 1 "FUNCTION"
-F N "verificar_botoes" 0 499 ""
-F G "verificar_botoes" 0 499 "void()" `756 
-F N "verificar_erro_nove" 0 549 ""
-F G "verificar_erro_nove" 0 549 "void()" `746 
-F N "verificar_erro_zero" 0 555 ""
-F G "verificar_erro_zero" 0 555 "void()" `745 
-F N "testar_listas" 0 562 ""
-F G "testar_listas" 0 562 "void()" `762 
-F N "atualizar_unidade" 0 570 ""
-F G "atualizar_unidade" 0 570 "void()" `758 
-F N "atualizar_dezena" 0 596 ""
-F G "atualizar_dezena" 0 596 "void()" `759 
-F N "atualizar_centena" 0 622 ""
-F G "atualizar_centena" 0 622 "void()" `760 
-F N "atualizar_milhar" 0 648 ""
-F G "atualizar_milhar" 0 648 "void()" `761 
+F G "MAIN" 0 130 "void()" `763 
+C L "MAIN" 0 93 1 "FUNCTION"
+F N "executar_fase" 0 168 ""
+F G "executar_fase" 0 168 "void()" `761 
+F N "fase1" 0 190 ""
+F G "fase1" 0 190 "void()" `746 
+F N "fase2" 0 207 ""
+F G "fase2" 0 207 "void()" `749 
+F N "fase3" 0 240 ""
+F G "fase3" 0 240 "void()" `748 
+F N "fase4" 0 257 ""
+F G "fase4" 0 257 "void()" `747 
+F N "atualiza_valores" 0 263 ""
+F G "atualiza_valores" 0 263 "void()" `760 
+F N "escolha_de_fase" 0 270 ""
+F G "escolha_de_fase" 0 270 "void()" `745 
+F N "mostrar_falha" 0 311 ""
+F G "mostrar_falha" 0 311 "void()" `750 
+F N "mostrar_tela_inicial" 0 332 ""
+F G "mostrar_tela_inicial" 0 332 "void()" `744 
+F N "atualiza_display" 0 394 ""
+F G "atualiza_display" 0 394 "void()" `754 
+F N "delay" 0 415 ""
+V L "n" 0 415 "int8" `788 
+F G "delay" 0 415 "void(int8 n)" `751 
+V L "i" 0 416 "int8" `787 
+C L "delay" 0 93 1 "FUNCTION"
+F N "verificar_botoes" 0 422 ""
+F G "verificar_botoes" 0 422 "void()" `753 
+F N "verificar_erro_nove" 0 472 ""
+F G "verificar_erro_nove" 0 472 "void()" `743 
+F N "verificar_erro_zero" 0 478 ""
+F G "verificar_erro_zero" 0 478 "void()" `742 
+F N "testar_listas" 0 485 ""
+F G "testar_listas" 0 485 "void()" `759 
+F N "atualizar_unidade" 0 493 ""
+F G "atualizar_unidade" 0 493 "void()" `755 
+F N "atualizar_dezena" 0 519 ""
+F G "atualizar_dezena" 0 519 "void()" `756 
+F N "atualizar_centena" 0 545 ""
+F G "atualizar_centena" 0 545 "void()" `757 
+F N "atualizar_milhar" 0 571 ""
+F G "atualizar_milhar" 0 571 "void()" `758 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

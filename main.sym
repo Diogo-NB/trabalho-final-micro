@@ -1,8 +1,8 @@
 004-005 @WRITE_PROGRAM_MEMORY8.P1
 004-005 @READ_PROGRAM_MEMORY8.P2
 008     PSP_DATA
-015     CCP_1_LOW
 015     CCP_1
+015     CCP_1_LOW
 016     CCP_1_HIGH
 01B     CCP_2
 01B     CCP_2_LOW
@@ -36,9 +36,6 @@
 034.2   pausa_fase_2
 034.3   pausa_fase_3
 034.4   alternar_tela_inicial
-034.5   pasou_fase_1
-034.6   pasou_fase_2
-034.7   pasou_fase_3
 035     unidade_atual
 036     dezena_atual
 037     centena_atual
@@ -57,25 +54,28 @@
 047-048 milhar_ativodecont
 049     contador_tela_inicial
 04A     finalfase
-04B.0   pasou_fase_4
+04B     passou_fase
 04C-04D contador_ms
-04E-04F @ITOF.P1
-04E-051 @MULFF.P2
-04E-051 @SFTOI.P3
+04E-051 @MULFF.P1
 04E     delay.n
+04E-051 @SFTOI.P1
+04E-04F @ITOF.P2
 04E     MAIN.@SCRATCH1
 04E     fase3.@SCRATCH1
 04E     mostrar_falha.@SCRATCH1
 04E     mostrar_tela_inicial.@SCRATCH1
 04E     atualiza_display.@SCRATCH1
 04F     delay.i
+04F     @WRITEBITA.P1
 04F     MAIN.@SCRATCH2
 04F     fase3.@SCRATCH2
 04F     mostrar_falha.@SCRATCH2
+050     @WRITEBITA.P1
 050     MAIN.@SCRATCH3
+051-052 @WRITEBITA.P1
 051     MAIN.@SCRATCH4
-052-053 @DIV1616.P1
-052-055 @MULFF.P2
+052-055 @MULFF.P1
+052-053 @DIV1616.P2
 052     @MUL88.P3
 052-053 @MUL1616.P4
 053     @MUL88.P1
@@ -102,8 +102,8 @@
 09C.6   C1OUT
 09C.7   C2OUT
 0FF     @INTERRUPT_AREA
-10D-10E @WRITE_PROGRAM_MEMORY8.P1
-10D-10E @READ_PROGRAM_MEMORY8.P2
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
 17F     @INTERRUPT_AREA
 1FF     @INTERRUPT_AREA
 27F     @INTERRUPT_AREA
@@ -213,8 +213,8 @@ ROM Allocation:
 0002CB  TIMER0_isr
 0002F5  verificar_erro_nove
 000309  verificar_erro_zero
-000325  atualizar_unidade
 000325  testar_listas
+000325  atualizar_unidade
 000358  atualizar_dezena
 00038B  atualizar_centena
 0003BE  atualizar_milhar
@@ -225,32 +225,33 @@ ROM Allocation:
 0004DF  @MUL1616
 0004F6  atualiza_display
 000543  escolha_de_fase
-000590  atualiza_valores
-000599  verificar_botoes
-0005F6  @ITOF
-000613  @MULFF
-000688  @SFTOI
-0006A7  fase1
-00070F  mostrar_falha
-00077D  fase4
-000800  fase2
-0008EC  fase3
-000978  MAIN
-000978  @cinit1
-0009A7  @cinit2
+000590  @ITOF
+0005AD  @MULFF
+000622  @SFTOI
+000641  mostrar_falha
+0006B1  @WRITEBITA
+0006D3  @cinit1
+0006D3  MAIN
+0006FE  @cinit2
+000800  executar_fase
+00080A  fase1
+00087E  fase2
+000963  fase3
+000A12  fase4
+000A20  @goto3993
 
 Project Directory:
     C:\projects\trabalho_final_microcontroladores\
 
 Project Files:
-    main.c                                                  [01-dez-24 10:37  CRC=D9698E73]
+    main.c                                                  [01-dez-24 12:59  CRC=6FBA704C]
     main.h                                                  [24-nov-24 21:33  CRC=47E4B9EC]
     ..\..\Program Files (x86)\PICC\Devices\16F877A.h        [15-jan-18 15:53  CRC=63418C39]
 
-Source signature=E7D160D1
+Source signature=7E2242AA
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=E0D2
+Hex file CRC=707C
 
 Units:
     main (main)

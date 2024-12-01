@@ -82,8 +82,6 @@ void testar_listas();
 
 void atualiza_valores();
 
-void executar_fase();
-
 #INT_TIMER0
 void TIMER0_isr(void) {
    set_timer0(get_timer0() + 131);
@@ -147,9 +145,66 @@ void main() {
          mostrar_tela_inicial();
          intervalo_incremento = intervalo_incremento * (3 * (passou_fase[0] + passou_fase[1] + passou_fase[2] + passou_fase[3]) + 5);
          escolha_de_fase();
+         contador_fase = 0;
+         comeca = 1;
+         velocidade = intervalo_incremento;
+         pausa_fase_1 = 0;
+         pausa_fase_2 = 0;
+         
+         atualiza_valores();
+         atualiza_display();
+         verificar_botoes();
+         
+         if (fase == 1) {
+            while (fase) {
+               fase1();
+            }
 
-         executar_fase();
-                
+
+         }
+
+         if (fase == 2) {
+            while (fase) {
+               fase2();
+            }
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+            if (contador_fase >= finalfase + 4)
+               passou_fase[1] = 1;
+
+         }
+
+         if (fase == 3) {
+            while (fase) {
+               fase3();
+            }
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+            if (contador_fase >= finalfase + 4)
+               passou_fase[2] = 1;
+         }
+
+         if (fase == 4) {
+            intervalo_incremento = intervalo_incremento * 0.60;
+            while (fase) {
+               fase4();
+            }
+            
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+            if (contador_fase >= finalfase + 4)
+               passou_fase[3] = 1;
+         }
+         
          if (contador_fase < finalfase) {
             mostrar_falha();
             contador_fase = 0;
@@ -162,28 +217,6 @@ void main() {
          fase = 0;
       }
       contador_fase = 0;
-   }
-}
-
-void executar_fase() {
-   switch (fase) {
-      case 1:
-         while (fase)
-            fase1();
-         break;
-      case 2:
-         while (fase)
-            fase2();
-         break;   
-      case 3:
-         while (fase)
-            fase3();  
-         break;   
-      case 4:
-         intervalo_incremento = intervalo_incremento * 0.60;
-         while (fase)
-            fase4();
-         break;
    }
 }
 

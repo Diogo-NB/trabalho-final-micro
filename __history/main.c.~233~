@@ -50,9 +50,12 @@ const int8 d4[] = {5, 1, 1, 5, 3, 4, 3, 3, 1, 1, 1, 3, 6,5, 1, 1, 5, 3, 4, 3, 3,
 const int8 c4[] = {4, 5, 1, 1, 3, 6, 3, 1, 1, 3, 1, 1, 7,4, 5, 1, 1, 3, 6, 3, 1, 1, 3, 1, 1, 7, 10, 10, 11, 11, 12, 12};
 const int8 m4[] = {3, 7, 1, 3, 8, 3, 9, 8, 3, 7, 1, 3, 8, 3, 9, 8,10, 10, 11, 11, 12, 12};
 
-const int8 display_numbers[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0b00001000, 0b01001000, 0b01001001};
+const int8 display_numbers[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0b00001000,0b01001000,0b01001001};
 
-int1 passou_fase[] = {0, 0, 0, 0};
+int1 pasou_fase_1 = 0;
+int1 pasou_fase_2 = 0;
+int1 pasou_fase_3 = 0;
+int1 pasou_fase_4 = 0;
 
 int16 contador_ms = 0;
 
@@ -81,8 +84,6 @@ void atualizar_milhar();
 void testar_listas();
 
 void atualiza_valores();
-
-void executar_fase();
 
 #INT_TIMER0
 void TIMER0_isr(void) {
@@ -126,7 +127,6 @@ void TIMER0_isr(void) {
 
    }
 }
-
 void main() {
    setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8 | RTCC_8_BIT); // 1ms overflow
    enable_interrupts(INT_TIMER0);
@@ -143,48 +143,115 @@ void main() {
    while (TRUE) {
 
       if (!fase) {
-         intervalo_incremento = intervalo_incremento / (3 * (passou_fase[0] + passou_fase[1] + passou_fase[2] + passou_fase[3]) + 5);
+         intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
          mostrar_tela_inicial();
-         intervalo_incremento = intervalo_incremento * (3 * (passou_fase[0] + passou_fase[1] + passou_fase[2] + passou_fase[3]) + 5);
+         intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5);
          escolha_de_fase();
 
-         executar_fase();
-                
-         if (contador_fase < finalfase) {
-            mostrar_falha();
+         if (fase == 1) {
             contador_fase = 0;
+            comeca = 1;
+            velocidade = intervalo_incremento;
+            pausa_fase_1 = 0;
+            pausa_fase_2 = 0;
+            while (fase) {
+               fase1();
+            }
+            comeca = 0;
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+
+            if (contador_fase >= finalfase + 4)
+               pasou_fase_1 = 1;
+
+            intervalo_incremento = velocidade;
+            fase = 0;
+
          }
 
-         passou_fase[fase] = contador_fase >= (finalfase + 4);
-         
-         intervalo_incremento = velocidade;
-         comeca = 0;
-         fase = 0;
+         if (fase == 2) {
+            contador_fase = 0;
+            comeca = 1;
+            velocidade = intervalo_incremento;
+            pausa_fase_1 = 0;
+            pausa_fase_2 = 0;
+            while (fase) {
+               fase2();
+            }
+            comeca = 0;
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+            if (contador_fase >= finalfase + 4)
+               pasou_fase_2 = 1;
+
+            intervalo_incremento = velocidade;
+            fase = 0;
+         }
+
+         if (fase == 3) {
+            contador_fase = 0;
+            comeca = 1;
+            velocidade = intervalo_incremento;
+            pausa_fase_1 = 0;
+            pausa_fase_2 = 0;
+            while (fase) {
+               fase3();
+            }
+            comeca = 0;
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+            if (contador_fase >= finalfase + 4)
+               pasou_fase_3 = 1;
+
+            intervalo_incremento = velocidade;
+            fase = 0;
+
+         }
+
+         if (fase == 4) {
+            contador_fase = 0;
+            comeca = 1;
+            velocidade = intervalo_incremento;
+            pausa_fase_1 = 0;
+            pausa_fase_2 = 0;
+            intervalo_incremento = intervalo_incremento * 0.60;
+            while (fase) {
+               fase4();
+            }
+            comeca = 0;
+
+            if (contador_fase < finalfase) {
+               mostrar_falha();
+               contador_fase = 0;
+            }
+            if (contador_fase >= finalfase + 4)
+               pasou_fase_4 = 1;
+
+            intervalo_incremento = velocidade;
+            fase = 0;
+         }
+
       }
       contador_fase = 0;
    }
 }
 
-void executar_fase() {
-   switch (fase) {
-      case 1:
-         while (fase)
-            fase1();
-         break;
-      case 2:
-         while (fase)
-            fase2();
-         break;   
-      case 3:
-         while (fase)
-            fase3();  
-         break;   
-      case 4:
-         intervalo_incremento = intervalo_incremento * 0.60;
-         while (fase)
-            fase4();
-         break;
-   }
+void executa_fase() {
+   atualiza_valores();
+
+   atualiza_display();
+   verificar_botoes();
+
+   
 }
 
 void fase1() {
@@ -283,8 +350,8 @@ void escolha_de_fase() {
    
    if (!input(S1)) {
       fase = 1;
+
    }
-   
    if (fase) {
 
       output_low(DM);
@@ -309,6 +376,7 @@ void escolha_de_fase() {
 }
 
 void mostrar_falha() {
+
    tempo_inicio = 7;
 
    unidade = 12;
@@ -339,7 +407,7 @@ void mostrar_tela_inicial() {
       if (alternar_tela_inicial) {
          output_low(DC);
          output_high(DD);
-         if (!passou_fase[2]) {
+         if (!pasou_fase_3) {
             output_d(listadisplay3[contador_tela_inicial]);
          } else {
             output_d(listadisplay3[contador_tela_inicial + 6]);
@@ -350,7 +418,7 @@ void mostrar_tela_inicial() {
          output_low(DD);
          output_high(DC);
 
-         if (!passou_fase[1]) {
+         if (!pasou_fase_2) {
             output_d(listadisplay2[contador_tela_inicial]);
          } else {
             output_d(listadisplay2[contador_tela_inicial + 6]);
@@ -367,7 +435,7 @@ void mostrar_tela_inicial() {
          output_low(DM);
          output_high(DU);
 
-         if (!passou_fase[3]) {
+         if (!pasou_fase_4) {
             output_d(listadisplay4[contador_tela_inicial]);
          } else {
             output_d(listadisplay4[contador_tela_inicial + 6]);
@@ -378,7 +446,7 @@ void mostrar_tela_inicial() {
          output_low(DU);
          output_high(DM);
 
-         if (!passou_fase[0]) {
+         if (!pasou_fase_1) {
             output_d(listadisplay1[contador_tela_inicial]);
          } else {
             output_d(listadisplay1[contador_tela_inicial + 6]);

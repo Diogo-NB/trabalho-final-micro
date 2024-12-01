@@ -1,18 +1,18 @@
-CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
+CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 12:59
 
                Filename:   C:\projects\trabalho_final_microcontroladores\main.lst
 
-               ROM used:   2695 words (33%)
+               ROM used:   2494 words (30%)
                            Largest free fragment is 2048
                RAM used:   55 (15%) at main() level
                            65 (18%) worst case
-               Stack used: 5 locations (3 in main + 2 for interrupts)
+               Stack used: 4 locations (2 in main + 2 for interrupts)
                Stack size: 8
 
 *
-0000:  MOVLW  09
+0000:  MOVLW  06
 0001:  MOVWF  0A
-0002:  GOTO   178
+0002:  GOTO   6D3
 0003:  NOP
 0004:  MOVWF  7F
 0005:  SWAPF  03,W
@@ -834,187 +834,231 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 04F0:  RRF    78,F
 04F1:  DECFSZ 56,F
 04F2:  GOTO   4E3
-04F3:  BSF    0A.3
+04F3:  BCF    0A.3
 04F4:  BCF    0A.4
-04F5:  GOTO   215 (RETURN)
+04F5:  GOTO   766 (RETURN)
 *
-05F6:  MOVLW  8E
-05F7:  MOVWF  77
-05F8:  MOVF   4F,W
-05F9:  MOVWF  78
-05FA:  MOVF   4E,W
-05FB:  MOVWF  79
-05FC:  CLRF   7A
-05FD:  MOVF   78,F
-05FE:  BTFSS  03.2
-05FF:  GOTO   60A
-0600:  MOVF   79,W
-0601:  MOVWF  78
-0602:  CLRF   79
-0603:  MOVLW  08
-0604:  SUBWF  77,F
-0605:  MOVF   78,F
-0606:  BTFSS  03.2
-0607:  GOTO   60A
-0608:  CLRF   77
-0609:  GOTO   612
-060A:  BCF    03.0
-060B:  BTFSC  78.7
-060C:  GOTO   611
-060D:  RLF    79,F
-060E:  RLF    78,F
-060F:  DECF   77,F
-0610:  GOTO   60A
-0611:  BCF    78.7
-0612:  RETURN
-0613:  MOVF   4E,W
-0614:  BTFSC  03.2
-0615:  GOTO   683
-0616:  MOVWF  56
-0617:  MOVF   52,W
-0618:  BTFSC  03.2
-0619:  GOTO   683
-061A:  ADDWF  56,F
-061B:  BTFSC  03.0
-061C:  GOTO   624
-061D:  MOVLW  7F
-061E:  SUBWF  56,F
-061F:  BTFSS  03.0
-0620:  GOTO   683
-0621:  BTFSC  03.2
-0622:  GOTO   683
-0623:  GOTO   628
-0624:  MOVLW  81
-0625:  ADDWF  56,F
-0626:  BTFSC  03.0
-0627:  GOTO   683
-0628:  MOVF   56,W
-0629:  MOVWF  77
-062A:  CLRF   78
-062B:  CLRF   79
-062C:  CLRF   7A
-062D:  MOVF   4F,W
-062E:  MOVWF  5A
-062F:  BSF    5A.7
-0630:  MOVF   50,W
-0631:  MOVWF  59
-0632:  MOVF   51,W
-0633:  MOVWF  58
-0634:  MOVLW  18
-0635:  MOVWF  56
-0636:  CLRF   57
-0637:  BTFSS  58.0
-0638:  GOTO   651
-0639:  MOVF   55,W
-063A:  ADDWF  7A,F
-063B:  BTFSS  03.0
-063C:  GOTO   643
-063D:  INCF   79,F
-063E:  BTFSS  03.2
-063F:  GOTO   643
-0640:  INCF   78,F
-0641:  BTFSC  03.2
-0642:  BSF    57.7
-0643:  MOVF   54,W
-0644:  ADDWF  79,F
-0645:  BTFSS  03.0
-0646:  GOTO   64A
-0647:  INCF   78,F
-0648:  BTFSC  03.2
-0649:  BSF    57.7
-064A:  MOVF   53,W
-064B:  MOVWF  50
-064C:  BSF    50.7
-064D:  MOVF   50,W
-064E:  ADDWF  78,F
-064F:  BTFSC  03.0
-0650:  BSF    57.7
-0651:  RLF    57,F
-0652:  RRF    78,F
-0653:  RRF    79,F
-0654:  RRF    7A,F
-0655:  RRF    5A,F
-0656:  RRF    59,F
-0657:  RRF    58,F
-0658:  BCF    03.0
-0659:  DECFSZ 56,F
-065A:  GOTO   636
-065B:  MOVLW  01
-065C:  ADDWF  77,F
-065D:  BTFSC  03.0
-065E:  GOTO   683
-065F:  BTFSC  78.7
-0660:  GOTO   668
-0661:  RLF    5A,F
-0662:  RLF    7A,F
-0663:  RLF    79,F
-0664:  RLF    78,F
-0665:  DECF   77,F
-0666:  BTFSC  03.2
-0667:  GOTO   683
-0668:  BTFSS  5A.7
-0669:  GOTO   679
-066A:  INCF   7A,F
-066B:  BTFSS  03.2
-066C:  GOTO   679
-066D:  INCF   79,F
-066E:  BTFSS  03.2
-066F:  GOTO   679
-0670:  INCF   78,F
-0671:  BTFSS  03.2
-0672:  GOTO   679
-0673:  RRF    78,F
-0674:  RRF    79,F
-0675:  RRF    7A,F
-0676:  INCF   77,F
-0677:  BTFSC  03.2
-0678:  GOTO   683
-0679:  MOVF   4F,W
-067A:  MOVWF  57
-067B:  MOVF   53,W
-067C:  XORWF  57,F
-067D:  BTFSS  57.7
-067E:  GOTO   681
-067F:  BSF    78.7
-0680:  GOTO   687
-0681:  BCF    78.7
-0682:  GOTO   687
-0683:  CLRF   77
-0684:  CLRF   78
-0685:  CLRF   79
-0686:  CLRF   7A
-0687:  RETURN
-0688:  MOVLW  8E
-0689:  MOVWF  77
-068A:  MOVF   4E,W
-068B:  SUBWF  77,F
-068C:  MOVF   4F,W
-068D:  MOVWF  79
-068E:  MOVF   50,W
-068F:  MOVWF  78
-0690:  BSF    79.7
-0691:  MOVF   77,F
-0692:  BTFSC  03.2
-0693:  GOTO   69F
-0694:  BCF    03.0
-0695:  MOVF   79,F
-0696:  BTFSS  03.2
-0697:  GOTO   69B
-0698:  MOVF   78,F
-0699:  BTFSC  03.2
-069A:  GOTO   69F
-069B:  RRF    79,F
-069C:  RRF    78,F
-069D:  DECFSZ 77,F
-069E:  GOTO   694
-069F:  BTFSS  4F.7
-06A0:  GOTO   6A6
-06A1:  COMF   78,F
-06A2:  COMF   79,F
-06A3:  INCF   78,F
-06A4:  BTFSC  03.2
-06A5:  INCF   79,F
-06A6:  RETURN
+0590:  MOVLW  8E
+0591:  MOVWF  77
+0592:  MOVF   4F,W
+0593:  MOVWF  78
+0594:  MOVF   4E,W
+0595:  MOVWF  79
+0596:  CLRF   7A
+0597:  MOVF   78,F
+0598:  BTFSS  03.2
+0599:  GOTO   5A4
+059A:  MOVF   79,W
+059B:  MOVWF  78
+059C:  CLRF   79
+059D:  MOVLW  08
+059E:  SUBWF  77,F
+059F:  MOVF   78,F
+05A0:  BTFSS  03.2
+05A1:  GOTO   5A4
+05A2:  CLRF   77
+05A3:  GOTO   5AC
+05A4:  BCF    03.0
+05A5:  BTFSC  78.7
+05A6:  GOTO   5AB
+05A7:  RLF    79,F
+05A8:  RLF    78,F
+05A9:  DECF   77,F
+05AA:  GOTO   5A4
+05AB:  BCF    78.7
+05AC:  RETURN
+05AD:  MOVF   4E,W
+05AE:  BTFSC  03.2
+05AF:  GOTO   61D
+05B0:  MOVWF  56
+05B1:  MOVF   52,W
+05B2:  BTFSC  03.2
+05B3:  GOTO   61D
+05B4:  ADDWF  56,F
+05B5:  BTFSC  03.0
+05B6:  GOTO   5BE
+05B7:  MOVLW  7F
+05B8:  SUBWF  56,F
+05B9:  BTFSS  03.0
+05BA:  GOTO   61D
+05BB:  BTFSC  03.2
+05BC:  GOTO   61D
+05BD:  GOTO   5C2
+05BE:  MOVLW  81
+05BF:  ADDWF  56,F
+05C0:  BTFSC  03.0
+05C1:  GOTO   61D
+05C2:  MOVF   56,W
+05C3:  MOVWF  77
+05C4:  CLRF   78
+05C5:  CLRF   79
+05C6:  CLRF   7A
+05C7:  MOVF   4F,W
+05C8:  MOVWF  5A
+05C9:  BSF    5A.7
+05CA:  MOVF   50,W
+05CB:  MOVWF  59
+05CC:  MOVF   51,W
+05CD:  MOVWF  58
+05CE:  MOVLW  18
+05CF:  MOVWF  56
+05D0:  CLRF   57
+05D1:  BTFSS  58.0
+05D2:  GOTO   5EB
+05D3:  MOVF   55,W
+05D4:  ADDWF  7A,F
+05D5:  BTFSS  03.0
+05D6:  GOTO   5DD
+05D7:  INCF   79,F
+05D8:  BTFSS  03.2
+05D9:  GOTO   5DD
+05DA:  INCF   78,F
+05DB:  BTFSC  03.2
+05DC:  BSF    57.7
+05DD:  MOVF   54,W
+05DE:  ADDWF  79,F
+05DF:  BTFSS  03.0
+05E0:  GOTO   5E4
+05E1:  INCF   78,F
+05E2:  BTFSC  03.2
+05E3:  BSF    57.7
+05E4:  MOVF   53,W
+05E5:  MOVWF  50
+05E6:  BSF    50.7
+05E7:  MOVF   50,W
+05E8:  ADDWF  78,F
+05E9:  BTFSC  03.0
+05EA:  BSF    57.7
+05EB:  RLF    57,F
+05EC:  RRF    78,F
+05ED:  RRF    79,F
+05EE:  RRF    7A,F
+05EF:  RRF    5A,F
+05F0:  RRF    59,F
+05F1:  RRF    58,F
+05F2:  BCF    03.0
+05F3:  DECFSZ 56,F
+05F4:  GOTO   5D0
+05F5:  MOVLW  01
+05F6:  ADDWF  77,F
+05F7:  BTFSC  03.0
+05F8:  GOTO   61D
+05F9:  BTFSC  78.7
+05FA:  GOTO   602
+05FB:  RLF    5A,F
+05FC:  RLF    7A,F
+05FD:  RLF    79,F
+05FE:  RLF    78,F
+05FF:  DECF   77,F
+0600:  BTFSC  03.2
+0601:  GOTO   61D
+0602:  BTFSS  5A.7
+0603:  GOTO   613
+0604:  INCF   7A,F
+0605:  BTFSS  03.2
+0606:  GOTO   613
+0607:  INCF   79,F
+0608:  BTFSS  03.2
+0609:  GOTO   613
+060A:  INCF   78,F
+060B:  BTFSS  03.2
+060C:  GOTO   613
+060D:  RRF    78,F
+060E:  RRF    79,F
+060F:  RRF    7A,F
+0610:  INCF   77,F
+0611:  BTFSC  03.2
+0612:  GOTO   61D
+0613:  MOVF   4F,W
+0614:  MOVWF  57
+0615:  MOVF   53,W
+0616:  XORWF  57,F
+0617:  BTFSS  57.7
+0618:  GOTO   61B
+0619:  BSF    78.7
+061A:  GOTO   621
+061B:  BCF    78.7
+061C:  GOTO   621
+061D:  CLRF   77
+061E:  CLRF   78
+061F:  CLRF   79
+0620:  CLRF   7A
+0621:  RETURN
+0622:  MOVLW  8E
+0623:  MOVWF  77
+0624:  MOVF   4E,W
+0625:  SUBWF  77,F
+0626:  MOVF   4F,W
+0627:  MOVWF  79
+0628:  MOVF   50,W
+0629:  MOVWF  78
+062A:  BSF    79.7
+062B:  MOVF   77,F
+062C:  BTFSC  03.2
+062D:  GOTO   639
+062E:  BCF    03.0
+062F:  MOVF   79,F
+0630:  BTFSS  03.2
+0631:  GOTO   635
+0632:  MOVF   78,F
+0633:  BTFSC  03.2
+0634:  GOTO   639
+0635:  RRF    79,F
+0636:  RRF    78,F
+0637:  DECFSZ 77,F
+0638:  GOTO   62E
+0639:  BTFSS  4F.7
+063A:  GOTO   640
+063B:  COMF   78,F
+063C:  COMF   79,F
+063D:  INCF   78,F
+063E:  BTFSC  03.2
+063F:  INCF   79,F
+0640:  RETURN
+*
+06B1:  MOVF   4F,W
+06B2:  ANDLW  07
+06B3:  MOVWF  77
+06B4:  RRF    4F,W
+06B5:  MOVWF  78
+06B6:  RRF    78,F
+06B7:  RRF    78,F
+06B8:  MOVLW  1F
+06B9:  ANDWF  78,F
+06BA:  MOVF   78,W
+06BB:  ADDWF  51,W
+06BC:  MOVWF  04
+06BD:  BCF    03.7
+06BE:  BTFSC  52.0
+06BF:  BSF    03.7
+06C0:  CLRF   78
+06C1:  INCF   78,F
+06C2:  INCF   77,F
+06C3:  GOTO   6C5
+06C4:  RLF    78,F
+06C5:  DECFSZ 77,F
+06C6:  GOTO   6C4
+06C7:  MOVF   50,F
+06C8:  BTFSC  03.2
+06C9:  GOTO   6CD
+06CA:  MOVF   78,W
+06CB:  IORWF  00,F
+06CC:  GOTO   6D0
+06CD:  COMF   78,F
+06CE:  MOVF   78,W
+06CF:  ANDWF  00,F
+06D0:  BCF    0A.3
+06D1:  BCF    0A.4
+06D2:  GOTO   78C (RETURN)
+*
+0A20:  BCF    0A.0
+0A21:  BSF    0A.1
+0A22:  BCF    0A.2
+0A23:  ADDWF  02,F
+0A24:  GOTO   007
+0A25:  GOTO   07B
+0A26:  GOTO   160
+0A27:  GOTO   1E6
 ....................  
 .................... #list 
 ....................  
@@ -1094,12 +1138,12 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 .................... const int8 c4[] = {4, 5, 1, 1, 3, 6, 3, 1, 1, 3, 1, 1, 7,4, 5, 1, 1, 3, 6, 3, 1, 1, 3, 1, 1, 7, 10, 10, 11, 11, 12, 12}; 
 .................... const int8 m4[] = {3, 7, 1, 3, 8, 3, 9, 8, 3, 7, 1, 3, 8, 3, 9, 8,10, 10, 11, 11, 12, 12}; 
 ....................  
-.................... const int8 display_numbers[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0b00001000,0b01001000,0b01001001}; 
+.................... const int8 display_numbers[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0b00001000, 0b01001000, 0b01001001}; 
 ....................  
-.................... int1 pasou_fase_1 = 0; 
-.................... int1 pasou_fase_2 = 0; 
-.................... int1 pasou_fase_3 = 0; 
-.................... int1 pasou_fase_4 = 0; 
+.................... int1 passou_fase[] = {0, 0, 0, 0}; 
+*
+06FF:  BCF    03.5
+0700:  CLRF   4B
 ....................  
 .................... int16 contador_ms = 0; 
 ....................  
@@ -1128,6 +1172,8 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 .................... void testar_listas(); 
 ....................  
 .................... void atualiza_valores(); 
+....................  
+.................... void executar_fase(); 
 ....................  
 .................... #INT_TIMER0 
 .................... void TIMER0_isr(void) { 
@@ -1228,1118 +1274,892 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 03F3:  BCF    0A.4
 03F4:  GOTO   01B
 .................... } 
+....................  
 .................... void main() { 
 *
-0978:  MOVF   03,W
-0979:  ANDLW  1F
-097A:  MOVWF  03
-097B:  MOVLW  03
-097C:  MOVWF  28
-097D:  MOVLW  E8
-097E:  MOVWF  27
-097F:  CLRF   2A
-0980:  CLRF   29
-0981:  CLRF   2F
-0982:  BCF    33.0
-0983:  BCF    33.1
-0984:  BCF    33.2
-0985:  BCF    33.3
-0986:  BCF    33.4
-0987:  BCF    33.5
-0988:  BCF    33.6
-0989:  BCF    33.7
-098A:  BCF    34.0
-098B:  CLRF   39
-098C:  CLRF   3A
-098D:  CLRF   3B
-098E:  CLRF   3C
-098F:  CLRF   3D
-0990:  CLRF   3E
-0991:  CLRF   3F
-0992:  CLRF   40
-0993:  BCF    34.1
-0994:  BCF    34.2
-0995:  BCF    34.3
-0996:  CLRF   49
-0997:  MOVLW  64
-0998:  MOVWF  4A
-0999:  BCF    34.4
-099A:  BCF    34.5
-099B:  BCF    34.6
-099C:  BCF    34.7
-099D:  BCF    4B.0
-099E:  CLRF   4D
-099F:  CLRF   4C
-09A0:  BSF    03.5
-09A1:  BSF    1F.0
-09A2:  BSF    1F.1
-09A3:  BSF    1F.2
-09A4:  BCF    1F.3
-09A5:  MOVLW  07
-09A6:  MOVWF  1C
-09A7:  BCF    03.7
+06D3:  MOVF   03,W
+06D4:  ANDLW  1F
+06D5:  MOVWF  03
+06D6:  MOVLW  03
+06D7:  MOVWF  28
+06D8:  MOVLW  E8
+06D9:  MOVWF  27
+06DA:  CLRF   2A
+06DB:  CLRF   29
+06DC:  CLRF   2F
+06DD:  BCF    33.0
+06DE:  BCF    33.1
+06DF:  BCF    33.2
+06E0:  BCF    33.3
+06E1:  BCF    33.4
+06E2:  BCF    33.5
+06E3:  BCF    33.6
+06E4:  BCF    33.7
+06E5:  BCF    34.0
+06E6:  CLRF   39
+06E7:  CLRF   3A
+06E8:  CLRF   3B
+06E9:  CLRF   3C
+06EA:  CLRF   3D
+06EB:  CLRF   3E
+06EC:  CLRF   3F
+06ED:  CLRF   40
+06EE:  BCF    34.1
+06EF:  BCF    34.2
+06F0:  BCF    34.3
+06F1:  CLRF   49
+06F2:  MOVLW  64
+06F3:  MOVWF  4A
+06F4:  BCF    34.4
+06F5:  CLRF   4D
+06F6:  CLRF   4C
+06F7:  BSF    03.5
+06F8:  BSF    1F.0
+06F9:  BSF    1F.1
+06FA:  BSF    1F.2
+06FB:  BCF    1F.3
+06FC:  MOVLW  07
+06FD:  MOVWF  1C
+06FE:  BCF    03.7
 ....................    setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8 | RTCC_8_BIT); // 1ms overflow 
-09A8:  MOVF   01,W
-09A9:  ANDLW  C0
-09AA:  IORLW  02
-09AB:  MOVWF  01
+0701:  BSF    03.5
+0702:  MOVF   01,W
+0703:  ANDLW  C0
+0704:  IORLW  02
+0705:  MOVWF  01
 ....................    enable_interrupts(INT_TIMER0); 
-09AC:  BCF    03.5
-09AD:  BSF    0B.5
+0706:  BCF    03.5
+0707:  BSF    0B.5
 ....................    enable_interrupts(GLOBAL); 
-09AE:  MOVLW  C0
-09AF:  IORWF  0B,F
+0708:  MOVLW  C0
+0709:  IORWF  0B,F
 ....................  
 ....................    output_d(0); 
-09B0:  BSF    03.5
-09B1:  CLRF   08
-09B2:  BCF    03.5
-09B3:  CLRF   08
+070A:  BSF    03.5
+070B:  CLRF   08
+070C:  BCF    03.5
+070D:  CLRF   08
 ....................  
 ....................    fase = 0; 
-09B4:  CLRF   2F
+070E:  CLRF   2F
 ....................    unidade_ativodecont = V_CONTADOR_DECREMENTO; 
-09B5:  CLRF   42
-09B6:  MOVLW  C8
-09B7:  MOVWF  41
+070F:  CLRF   42
+0710:  MOVLW  C8
+0711:  MOVWF  41
 ....................    dezena_ativodecont = V_CONTADOR_DECREMENTO; 
-09B8:  CLRF   44
-09B9:  MOVWF  43
+0712:  CLRF   44
+0713:  MOVWF  43
 ....................    centena_ativodecont = V_CONTADOR_DECREMENTO; 
-09BA:  CLRF   46
-09BB:  MOVWF  45
+0714:  CLRF   46
+0715:  MOVWF  45
 ....................    milhar_ativodecont = V_CONTADOR_DECREMENTO; 
-09BC:  CLRF   48
-09BD:  MOVWF  47
+0716:  CLRF   48
+0717:  MOVWF  47
 ....................  
 ....................    while (TRUE) { 
 ....................  
 ....................       if (!fase) { 
-09BE:  MOVF   2F,F
-09BF:  BTFSS  03.2
-09C0:  GOTO   2F8
-....................          intervalo_incremento = intervalo_incremento / (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5); 
-09C1:  MOVLW  00
-09C2:  BTFSC  34.5
-09C3:  MOVLW  01
-09C4:  MOVWF  4F
-09C5:  MOVLW  00
-09C6:  BTFSC  34.6
-09C7:  MOVLW  01
-09C8:  ADDWF  4F,W
-09C9:  MOVWF  50
-09CA:  MOVLW  00
-09CB:  BTFSC  34.7
-09CC:  MOVLW  01
-09CD:  ADDWF  50,W
-09CE:  MOVWF  51
-09CF:  MOVLW  00
-09D0:  BTFSC  4B.0
-09D1:  MOVLW  01
-09D2:  ADDWF  51,W
-09D3:  MOVWF  4E
-09D4:  MOVLW  03
-09D5:  MOVWF  52
-09D6:  MOVF   4E,W
-09D7:  MOVWF  53
-09D8:  BCF    0A.3
-09D9:  CALL   3F5
-09DA:  BSF    0A.3
-09DB:  MOVLW  05
-09DC:  ADDWF  78,W
-09DD:  MOVWF  4E
-09DE:  MOVF   28,W
-09DF:  MOVWF  53
-09E0:  MOVF   27,W
-09E1:  MOVWF  52
-09E2:  CLRF   55
-09E3:  MOVF   4E,W
-09E4:  MOVWF  54
-09E5:  BCF    0A.3
-09E6:  CALL   41A
-09E7:  BSF    0A.3
-09E8:  MOVF   79,W
-09E9:  MOVWF  28
-09EA:  MOVF   78,W
-09EB:  MOVWF  27
+0718:  MOVF   2F,F
+0719:  BTFSS  03.2
+071A:  GOTO   792
+....................          intervalo_incremento = intervalo_incremento / (3 * (passou_fase[0] + passou_fase[1] + passou_fase[2] + passou_fase[3]) + 5); 
+071B:  MOVLW  00
+071C:  BTFSC  4B.0
+071D:  MOVLW  01
+071E:  MOVWF  4F
+071F:  MOVLW  00
+0720:  BTFSC  4B.1
+0721:  MOVLW  01
+0722:  ADDWF  4F,W
+0723:  MOVWF  50
+0724:  MOVLW  00
+0725:  BTFSC  4B.2
+0726:  MOVLW  01
+0727:  ADDWF  50,W
+0728:  MOVWF  51
+0729:  MOVLW  00
+072A:  BTFSC  4B.3
+072B:  MOVLW  01
+072C:  ADDWF  51,W
+072D:  MOVWF  4E
+072E:  MOVLW  03
+072F:  MOVWF  52
+0730:  MOVF   4E,W
+0731:  MOVWF  53
+0732:  CALL   3F5
+0733:  MOVLW  05
+0734:  ADDWF  78,W
+0735:  MOVWF  4E
+0736:  MOVF   28,W
+0737:  MOVWF  53
+0738:  MOVF   27,W
+0739:  MOVWF  52
+073A:  CLRF   55
+073B:  MOVF   4E,W
+073C:  MOVWF  54
+073D:  CALL   41A
+073E:  MOVF   79,W
+073F:  MOVWF  28
+0740:  MOVF   78,W
+0741:  MOVWF  27
 ....................          mostrar_tela_inicial(); 
-09EC:  BCF    0A.3
-09ED:  GOTO   447
-09EE:  BSF    0A.3
-....................          intervalo_incremento = intervalo_incremento * (3 * (pasou_fase_1 + pasou_fase_2 + pasou_fase_3 + pasou_fase_4) + 5); 
-09EF:  MOVLW  00
-09F0:  BTFSC  34.5
-09F1:  MOVLW  01
-09F2:  MOVWF  4F
-09F3:  MOVLW  00
-09F4:  BTFSC  34.6
-09F5:  MOVLW  01
-09F6:  ADDWF  4F,W
-09F7:  MOVWF  50
-09F8:  MOVLW  00
-09F9:  BTFSC  34.7
-09FA:  MOVLW  01
-09FB:  ADDWF  50,W
-09FC:  MOVWF  51
-09FD:  MOVLW  00
-09FE:  BTFSC  4B.0
-09FF:  MOVLW  01
-0A00:  ADDWF  51,W
-0A01:  MOVWF  4E
-0A02:  MOVLW  03
-0A03:  MOVWF  52
-0A04:  MOVF   4E,W
-0A05:  MOVWF  53
-0A06:  BCF    0A.3
-0A07:  CALL   3F5
-0A08:  BSF    0A.3
-0A09:  MOVLW  05
-0A0A:  ADDWF  78,W
-0A0B:  MOVWF  4E
-0A0C:  MOVF   28,W
-0A0D:  MOVWF  53
-0A0E:  MOVF   27,W
-0A0F:  MOVWF  52
-0A10:  CLRF   55
-0A11:  MOVF   4E,W
-0A12:  MOVWF  54
-0A13:  BCF    0A.3
-0A14:  GOTO   4DF
-0A15:  BSF    0A.3
-0A16:  MOVF   79,W
-0A17:  MOVWF  28
-0A18:  MOVF   78,W
-0A19:  MOVWF  27
+0742:  GOTO   447
+....................          intervalo_incremento = intervalo_incremento * (3 * (passou_fase[0] + passou_fase[1] + passou_fase[2] + passou_fase[3]) + 5); 
+0743:  MOVLW  00
+0744:  BTFSC  4B.0
+0745:  MOVLW  01
+0746:  MOVWF  4F
+0747:  MOVLW  00
+0748:  BTFSC  4B.1
+0749:  MOVLW  01
+074A:  ADDWF  4F,W
+074B:  MOVWF  50
+074C:  MOVLW  00
+074D:  BTFSC  4B.2
+074E:  MOVLW  01
+074F:  ADDWF  50,W
+0750:  MOVWF  51
+0751:  MOVLW  00
+0752:  BTFSC  4B.3
+0753:  MOVLW  01
+0754:  ADDWF  51,W
+0755:  MOVWF  4E
+0756:  MOVLW  03
+0757:  MOVWF  52
+0758:  MOVF   4E,W
+0759:  MOVWF  53
+075A:  CALL   3F5
+075B:  MOVLW  05
+075C:  ADDWF  78,W
+075D:  MOVWF  4E
+075E:  MOVF   28,W
+075F:  MOVWF  53
+0760:  MOVF   27,W
+0761:  MOVWF  52
+0762:  CLRF   55
+0763:  MOVF   4E,W
+0764:  MOVWF  54
+0765:  GOTO   4DF
+0766:  MOVF   79,W
+0767:  MOVWF  28
+0768:  MOVF   78,W
+0769:  MOVWF  27
 ....................          escolha_de_fase(); 
-0A1A:  BCF    0A.3
-0A1B:  GOTO   543
-0A1C:  BSF    0A.3
+076A:  GOTO   543
 ....................  
-....................          if (fase == 1) { 
-0A1D:  DECFSZ 2F,W
-0A1E:  GOTO   249
+....................          executar_fase(); 
+076B:  BSF    0A.3
+076C:  GOTO   000
+076D:  BCF    0A.3
+....................                  
+....................          if (contador_fase < finalfase) { 
+076E:  MOVF   2A,F
+076F:  BTFSS  03.2
+0770:  GOTO   778
+0771:  MOVF   4A,W
+0772:  SUBWF  29,W
+0773:  BTFSC  03.0
+0774:  GOTO   778
+....................             mostrar_falha(); 
+0775:  GOTO   641
 ....................             contador_fase = 0; 
-0A1F:  CLRF   2A
-0A20:  CLRF   29
-....................             comeca = 1; 
-0A21:  BSF    34.0
-....................             velocidade = intervalo_incremento; 
-0A22:  MOVF   28,W
-0A23:  MOVWF  32
-0A24:  MOVF   27,W
-0A25:  MOVWF  31
-....................             pausa_fase_1 = 0; 
-0A26:  BCF    34.1
-....................             pausa_fase_2 = 0; 
-0A27:  BCF    34.2
-....................             while (fase) { 
-0A28:  MOVF   2F,F
-0A29:  BTFSC  03.2
-0A2A:  GOTO   22F
-....................                fase1(); 
-0A2B:  BCF    0A.3
-0A2C:  GOTO   6A7
-0A2D:  BSF    0A.3
-0A2E:  GOTO   228
-....................             } 
-....................             comeca = 0; 
-0A2F:  BCF    34.0
-....................  
-....................             if (contador_fase < finalfase) { 
-0A30:  MOVF   2A,F
-0A31:  BTFSS  03.2
-0A32:  GOTO   23C
-0A33:  MOVF   4A,W
-0A34:  SUBWF  29,W
-0A35:  BTFSC  03.0
-0A36:  GOTO   23C
-....................                mostrar_falha(); 
-0A37:  BCF    0A.3
-0A38:  CALL   70F
-0A39:  BSF    0A.3
-....................                contador_fase = 0; 
-0A3A:  CLRF   2A
-0A3B:  CLRF   29
-....................             } 
-....................  
-....................             if (contador_fase >= finalfase + 4) 
-0A3C:  MOVLW  04
-0A3D:  ADDWF  4A,W
-0A3E:  MOVF   2A,F
-0A3F:  BTFSS  03.2
-0A40:  GOTO   243
-0A41:  SUBWF  29,W
-0A42:  BTFSC  03.0
-....................                pasou_fase_1 = 1; 
-0A43:  BSF    34.5
-....................  
-....................             intervalo_incremento = velocidade; 
-0A44:  MOVF   32,W
-0A45:  MOVWF  28
-0A46:  MOVF   31,W
-0A47:  MOVWF  27
-....................             fase = 0; 
-0A48:  CLRF   2F
-....................  
+0776:  CLRF   2A
+0777:  CLRF   29
 ....................          } 
 ....................  
-....................          if (fase == 2) { 
-0A49:  MOVF   2F,W
-0A4A:  SUBLW  02
-0A4B:  BTFSS  03.2
-0A4C:  GOTO   275
-....................             contador_fase = 0; 
-0A4D:  CLRF   2A
-0A4E:  CLRF   29
-....................             comeca = 1; 
-0A4F:  BSF    34.0
-....................             velocidade = intervalo_incremento; 
-0A50:  MOVF   28,W
-0A51:  MOVWF  32
-0A52:  MOVF   27,W
-0A53:  MOVWF  31
-....................             pausa_fase_1 = 0; 
-0A54:  BCF    34.1
-....................             pausa_fase_2 = 0; 
-0A55:  BCF    34.2
-....................             while (fase) { 
-0A56:  MOVF   2F,F
-0A57:  BTFSC  03.2
-0A58:  GOTO   25B
-....................                fase2(); 
-0A59:  GOTO   000
-0A5A:  GOTO   256
-....................             } 
-....................             comeca = 0; 
-0A5B:  BCF    34.0
-....................  
-....................             if (contador_fase < finalfase) { 
-0A5C:  MOVF   2A,F
-0A5D:  BTFSS  03.2
-0A5E:  GOTO   268
-0A5F:  MOVF   4A,W
-0A60:  SUBWF  29,W
-0A61:  BTFSC  03.0
-0A62:  GOTO   268
-....................                mostrar_falha(); 
-0A63:  BCF    0A.3
-0A64:  CALL   70F
-0A65:  BSF    0A.3
-....................                contador_fase = 0; 
-0A66:  CLRF   2A
-0A67:  CLRF   29
-....................             } 
-....................             if (contador_fase >= finalfase + 4) 
-0A68:  MOVLW  04
-0A69:  ADDWF  4A,W
-0A6A:  MOVF   2A,F
-0A6B:  BTFSS  03.2
-0A6C:  GOTO   26F
-0A6D:  SUBWF  29,W
-0A6E:  BTFSC  03.0
-....................                pasou_fase_2 = 1; 
-0A6F:  BSF    34.6
-....................  
-....................             intervalo_incremento = velocidade; 
-0A70:  MOVF   32,W
-0A71:  MOVWF  28
-0A72:  MOVF   31,W
-0A73:  MOVWF  27
-....................             fase = 0; 
-0A74:  CLRF   2F
-....................          } 
-....................  
-....................          if (fase == 3) { 
-0A75:  MOVF   2F,W
-0A76:  SUBLW  03
-0A77:  BTFSS  03.2
-0A78:  GOTO   2A1
-....................             contador_fase = 0; 
-0A79:  CLRF   2A
-0A7A:  CLRF   29
-....................             comeca = 1; 
-0A7B:  BSF    34.0
-....................             velocidade = intervalo_incremento; 
-0A7C:  MOVF   28,W
-0A7D:  MOVWF  32
-0A7E:  MOVF   27,W
-0A7F:  MOVWF  31
-....................             pausa_fase_1 = 0; 
-0A80:  BCF    34.1
-....................             pausa_fase_2 = 0; 
-0A81:  BCF    34.2
-....................             while (fase) { 
-0A82:  MOVF   2F,F
-0A83:  BTFSC  03.2
-0A84:  GOTO   287
-....................                fase3(); 
-0A85:  GOTO   0EC
-0A86:  GOTO   282
-....................             } 
-....................             comeca = 0; 
-0A87:  BCF    34.0
-....................  
-....................             if (contador_fase < finalfase) { 
-0A88:  MOVF   2A,F
-0A89:  BTFSS  03.2
-0A8A:  GOTO   294
-0A8B:  MOVF   4A,W
-0A8C:  SUBWF  29,W
-0A8D:  BTFSC  03.0
-0A8E:  GOTO   294
-....................                mostrar_falha(); 
-0A8F:  BCF    0A.3
-0A90:  CALL   70F
-0A91:  BSF    0A.3
-....................                contador_fase = 0; 
-0A92:  CLRF   2A
-0A93:  CLRF   29
-....................             } 
-....................             if (contador_fase >= finalfase + 4) 
-0A94:  MOVLW  04
-0A95:  ADDWF  4A,W
-0A96:  MOVF   2A,F
-0A97:  BTFSS  03.2
-0A98:  GOTO   29B
-0A99:  SUBWF  29,W
-0A9A:  BTFSC  03.0
-....................                pasou_fase_3 = 1; 
-0A9B:  BSF    34.7
-....................  
-....................             intervalo_incremento = velocidade; 
-0A9C:  MOVF   32,W
-0A9D:  MOVWF  28
-0A9E:  MOVF   31,W
-0A9F:  MOVWF  27
-....................             fase = 0; 
-0AA0:  CLRF   2F
-....................  
-....................          } 
-....................  
-....................          if (fase == 4) { 
-0AA1:  MOVF   2F,W
-0AA2:  SUBLW  04
-0AA3:  BTFSS  03.2
-0AA4:  GOTO   2F8
-....................             contador_fase = 0; 
-0AA5:  CLRF   2A
-0AA6:  CLRF   29
-....................             comeca = 1; 
-0AA7:  BSF    34.0
-....................             velocidade = intervalo_incremento; 
-0AA8:  MOVF   28,W
-0AA9:  MOVWF  32
-0AAA:  MOVF   27,W
-0AAB:  MOVWF  31
-....................             pausa_fase_1 = 0; 
-0AAC:  BCF    34.1
-....................             pausa_fase_2 = 0; 
-0AAD:  BCF    34.2
-....................             intervalo_incremento = intervalo_incremento * 0.60; 
-0AAE:  MOVF   28,W
-0AAF:  MOVWF  4F
-0AB0:  MOVF   27,W
-0AB1:  MOVWF  4E
-0AB2:  BCF    0A.3
-0AB3:  CALL   5F6
-0AB4:  BSF    0A.3
-0AB5:  MOVF   7A,W
-0AB6:  MOVWF  51
-0AB7:  MOVF   79,W
-0AB8:  MOVWF  50
-0AB9:  MOVF   78,W
-0ABA:  MOVWF  4F
-0ABB:  MOVF   77,W
-0ABC:  MOVWF  4E
-0ABD:  MOVLW  9A
-0ABE:  MOVWF  55
-0ABF:  MOVLW  99
-0AC0:  MOVWF  54
-0AC1:  MOVLW  19
-0AC2:  MOVWF  53
-0AC3:  MOVLW  7E
-0AC4:  MOVWF  52
-0AC5:  BCF    0A.3
-0AC6:  CALL   613
-0AC7:  BSF    0A.3
-0AC8:  MOVF   7A,W
-0AC9:  MOVWF  51
-0ACA:  MOVF   79,W
-0ACB:  MOVWF  50
-0ACC:  MOVF   78,W
-0ACD:  MOVWF  4F
-0ACE:  MOVF   77,W
-0ACF:  MOVWF  4E
-0AD0:  BCF    0A.3
-0AD1:  CALL   688
-0AD2:  BSF    0A.3
-0AD3:  MOVF   79,W
-0AD4:  MOVWF  28
-0AD5:  MOVF   78,W
-0AD6:  MOVWF  27
-....................             while (fase) { 
-0AD7:  MOVF   2F,F
-0AD8:  BTFSC  03.2
-0AD9:  GOTO   2DE
-....................                fase4(); 
-0ADA:  BCF    0A.3
-0ADB:  GOTO   77D
-0ADC:  BSF    0A.3
-0ADD:  GOTO   2D7
-....................             } 
-....................             comeca = 0; 
-0ADE:  BCF    34.0
-....................  
-....................             if (contador_fase < finalfase) { 
-0ADF:  MOVF   2A,F
-0AE0:  BTFSS  03.2
-0AE1:  GOTO   2EB
-0AE2:  MOVF   4A,W
-0AE3:  SUBWF  29,W
-0AE4:  BTFSC  03.0
-0AE5:  GOTO   2EB
-....................                mostrar_falha(); 
-0AE6:  BCF    0A.3
-0AE7:  CALL   70F
-0AE8:  BSF    0A.3
-....................                contador_fase = 0; 
-0AE9:  CLRF   2A
-0AEA:  CLRF   29
-....................             } 
-....................             if (contador_fase >= finalfase + 4) 
-0AEB:  MOVLW  04
-0AEC:  ADDWF  4A,W
-0AED:  MOVF   2A,F
-0AEE:  BTFSS  03.2
-0AEF:  GOTO   2F2
-0AF0:  SUBWF  29,W
-0AF1:  BTFSC  03.0
-....................                pasou_fase_4 = 1; 
-0AF2:  BSF    4B.0
-....................  
-....................             intervalo_incremento = velocidade; 
-0AF3:  MOVF   32,W
-0AF4:  MOVWF  28
-0AF5:  MOVF   31,W
-0AF6:  MOVWF  27
-....................             fase = 0; 
-0AF7:  CLRF   2F
-....................          } 
-....................  
+....................          passou_fase[fase] = contador_fase >= (finalfase + 4); 
+0778:  MOVLW  04
+0779:  ADDWF  4A,W
+077A:  MOVF   2A,F
+077B:  BTFSS  03.2
+077C:  GOTO   782
+077D:  SUBWF  29,W
+077E:  BTFSC  03.0
+077F:  GOTO   782
+0780:  MOVLW  00
+0781:  GOTO   783
+0782:  MOVLW  01
+0783:  MOVWF  4E
+0784:  MOVF   2F,W
+0785:  MOVWF  4F
+0786:  MOVF   4E,W
+0787:  MOVWF  50
+0788:  CLRF   52
+0789:  MOVLW  4B
+078A:  MOVWF  51
+078B:  GOTO   6B1
+....................           
+....................          intervalo_incremento = velocidade; 
+078C:  MOVF   32,W
+078D:  MOVWF  28
+078E:  MOVF   31,W
+078F:  MOVWF  27
+....................          comeca = 0; 
+0790:  BCF    34.0
+....................          fase = 0; 
+0791:  CLRF   2F
 ....................       } 
 ....................       contador_fase = 0; 
-0AF8:  CLRF   2A
-0AF9:  CLRF   29
-0AFA:  GOTO   1BE
+0792:  CLRF   2A
+0793:  CLRF   29
+0794:  GOTO   718
 ....................    } 
 .................... } 
 ....................  
-0AFB:  SLEEP
-.................... void fase1() { 
-....................    atualiza_valores(); 
+0795:  SLEEP
+.................... void executar_fase() { 
+....................    switch (fase) { 
 *
-06A7:  CALL   590
+0800:  MOVLW  01
+0801:  SUBWF  2F,W
+0802:  ADDLW  FC
+0803:  BTFSC  03.0
+0804:  GOTO   21D
+0805:  ADDLW  04
+0806:  GOTO   220
+....................       case 1: 
+....................          while (fase) 
+0807:  MOVF   2F,F
+0808:  BTFSC  03.2
+0809:  GOTO   07A
+....................             fase1(); 
+*
+0879:  GOTO   007
+....................          break; 
+087A:  GOTO   21D
+....................       case 2: 
+....................          while (fase) 
+087B:  MOVF   2F,F
+087C:  BTFSC  03.2
+087D:  GOTO   15F
+....................             fase2(); 
+*
+095E:  GOTO   07B
+....................          break;    
+095F:  GOTO   21D
+....................       case 3: 
+....................          while (fase) 
+0960:  MOVF   2F,F
+0961:  BTFSC  03.2
+0962:  GOTO   1E5
+....................             fase3();   
+*
+09E4:  GOTO   160
+....................          break;    
+09E5:  GOTO   21D
+....................       case 4: 
+....................          intervalo_incremento = intervalo_incremento * 0.60; 
+09E6:  MOVF   28,W
+09E7:  MOVWF  4F
+09E8:  MOVF   27,W
+09E9:  MOVWF  4E
+09EA:  BCF    0A.3
+09EB:  CALL   590
+09EC:  BSF    0A.3
+09ED:  MOVF   7A,W
+09EE:  MOVWF  51
+09EF:  MOVF   79,W
+09F0:  MOVWF  50
+09F1:  MOVF   78,W
+09F2:  MOVWF  4F
+09F3:  MOVF   77,W
+09F4:  MOVWF  4E
+09F5:  MOVLW  9A
+09F6:  MOVWF  55
+09F7:  MOVLW  99
+09F8:  MOVWF  54
+09F9:  MOVLW  19
+09FA:  MOVWF  53
+09FB:  MOVLW  7E
+09FC:  MOVWF  52
+09FD:  BCF    0A.3
+09FE:  CALL   5AD
+09FF:  BSF    0A.3
+0A00:  MOVF   7A,W
+0A01:  MOVWF  51
+0A02:  MOVF   79,W
+0A03:  MOVWF  50
+0A04:  MOVF   78,W
+0A05:  MOVWF  4F
+0A06:  MOVF   77,W
+0A07:  MOVWF  4E
+0A08:  BCF    0A.3
+0A09:  CALL   622
+0A0A:  BSF    0A.3
+0A0B:  MOVF   79,W
+0A0C:  MOVWF  28
+0A0D:  MOVF   78,W
+0A0E:  MOVWF  27
+....................          while (fase) 
+0A0F:  MOVF   2F,F
+0A10:  BTFSC  03.2
+0A11:  GOTO   21C
+....................             fase4(); 
+*
+0A1B:  GOTO   20F
+....................          break; 
+0A1C:  GOTO   21D
+....................    } 
+0A1D:  BCF    0A.3
+0A1E:  BCF    0A.4
+0A1F:  GOTO   76D (RETURN)
+.................... } 
 ....................  
-....................    atualiza_display(); 
-06A8:  CALL   4F6
-....................    verificar_botoes(); 
-06A9:  CALL   599
+.................... void fase1() { 
 ....................  
 ....................    if (contador_fase == 50 && !pausa_fase_1) { 
-06AA:  MOVF   29,W
-06AB:  SUBLW  32
-06AC:  BTFSS  03.2
-06AD:  GOTO   6D7
-06AE:  MOVF   2A,F
-06AF:  BTFSS  03.2
-06B0:  GOTO   6D7
-06B1:  BTFSC  34.1
-06B2:  GOTO   6D7
+*
+080A:  MOVF   29,W
+080B:  SUBLW  32
+080C:  BTFSS  03.2
+080D:  GOTO   03D
+080E:  MOVF   2A,F
+080F:  BTFSS  03.2
+0810:  GOTO   03D
+0811:  BTFSC  34.1
+0812:  GOTO   03D
 ....................       intervalo_incremento = intervalo_incremento * 0.85; 
-06B3:  MOVF   28,W
-06B4:  MOVWF  4F
-06B5:  MOVF   27,W
-06B6:  MOVWF  4E
-06B7:  CALL   5F6
-06B8:  MOVF   7A,W
-06B9:  MOVWF  51
-06BA:  MOVF   79,W
-06BB:  MOVWF  50
-06BC:  MOVF   78,W
-06BD:  MOVWF  4F
-06BE:  MOVF   77,W
-06BF:  MOVWF  4E
-06C0:  MOVLW  9A
-06C1:  MOVWF  55
-06C2:  MOVLW  99
-06C3:  MOVWF  54
-06C4:  MOVLW  59
-06C5:  MOVWF  53
-06C6:  MOVLW  7E
-06C7:  MOVWF  52
-06C8:  CALL   613
-06C9:  MOVF   7A,W
-06CA:  MOVWF  51
-06CB:  MOVF   79,W
-06CC:  MOVWF  50
-06CD:  MOVF   78,W
-06CE:  MOVWF  4F
-06CF:  MOVF   77,W
-06D0:  MOVWF  4E
-06D1:  CALL   688
-06D2:  MOVF   79,W
-06D3:  MOVWF  28
-06D4:  MOVF   78,W
-06D5:  MOVWF  27
+0813:  MOVF   28,W
+0814:  MOVWF  4F
+0815:  MOVF   27,W
+0816:  MOVWF  4E
+0817:  BCF    0A.3
+0818:  CALL   590
+0819:  BSF    0A.3
+081A:  MOVF   7A,W
+081B:  MOVWF  51
+081C:  MOVF   79,W
+081D:  MOVWF  50
+081E:  MOVF   78,W
+081F:  MOVWF  4F
+0820:  MOVF   77,W
+0821:  MOVWF  4E
+0822:  MOVLW  9A
+0823:  MOVWF  55
+0824:  MOVLW  99
+0825:  MOVWF  54
+0826:  MOVLW  59
+0827:  MOVWF  53
+0828:  MOVLW  7E
+0829:  MOVWF  52
+082A:  BCF    0A.3
+082B:  CALL   5AD
+082C:  BSF    0A.3
+082D:  MOVF   7A,W
+082E:  MOVWF  51
+082F:  MOVF   79,W
+0830:  MOVWF  50
+0831:  MOVF   78,W
+0832:  MOVWF  4F
+0833:  MOVF   77,W
+0834:  MOVWF  4E
+0835:  BCF    0A.3
+0836:  CALL   622
+0837:  BSF    0A.3
+0838:  MOVF   79,W
+0839:  MOVWF  28
+083A:  MOVF   78,W
+083B:  MOVWF  27
 ....................       pausa_fase_1 = 1; 
-06D6:  BSF    34.1
+083C:  BSF    34.1
 ....................    } 
 ....................  
 ....................    if (contador_fase == 75 && !pausa_fase_2) { 
-06D7:  MOVF   29,W
-06D8:  SUBLW  4B
-06D9:  BTFSS  03.2
-06DA:  GOTO   704
-06DB:  MOVF   2A,F
-06DC:  BTFSS  03.2
-06DD:  GOTO   704
-06DE:  BTFSC  34.2
-06DF:  GOTO   704
+083D:  MOVF   29,W
+083E:  SUBLW  4B
+083F:  BTFSS  03.2
+0840:  GOTO   070
+0841:  MOVF   2A,F
+0842:  BTFSS  03.2
+0843:  GOTO   070
+0844:  BTFSC  34.2
+0845:  GOTO   070
 ....................       intervalo_incremento = intervalo_incremento * 0.85; 
-06E0:  MOVF   28,W
-06E1:  MOVWF  4F
-06E2:  MOVF   27,W
-06E3:  MOVWF  4E
-06E4:  CALL   5F6
-06E5:  MOVF   7A,W
-06E6:  MOVWF  51
-06E7:  MOVF   79,W
-06E8:  MOVWF  50
-06E9:  MOVF   78,W
-06EA:  MOVWF  4F
-06EB:  MOVF   77,W
-06EC:  MOVWF  4E
-06ED:  MOVLW  9A
-06EE:  MOVWF  55
-06EF:  MOVLW  99
-06F0:  MOVWF  54
-06F1:  MOVLW  59
-06F2:  MOVWF  53
-06F3:  MOVLW  7E
-06F4:  MOVWF  52
-06F5:  CALL   613
-06F6:  MOVF   7A,W
-06F7:  MOVWF  51
-06F8:  MOVF   79,W
-06F9:  MOVWF  50
-06FA:  MOVF   78,W
-06FB:  MOVWF  4F
-06FC:  MOVF   77,W
-06FD:  MOVWF  4E
-06FE:  CALL   688
-06FF:  MOVF   79,W
-0700:  MOVWF  28
-0701:  MOVF   78,W
-0702:  MOVWF  27
+0846:  MOVF   28,W
+0847:  MOVWF  4F
+0848:  MOVF   27,W
+0849:  MOVWF  4E
+084A:  BCF    0A.3
+084B:  CALL   590
+084C:  BSF    0A.3
+084D:  MOVF   7A,W
+084E:  MOVWF  51
+084F:  MOVF   79,W
+0850:  MOVWF  50
+0851:  MOVF   78,W
+0852:  MOVWF  4F
+0853:  MOVF   77,W
+0854:  MOVWF  4E
+0855:  MOVLW  9A
+0856:  MOVWF  55
+0857:  MOVLW  99
+0858:  MOVWF  54
+0859:  MOVLW  59
+085A:  MOVWF  53
+085B:  MOVLW  7E
+085C:  MOVWF  52
+085D:  BCF    0A.3
+085E:  CALL   5AD
+085F:  BSF    0A.3
+0860:  MOVF   7A,W
+0861:  MOVWF  51
+0862:  MOVF   79,W
+0863:  MOVWF  50
+0864:  MOVF   78,W
+0865:  MOVWF  4F
+0866:  MOVF   77,W
+0867:  MOVWF  4E
+0868:  BCF    0A.3
+0869:  CALL   622
+086A:  BSF    0A.3
+086B:  MOVF   79,W
+086C:  MOVWF  28
+086D:  MOVF   78,W
+086E:  MOVWF  27
 ....................       pausa_fase_2 = 1; 
-0703:  BSF    34.2
+086F:  BSF    34.2
 ....................    } 
 ....................  
 ....................    if (contador_fase == finalfase + 5) 
-0704:  MOVLW  05
-0705:  ADDWF  4A,W
-0706:  SUBWF  29,W
-0707:  BTFSS  03.2
-0708:  GOTO   70C
-0709:  MOVF   2A,F
-070A:  BTFSC  03.2
+0870:  MOVLW  05
+0871:  ADDWF  4A,W
+0872:  SUBWF  29,W
+0873:  BTFSS  03.2
+0874:  GOTO   079
+0875:  MOVF   2A,F
+0876:  BTFSS  03.2
+0877:  GOTO   079
 ....................       fase = 0; 
-070B:  CLRF   2F
-070C:  BSF    0A.3
-070D:  BCF    0A.4
-070E:  GOTO   22D (RETURN)
+0878:  CLRF   2F
 ....................  
 .................... } 
 ....................  
 .................... void fase2() { 
-....................    atualiza_valores(); 
-*
-0800:  BCF    0A.3
-0801:  CALL   590
-0802:  BSF    0A.3
-....................  
-....................    atualiza_display(); 
-0803:  BCF    0A.3
-0804:  CALL   4F6
-0805:  BSF    0A.3
-....................    verificar_botoes(); 
-0806:  BCF    0A.3
-0807:  CALL   599
-0808:  BSF    0A.3
-....................  
 ....................    if (contador_fase == 12 && !pausa_fase_1) { 
-0809:  MOVF   29,W
-080A:  SUBLW  0C
-080B:  BTFSS  03.2
-080C:  GOTO   03A
-080D:  MOVF   2A,F
-080E:  BTFSS  03.2
-080F:  GOTO   03A
-0810:  BTFSC  34.1
-0811:  GOTO   03A
+*
+087E:  MOVF   29,W
+087F:  SUBLW  0C
+0880:  BTFSS  03.2
+0881:  GOTO   0AF
+0882:  MOVF   2A,F
+0883:  BTFSS  03.2
+0884:  GOTO   0AF
+0885:  BTFSC  34.1
+0886:  GOTO   0AF
 ....................       intervalo_incremento = intervalo_incremento * 0.90; 
-0812:  MOVF   28,W
-0813:  MOVWF  4F
-0814:  MOVF   27,W
-0815:  MOVWF  4E
-0816:  BCF    0A.3
-0817:  CALL   5F6
-0818:  BSF    0A.3
-0819:  MOVF   7A,W
-081A:  MOVWF  51
-081B:  MOVF   79,W
-081C:  MOVWF  50
-081D:  MOVF   78,W
-081E:  MOVWF  4F
-081F:  MOVF   77,W
-0820:  MOVWF  4E
-0821:  MOVLW  66
-0822:  MOVWF  55
-0823:  MOVWF  54
-0824:  MOVWF  53
-0825:  MOVLW  7E
-0826:  MOVWF  52
-0827:  BCF    0A.3
-0828:  CALL   613
-0829:  BSF    0A.3
-082A:  MOVF   7A,W
-082B:  MOVWF  51
-082C:  MOVF   79,W
-082D:  MOVWF  50
-082E:  MOVF   78,W
-082F:  MOVWF  4F
-0830:  MOVF   77,W
-0831:  MOVWF  4E
-0832:  BCF    0A.3
-0833:  CALL   688
-0834:  BSF    0A.3
-0835:  MOVF   79,W
-0836:  MOVWF  28
-0837:  MOVF   78,W
-0838:  MOVWF  27
+0887:  MOVF   28,W
+0888:  MOVWF  4F
+0889:  MOVF   27,W
+088A:  MOVWF  4E
+088B:  BCF    0A.3
+088C:  CALL   590
+088D:  BSF    0A.3
+088E:  MOVF   7A,W
+088F:  MOVWF  51
+0890:  MOVF   79,W
+0891:  MOVWF  50
+0892:  MOVF   78,W
+0893:  MOVWF  4F
+0894:  MOVF   77,W
+0895:  MOVWF  4E
+0896:  MOVLW  66
+0897:  MOVWF  55
+0898:  MOVWF  54
+0899:  MOVWF  53
+089A:  MOVLW  7E
+089B:  MOVWF  52
+089C:  BCF    0A.3
+089D:  CALL   5AD
+089E:  BSF    0A.3
+089F:  MOVF   7A,W
+08A0:  MOVWF  51
+08A1:  MOVF   79,W
+08A2:  MOVWF  50
+08A3:  MOVF   78,W
+08A4:  MOVWF  4F
+08A5:  MOVF   77,W
+08A6:  MOVWF  4E
+08A7:  BCF    0A.3
+08A8:  CALL   622
+08A9:  BSF    0A.3
+08AA:  MOVF   79,W
+08AB:  MOVWF  28
+08AC:  MOVF   78,W
+08AD:  MOVWF  27
 ....................       pausa_fase_1 = 1; 
-0839:  BSF    34.1
+08AE:  BSF    34.1
 ....................    } 
 ....................  
 ....................    if (contador_fase == 24 && !pausa_fase_2) { 
-083A:  MOVF   29,W
-083B:  SUBLW  18
-083C:  BTFSS  03.2
-083D:  GOTO   049
-083E:  MOVF   2A,F
-083F:  BTFSS  03.2
-0840:  GOTO   049
-0841:  BTFSC  34.2
-0842:  GOTO   049
+08AF:  MOVF   29,W
+08B0:  SUBLW  18
+08B1:  BTFSS  03.2
+08B2:  GOTO   0BE
+08B3:  MOVF   2A,F
+08B4:  BTFSS  03.2
+08B5:  GOTO   0BE
+08B6:  BTFSC  34.2
+08B7:  GOTO   0BE
 ....................       intervalo_incremento = velocidade; 
-0843:  MOVF   32,W
-0844:  MOVWF  28
-0845:  MOVF   31,W
-0846:  MOVWF  27
+08B8:  MOVF   32,W
+08B9:  MOVWF  28
+08BA:  MOVF   31,W
+08BB:  MOVWF  27
 ....................       pausa_fase_2 = 1; 
-0847:  BSF    34.2
+08BC:  BSF    34.2
 ....................       pausa_fase_1 = 0; 
-0848:  BCF    34.1
+08BD:  BCF    34.1
 ....................    } 
 ....................  
 ....................    if (contador_fase == 48 && !pausa_fase_1) { 
-0849:  MOVF   29,W
-084A:  SUBLW  30
-084B:  BTFSS  03.2
-084C:  GOTO   07D
-084D:  MOVF   2A,F
-084E:  BTFSS  03.2
-084F:  GOTO   07D
-0850:  BTFSC  34.1
-0851:  GOTO   07D
+08BE:  MOVF   29,W
+08BF:  SUBLW  30
+08C0:  BTFSS  03.2
+08C1:  GOTO   0F2
+08C2:  MOVF   2A,F
+08C3:  BTFSS  03.2
+08C4:  GOTO   0F2
+08C5:  BTFSC  34.1
+08C6:  GOTO   0F2
 ....................       intervalo_incremento = intervalo_incremento * 0.80; 
-0852:  MOVF   28,W
-0853:  MOVWF  4F
-0854:  MOVF   27,W
-0855:  MOVWF  4E
-0856:  BCF    0A.3
-0857:  CALL   5F6
-0858:  BSF    0A.3
-0859:  MOVF   7A,W
-085A:  MOVWF  51
-085B:  MOVF   79,W
-085C:  MOVWF  50
-085D:  MOVF   78,W
-085E:  MOVWF  4F
-085F:  MOVF   77,W
-0860:  MOVWF  4E
-0861:  MOVLW  CD
-0862:  MOVWF  55
-0863:  MOVLW  CC
-0864:  MOVWF  54
-0865:  MOVLW  4C
-0866:  MOVWF  53
-0867:  MOVLW  7E
-0868:  MOVWF  52
-0869:  BCF    0A.3
-086A:  CALL   613
-086B:  BSF    0A.3
-086C:  MOVF   7A,W
-086D:  MOVWF  51
-086E:  MOVF   79,W
-086F:  MOVWF  50
-0870:  MOVF   78,W
-0871:  MOVWF  4F
-0872:  MOVF   77,W
-0873:  MOVWF  4E
-0874:  BCF    0A.3
-0875:  CALL   688
-0876:  BSF    0A.3
-0877:  MOVF   79,W
-0878:  MOVWF  28
-0879:  MOVF   78,W
-087A:  MOVWF  27
+08C7:  MOVF   28,W
+08C8:  MOVWF  4F
+08C9:  MOVF   27,W
+08CA:  MOVWF  4E
+08CB:  BCF    0A.3
+08CC:  CALL   590
+08CD:  BSF    0A.3
+08CE:  MOVF   7A,W
+08CF:  MOVWF  51
+08D0:  MOVF   79,W
+08D1:  MOVWF  50
+08D2:  MOVF   78,W
+08D3:  MOVWF  4F
+08D4:  MOVF   77,W
+08D5:  MOVWF  4E
+08D6:  MOVLW  CD
+08D7:  MOVWF  55
+08D8:  MOVLW  CC
+08D9:  MOVWF  54
+08DA:  MOVLW  4C
+08DB:  MOVWF  53
+08DC:  MOVLW  7E
+08DD:  MOVWF  52
+08DE:  BCF    0A.3
+08DF:  CALL   5AD
+08E0:  BSF    0A.3
+08E1:  MOVF   7A,W
+08E2:  MOVWF  51
+08E3:  MOVF   79,W
+08E4:  MOVWF  50
+08E5:  MOVF   78,W
+08E6:  MOVWF  4F
+08E7:  MOVF   77,W
+08E8:  MOVWF  4E
+08E9:  BCF    0A.3
+08EA:  CALL   622
+08EB:  BSF    0A.3
+08EC:  MOVF   79,W
+08ED:  MOVWF  28
+08EE:  MOVF   78,W
+08EF:  MOVWF  27
 ....................       pausa_fase_2 = 0; 
-087B:  BCF    34.2
+08F0:  BCF    34.2
 ....................       pausa_fase_1 = 1; 
-087C:  BSF    34.1
+08F1:  BSF    34.1
 ....................    } 
 ....................  
 ....................    if (contador_fase == 72 && !pausa_fase_2) { 
-087D:  MOVF   29,W
-087E:  SUBLW  48
-087F:  BTFSS  03.2
-0880:  GOTO   0AF
-0881:  MOVF   2A,F
-0882:  BTFSS  03.2
-0883:  GOTO   0AF
-0884:  BTFSC  34.2
-0885:  GOTO   0AF
+08F2:  MOVF   29,W
+08F3:  SUBLW  48
+08F4:  BTFSS  03.2
+08F5:  GOTO   124
+08F6:  MOVF   2A,F
+08F7:  BTFSS  03.2
+08F8:  GOTO   124
+08F9:  BTFSC  34.2
+08FA:  GOTO   124
 ....................       intervalo_incremento = intervalo_incremento * 0.90; 
-0886:  MOVF   28,W
-0887:  MOVWF  4F
-0888:  MOVF   27,W
-0889:  MOVWF  4E
-088A:  BCF    0A.3
-088B:  CALL   5F6
-088C:  BSF    0A.3
-088D:  MOVF   7A,W
-088E:  MOVWF  51
-088F:  MOVF   79,W
-0890:  MOVWF  50
-0891:  MOVF   78,W
-0892:  MOVWF  4F
-0893:  MOVF   77,W
-0894:  MOVWF  4E
-0895:  MOVLW  66
-0896:  MOVWF  55
-0897:  MOVWF  54
-0898:  MOVWF  53
-0899:  MOVLW  7E
-089A:  MOVWF  52
-089B:  BCF    0A.3
-089C:  CALL   613
-089D:  BSF    0A.3
-089E:  MOVF   7A,W
-089F:  MOVWF  51
-08A0:  MOVF   79,W
-08A1:  MOVWF  50
-08A2:  MOVF   78,W
-08A3:  MOVWF  4F
-08A4:  MOVF   77,W
-08A5:  MOVWF  4E
-08A6:  BCF    0A.3
-08A7:  CALL   688
-08A8:  BSF    0A.3
-08A9:  MOVF   79,W
-08AA:  MOVWF  28
-08AB:  MOVF   78,W
-08AC:  MOVWF  27
+08FB:  MOVF   28,W
+08FC:  MOVWF  4F
+08FD:  MOVF   27,W
+08FE:  MOVWF  4E
+08FF:  BCF    0A.3
+0900:  CALL   590
+0901:  BSF    0A.3
+0902:  MOVF   7A,W
+0903:  MOVWF  51
+0904:  MOVF   79,W
+0905:  MOVWF  50
+0906:  MOVF   78,W
+0907:  MOVWF  4F
+0908:  MOVF   77,W
+0909:  MOVWF  4E
+090A:  MOVLW  66
+090B:  MOVWF  55
+090C:  MOVWF  54
+090D:  MOVWF  53
+090E:  MOVLW  7E
+090F:  MOVWF  52
+0910:  BCF    0A.3
+0911:  CALL   5AD
+0912:  BSF    0A.3
+0913:  MOVF   7A,W
+0914:  MOVWF  51
+0915:  MOVF   79,W
+0916:  MOVWF  50
+0917:  MOVF   78,W
+0918:  MOVWF  4F
+0919:  MOVF   77,W
+091A:  MOVWF  4E
+091B:  BCF    0A.3
+091C:  CALL   622
+091D:  BSF    0A.3
+091E:  MOVF   79,W
+091F:  MOVWF  28
+0920:  MOVF   78,W
+0921:  MOVWF  27
 ....................       pausa_fase_2 = 1; 
-08AD:  BSF    34.2
+0922:  BSF    34.2
 ....................       pausa_fase_1 = 0; 
-08AE:  BCF    34.1
+0923:  BCF    34.1
 ....................    } 
 ....................  
 ....................    if (contador_fase == 96 && !pausa_fase_1) { 
-08AF:  MOVF   29,W
-08B0:  SUBLW  60
-08B1:  BTFSS  03.2
-08B2:  GOTO   0E0
-08B3:  MOVF   2A,F
-08B4:  BTFSS  03.2
-08B5:  GOTO   0E0
-08B6:  BTFSC  34.1
-08B7:  GOTO   0E0
+0924:  MOVF   29,W
+0925:  SUBLW  60
+0926:  BTFSS  03.2
+0927:  GOTO   155
+0928:  MOVF   2A,F
+0929:  BTFSS  03.2
+092A:  GOTO   155
+092B:  BTFSC  34.1
+092C:  GOTO   155
 ....................       intervalo_incremento = intervalo_incremento * 0.90; 
-08B8:  MOVF   28,W
-08B9:  MOVWF  4F
-08BA:  MOVF   27,W
-08BB:  MOVWF  4E
-08BC:  BCF    0A.3
-08BD:  CALL   5F6
-08BE:  BSF    0A.3
-08BF:  MOVF   7A,W
-08C0:  MOVWF  51
-08C1:  MOVF   79,W
-08C2:  MOVWF  50
-08C3:  MOVF   78,W
-08C4:  MOVWF  4F
-08C5:  MOVF   77,W
-08C6:  MOVWF  4E
-08C7:  MOVLW  66
-08C8:  MOVWF  55
-08C9:  MOVWF  54
-08CA:  MOVWF  53
-08CB:  MOVLW  7E
-08CC:  MOVWF  52
-08CD:  BCF    0A.3
-08CE:  CALL   613
-08CF:  BSF    0A.3
-08D0:  MOVF   7A,W
-08D1:  MOVWF  51
-08D2:  MOVF   79,W
-08D3:  MOVWF  50
-08D4:  MOVF   78,W
-08D5:  MOVWF  4F
-08D6:  MOVF   77,W
-08D7:  MOVWF  4E
-08D8:  BCF    0A.3
-08D9:  CALL   688
-08DA:  BSF    0A.3
-08DB:  MOVF   79,W
-08DC:  MOVWF  28
-08DD:  MOVF   78,W
-08DE:  MOVWF  27
+092D:  MOVF   28,W
+092E:  MOVWF  4F
+092F:  MOVF   27,W
+0930:  MOVWF  4E
+0931:  BCF    0A.3
+0932:  CALL   590
+0933:  BSF    0A.3
+0934:  MOVF   7A,W
+0935:  MOVWF  51
+0936:  MOVF   79,W
+0937:  MOVWF  50
+0938:  MOVF   78,W
+0939:  MOVWF  4F
+093A:  MOVF   77,W
+093B:  MOVWF  4E
+093C:  MOVLW  66
+093D:  MOVWF  55
+093E:  MOVWF  54
+093F:  MOVWF  53
+0940:  MOVLW  7E
+0941:  MOVWF  52
+0942:  BCF    0A.3
+0943:  CALL   5AD
+0944:  BSF    0A.3
+0945:  MOVF   7A,W
+0946:  MOVWF  51
+0947:  MOVF   79,W
+0948:  MOVWF  50
+0949:  MOVF   78,W
+094A:  MOVWF  4F
+094B:  MOVF   77,W
+094C:  MOVWF  4E
+094D:  BCF    0A.3
+094E:  CALL   622
+094F:  BSF    0A.3
+0950:  MOVF   79,W
+0951:  MOVWF  28
+0952:  MOVF   78,W
+0953:  MOVWF  27
 ....................       pausa_fase_1 = 1; 
-08DF:  BSF    34.1
+0954:  BSF    34.1
 ....................    } 
 ....................  
 ....................    if (contador_fase == finalfase + 5) 
-08E0:  MOVLW  05
-08E1:  ADDWF  4A,W
-08E2:  SUBWF  29,W
-08E3:  BTFSS  03.2
-08E4:  GOTO   0E9
-08E5:  MOVF   2A,F
-08E6:  BTFSS  03.2
-08E7:  GOTO   0E9
+0955:  MOVLW  05
+0956:  ADDWF  4A,W
+0957:  SUBWF  29,W
+0958:  BTFSS  03.2
+0959:  GOTO   15E
+095A:  MOVF   2A,F
+095B:  BTFSS  03.2
+095C:  GOTO   15E
 ....................       fase = 0; 
-08E8:  CLRF   2F
-08E9:  BSF    0A.3
-08EA:  BCF    0A.4
-08EB:  GOTO   25A (RETURN)
+095D:  CLRF   2F
 .................... } 
 ....................  
 .................... void fase3() { 
-....................  
-....................    atualiza_valores(); 
-08EC:  BCF    0A.3
-08ED:  CALL   590
-08EE:  BSF    0A.3
-....................    atualiza_display(); 
-08EF:  BCF    0A.3
-08F0:  CALL   4F6
-08F1:  BSF    0A.3
-....................    verificar_botoes(); 
-08F2:  BCF    0A.3
-08F3:  CALL   599
-08F4:  BSF    0A.3
-....................  
 ....................    if ((contador_fase + 1) % 3 == 0 && !pausa_fase_1 && contador_fase < 30) { 
-08F5:  MOVLW  01
-08F6:  ADDWF  29,W
-08F7:  MOVWF  4E
-08F8:  MOVF   2A,W
-08F9:  MOVWF  4F
-08FA:  BTFSC  03.0
-08FB:  INCF   4F,F
-08FC:  MOVF   4F,W
-08FD:  MOVWF  53
-08FE:  MOVF   4E,W
-08FF:  MOVWF  52
-0900:  CLRF   55
-0901:  MOVLW  03
-0902:  MOVWF  54
-0903:  BCF    0A.3
-0904:  CALL   41A
-0905:  BSF    0A.3
-0906:  MOVF   77,W
-0907:  MOVWF  4E
-0908:  MOVF   7A,W
-0909:  MOVWF  4F
-090A:  MOVF   4E,F
-090B:  BTFSS  03.2
-090C:  GOTO   144
-090D:  MOVF   4F,F
-090E:  BTFSS  03.2
-090F:  GOTO   144
-0910:  BTFSC  34.1
-0911:  GOTO   144
-0912:  MOVF   2A,F
-0913:  BTFSS  03.2
-0914:  GOTO   144
-0915:  MOVF   29,W
-0916:  SUBLW  1D
-0917:  BTFSS  03.0
-0918:  GOTO   144
+*
+0963:  MOVLW  01
+0964:  ADDWF  29,W
+0965:  MOVWF  4E
+0966:  MOVF   2A,W
+0967:  MOVWF  4F
+0968:  BTFSC  03.0
+0969:  INCF   4F,F
+096A:  MOVF   4F,W
+096B:  MOVWF  53
+096C:  MOVF   4E,W
+096D:  MOVWF  52
+096E:  CLRF   55
+096F:  MOVLW  03
+0970:  MOVWF  54
+0971:  BCF    0A.3
+0972:  CALL   41A
+0973:  BSF    0A.3
+0974:  MOVF   77,W
+0975:  MOVWF  4E
+0976:  MOVF   7A,W
+0977:  MOVWF  4F
+0978:  MOVF   4E,F
+0979:  BTFSS  03.2
+097A:  GOTO   1B2
+097B:  MOVF   4F,F
+097C:  BTFSS  03.2
+097D:  GOTO   1B2
+097E:  BTFSC  34.1
+097F:  GOTO   1B2
+0980:  MOVF   2A,F
+0981:  BTFSS  03.2
+0982:  GOTO   1B2
+0983:  MOVF   29,W
+0984:  SUBLW  1D
+0985:  BTFSS  03.0
+0986:  GOTO   1B2
 ....................       intervalo_incremento = intervalo_incremento * 0.94; 
-0919:  MOVF   28,W
-091A:  MOVWF  4F
-091B:  MOVF   27,W
-091C:  MOVWF  4E
-091D:  BCF    0A.3
-091E:  CALL   5F6
-091F:  BSF    0A.3
-0920:  MOVF   7A,W
-0921:  MOVWF  51
-0922:  MOVF   79,W
-0923:  MOVWF  50
-0924:  MOVF   78,W
-0925:  MOVWF  4F
-0926:  MOVF   77,W
-0927:  MOVWF  4E
-0928:  MOVLW  D7
-0929:  MOVWF  55
-092A:  MOVLW  A3
-092B:  MOVWF  54
-092C:  MOVLW  70
-092D:  MOVWF  53
-092E:  MOVLW  7E
-092F:  MOVWF  52
-0930:  BCF    0A.3
-0931:  CALL   613
-0932:  BSF    0A.3
-0933:  MOVF   7A,W
-0934:  MOVWF  51
-0935:  MOVF   79,W
-0936:  MOVWF  50
-0937:  MOVF   78,W
-0938:  MOVWF  4F
-0939:  MOVF   77,W
-093A:  MOVWF  4E
-093B:  BCF    0A.3
-093C:  CALL   688
-093D:  BSF    0A.3
-093E:  MOVF   79,W
-093F:  MOVWF  28
-0940:  MOVF   78,W
-0941:  MOVWF  27
+0987:  MOVF   28,W
+0988:  MOVWF  4F
+0989:  MOVF   27,W
+098A:  MOVWF  4E
+098B:  BCF    0A.3
+098C:  CALL   590
+098D:  BSF    0A.3
+098E:  MOVF   7A,W
+098F:  MOVWF  51
+0990:  MOVF   79,W
+0991:  MOVWF  50
+0992:  MOVF   78,W
+0993:  MOVWF  4F
+0994:  MOVF   77,W
+0995:  MOVWF  4E
+0996:  MOVLW  D7
+0997:  MOVWF  55
+0998:  MOVLW  A3
+0999:  MOVWF  54
+099A:  MOVLW  70
+099B:  MOVWF  53
+099C:  MOVLW  7E
+099D:  MOVWF  52
+099E:  BCF    0A.3
+099F:  CALL   5AD
+09A0:  BSF    0A.3
+09A1:  MOVF   7A,W
+09A2:  MOVWF  51
+09A3:  MOVF   79,W
+09A4:  MOVWF  50
+09A5:  MOVF   78,W
+09A6:  MOVWF  4F
+09A7:  MOVF   77,W
+09A8:  MOVWF  4E
+09A9:  BCF    0A.3
+09AA:  CALL   622
+09AB:  BSF    0A.3
+09AC:  MOVF   79,W
+09AD:  MOVWF  28
+09AE:  MOVF   78,W
+09AF:  MOVWF  27
 ....................       pausa_fase_1 = 1; 
-0942:  BSF    34.1
+09B0:  BSF    34.1
 ....................       pausa_fase_2 = 0; 
-0943:  BCF    34.2
+09B1:  BCF    34.2
 ....................    } 
 ....................  
 ....................    if ((contador_fase + 1) % 4 == 0 && !pausa_fase_2 && (contador_fase + 1) % 12) { 
-0944:  MOVLW  01
-0945:  ADDWF  29,W
-0946:  MOVWF  4E
-0947:  MOVF   2A,W
-0948:  MOVWF  4F
-0949:  BTFSC  03.0
-094A:  INCF   4F,F
-094B:  MOVLW  03
-094C:  ANDWF  4E,F
-094D:  CLRF   4F
-094E:  MOVF   4E,F
-094F:  BTFSS  03.2
-0950:  GOTO   16D
-0951:  MOVF   4F,F
-0952:  BTFSS  03.2
-0953:  GOTO   16D
-0954:  BTFSC  34.2
-0955:  GOTO   16D
-0956:  MOVLW  01
-0957:  ADDWF  29,W
-0958:  MOVWF  4E
-0959:  MOVF   2A,W
-095A:  MOVWF  4F
-095B:  BTFSC  03.0
-095C:  INCF   4F,F
-095D:  MOVF   4F,W
-095E:  MOVWF  53
-095F:  MOVF   4E,W
-0960:  MOVWF  52
-0961:  CLRF   55
-0962:  MOVLW  0C
-0963:  MOVWF  54
-0964:  BCF    0A.3
-0965:  CALL   41A
-0966:  BSF    0A.3
-0967:  MOVF   77,W
-0968:  IORWF  7A,W
-0969:  BTFSC  03.2
-096A:  GOTO   16D
+09B2:  MOVLW  01
+09B3:  ADDWF  29,W
+09B4:  MOVWF  4E
+09B5:  MOVF   2A,W
+09B6:  MOVWF  4F
+09B7:  BTFSC  03.0
+09B8:  INCF   4F,F
+09B9:  MOVLW  03
+09BA:  ANDWF  4E,F
+09BB:  CLRF   4F
+09BC:  MOVF   4E,F
+09BD:  BTFSS  03.2
+09BE:  GOTO   1DB
+09BF:  MOVF   4F,F
+09C0:  BTFSS  03.2
+09C1:  GOTO   1DB
+09C2:  BTFSC  34.2
+09C3:  GOTO   1DB
+09C4:  MOVLW  01
+09C5:  ADDWF  29,W
+09C6:  MOVWF  4E
+09C7:  MOVF   2A,W
+09C8:  MOVWF  4F
+09C9:  BTFSC  03.0
+09CA:  INCF   4F,F
+09CB:  MOVF   4F,W
+09CC:  MOVWF  53
+09CD:  MOVF   4E,W
+09CE:  MOVWF  52
+09CF:  CLRF   55
+09D0:  MOVLW  0C
+09D1:  MOVWF  54
+09D2:  BCF    0A.3
+09D3:  CALL   41A
+09D4:  BSF    0A.3
+09D5:  MOVF   77,W
+09D6:  IORWF  7A,W
+09D7:  BTFSC  03.2
+09D8:  GOTO   1DB
 ....................       pausa_fase_1 = 0; 
-096B:  BCF    34.1
+09D9:  BCF    34.1
 ....................       pausa_fase_2 = 1; 
-096C:  BSF    34.2
+09DA:  BSF    34.2
 ....................    } 
 ....................  
 ....................    if (contador_fase == finalfase + 5) 
-096D:  MOVLW  05
-096E:  ADDWF  4A,W
-096F:  SUBWF  29,W
-0970:  BTFSS  03.2
-0971:  GOTO   175
-0972:  MOVF   2A,F
-0973:  BTFSC  03.2
+09DB:  MOVLW  05
+09DC:  ADDWF  4A,W
+09DD:  SUBWF  29,W
+09DE:  BTFSS  03.2
+09DF:  GOTO   1E4
+09E0:  MOVF   2A,F
+09E1:  BTFSS  03.2
+09E2:  GOTO   1E4
 ....................       fase = 0; 
-0974:  CLRF   2F
-0975:  BSF    0A.3
-0976:  BCF    0A.4
-0977:  GOTO   286 (RETURN)
+09E3:  CLRF   2F
 ....................  
 .................... } 
 ....................  
 .................... void fase4() { 
-....................  
-....................    atualiza_valores(); 
-*
-077D:  CALL   590
-....................  
-....................    atualiza_display(); 
-077E:  CALL   4F6
-....................    verificar_botoes(); 
-077F:  CALL   599
-....................  
 ....................    if (contador_fase == finalfase + 5) 
-0780:  MOVLW  05
-0781:  ADDWF  4A,W
-0782:  SUBWF  29,W
-0783:  BTFSS  03.2
-0784:  GOTO   788
-0785:  MOVF   2A,F
-0786:  BTFSC  03.2
+*
+0A12:  MOVLW  05
+0A13:  ADDWF  4A,W
+0A14:  SUBWF  29,W
+0A15:  BTFSS  03.2
+0A16:  GOTO   21B
+0A17:  MOVF   2A,F
+0A18:  BTFSS  03.2
+0A19:  GOTO   21B
 ....................       fase = 0; 
-0787:  CLRF   2F
-0788:  BSF    0A.3
-0789:  BCF    0A.4
-078A:  GOTO   2DC (RETURN)
+0A1A:  CLRF   2F
 ....................  
 .................... } 
 ....................  
 .................... void atualiza_valores() { 
 ....................    unidade = unidade_atual; 
-*
-0590:  MOVF   35,W
-0591:  MOVWF  2B
 ....................    dezena = dezena_atual; 
-0592:  MOVF   36,W
-0593:  MOVWF  2C
 ....................    centena = centena_atual; 
-0594:  MOVF   37,W
-0595:  MOVWF  2D
 ....................    milhar = milhar_atual; 
-0596:  MOVF   38,W
-0597:  MOVWF  2E
-0598:  RETURN
 .................... } 
 ....................  
 .................... void escolha_de_fase() { 
@@ -2366,6 +2186,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 054F:  MOVLW  03
 0550:  MOVWF  2F
 ....................    } 
+....................     
 ....................    if (!input(S2)) { 
 0551:  BSF    03.5
 0552:  BSF    06.1
@@ -2376,6 +2197,7 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 0556:  MOVLW  02
 0557:  MOVWF  2F
 ....................    } 
+....................     
 ....................    if (!input(S1)) { 
 0558:  BSF    03.5
 0559:  BSF    06.0
@@ -2385,8 +2207,8 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 ....................       fase = 1; 
 055D:  MOVLW  01
 055E:  MOVWF  2F
-....................  
 ....................    } 
+....................     
 ....................    if (fase) { 
 055F:  MOVF   2F,F
 0560:  BTFSC  03.2
@@ -2454,142 +2276,143 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 058B:  RRF    28,F
 058C:  RRF    27,F
 ....................    } 
-058D:  BSF    0A.3
+058D:  BCF    0A.3
 058E:  BCF    0A.4
-058F:  GOTO   21C (RETURN)
+058F:  GOTO   76B (RETURN)
 .................... } 
 ....................  
 .................... void mostrar_falha() { 
-....................  
 ....................    tempo_inicio = 7; 
 *
-070F:  MOVLW  07
-0710:  MOVWF  30
+0641:  MOVLW  07
+0642:  MOVWF  30
 ....................  
 ....................    unidade = 12; 
-0711:  MOVLW  0C
-0712:  MOVWF  2B
+0643:  MOVLW  0C
+0644:  MOVWF  2B
 ....................    if ((contador_fase % 10)) { 
-0713:  MOVF   2A,W
-0714:  MOVWF  53
-0715:  MOVF   29,W
-0716:  MOVWF  52
-0717:  CLRF   55
-0718:  MOVLW  0A
-0719:  MOVWF  54
-071A:  CALL   41A
-071B:  MOVF   77,W
-071C:  IORWF  7A,W
-071D:  BTFSC  03.2
-071E:  GOTO   752
+0645:  MOVF   2A,W
+0646:  MOVWF  53
+0647:  MOVF   29,W
+0648:  MOVWF  52
+0649:  CLRF   55
+064A:  MOVLW  0A
+064B:  MOVWF  54
+064C:  CALL   41A
+064D:  MOVF   77,W
+064E:  IORWF  7A,W
+064F:  BTFSC  03.2
+0650:  GOTO   684
 ....................       dezena = -(contador_fase % 10) + 10; 
-071F:  MOVF   2A,W
-0720:  MOVWF  53
-0721:  MOVF   29,W
-0722:  MOVWF  52
-0723:  CLRF   55
-0724:  MOVLW  0A
-0725:  MOVWF  54
-0726:  CALL   41A
-0727:  MOVF   77,W
-0728:  SUBLW  00
-0729:  MOVWF  4E
-072A:  CLRF   4F
-072B:  MOVF   7A,W
-072C:  BTFSS  03.0
-072D:  INCFSZ 7A,W
-072E:  SUBWF  4F,F
-072F:  MOVLW  0A
-0730:  ADDWF  4E,W
-0731:  MOVWF  2C
+0651:  MOVF   2A,W
+0652:  MOVWF  53
+0653:  MOVF   29,W
+0654:  MOVWF  52
+0655:  CLRF   55
+0656:  MOVLW  0A
+0657:  MOVWF  54
+0658:  CALL   41A
+0659:  MOVF   77,W
+065A:  SUBLW  00
+065B:  MOVWF  4E
+065C:  CLRF   4F
+065D:  MOVF   7A,W
+065E:  BTFSS  03.0
+065F:  INCFSZ 7A,W
+0660:  SUBWF  4F,F
+0661:  MOVLW  0A
+0662:  ADDWF  4E,W
+0663:  MOVWF  2C
 ....................       centena = -((contador_fase / 10) % 10) + 9; 
-0732:  MOVF   2A,W
-0733:  MOVWF  53
-0734:  MOVF   29,W
-0735:  MOVWF  52
-0736:  CLRF   55
-0737:  MOVLW  0A
-0738:  MOVWF  54
-0739:  CALL   41A
-073A:  MOVF   79,W
-073B:  MOVWF  4F
-073C:  MOVF   78,W
-073D:  MOVWF  4E
-073E:  MOVF   79,W
-073F:  MOVWF  53
-0740:  MOVF   78,W
-0741:  MOVWF  52
-0742:  CLRF   55
-0743:  MOVLW  0A
-0744:  MOVWF  54
-0745:  CALL   41A
-0746:  MOVF   77,W
-0747:  SUBLW  00
-0748:  MOVWF  4E
-0749:  CLRF   4F
-074A:  MOVF   7A,W
-074B:  BTFSS  03.0
-074C:  INCFSZ 7A,W
-074D:  SUBWF  4F,F
-074E:  MOVLW  09
-074F:  ADDWF  4E,W
-0750:  MOVWF  2D
+0664:  MOVF   2A,W
+0665:  MOVWF  53
+0666:  MOVF   29,W
+0667:  MOVWF  52
+0668:  CLRF   55
+0669:  MOVLW  0A
+066A:  MOVWF  54
+066B:  CALL   41A
+066C:  MOVF   79,W
+066D:  MOVWF  4F
+066E:  MOVF   78,W
+066F:  MOVWF  4E
+0670:  MOVF   4F,W
+0671:  MOVWF  53
+0672:  MOVF   4E,W
+0673:  MOVWF  52
+0674:  CLRF   55
+0675:  MOVLW  0A
+0676:  MOVWF  54
+0677:  CALL   41A
+0678:  MOVF   77,W
+0679:  SUBLW  00
+067A:  MOVWF  4E
+067B:  CLRF   4F
+067C:  MOVF   7A,W
+067D:  BTFSS  03.0
+067E:  INCFSZ 7A,W
+067F:  SUBWF  4F,F
+0680:  MOVLW  09
+0681:  ADDWF  4E,W
+0682:  MOVWF  2D
 ....................    } else { 
-0751:  GOTO   772
+0683:  GOTO   6A4
 ....................       dezena = 0; 
-0752:  CLRF   2C
+0684:  CLRF   2C
 ....................       centena = -((contador_fase / 10) % 10) + 10; 
-0753:  MOVF   2A,W
-0754:  MOVWF  53
-0755:  MOVF   29,W
-0756:  MOVWF  52
-0757:  CLRF   55
-0758:  MOVLW  0A
-0759:  MOVWF  54
-075A:  CALL   41A
-075B:  MOVF   79,W
-075C:  MOVWF  4F
-075D:  MOVF   78,W
-075E:  MOVWF  4E
-075F:  MOVF   79,W
-0760:  MOVWF  53
-0761:  MOVF   78,W
-0762:  MOVWF  52
-0763:  CLRF   55
-0764:  MOVLW  0A
-0765:  MOVWF  54
-0766:  CALL   41A
-0767:  MOVF   77,W
-0768:  SUBLW  00
-0769:  MOVWF  4E
-076A:  CLRF   4F
-076B:  MOVF   7A,W
-076C:  BTFSS  03.0
-076D:  INCFSZ 7A,W
-076E:  SUBWF  4F,F
-076F:  MOVLW  0A
-0770:  ADDWF  4E,W
-0771:  MOVWF  2D
+0685:  MOVF   2A,W
+0686:  MOVWF  53
+0687:  MOVF   29,W
+0688:  MOVWF  52
+0689:  CLRF   55
+068A:  MOVLW  0A
+068B:  MOVWF  54
+068C:  CALL   41A
+068D:  MOVF   79,W
+068E:  MOVWF  4F
+068F:  MOVF   78,W
+0690:  MOVWF  4E
+0691:  MOVF   4F,W
+0692:  MOVWF  53
+0693:  MOVF   4E,W
+0694:  MOVWF  52
+0695:  CLRF   55
+0696:  MOVLW  0A
+0697:  MOVWF  54
+0698:  CALL   41A
+0699:  MOVF   77,W
+069A:  SUBLW  00
+069B:  MOVWF  4E
+069C:  CLRF   4F
+069D:  MOVF   7A,W
+069E:  BTFSS  03.0
+069F:  INCFSZ 7A,W
+06A0:  SUBWF  4F,F
+06A1:  MOVLW  0A
+06A2:  ADDWF  4E,W
+06A3:  MOVWF  2D
 ....................    } 
 ....................  
 ....................    milhar = 12; 
-0772:  MOVLW  0C
-0773:  MOVWF  2E
+06A4:  MOVLW  0C
+06A5:  MOVWF  2E
 ....................  
 ....................    while (tempo_inicio) { 
-0774:  MOVF   30,F
-0775:  BTFSC  03.2
-0776:  GOTO   77C
+06A6:  MOVF   30,F
+06A7:  BTFSC  03.2
+06A8:  GOTO   6AE
 ....................       atualiza_display(); 
-0777:  CALL   4F6
+06A9:  CALL   4F6
 ....................  
 ....................       delay(15); 
-0778:  MOVLW  0F
-0779:  MOVWF  4E
-077A:  CALL   43F
-077B:  GOTO   774
+06AA:  MOVLW  0F
+06AB:  MOVWF  4E
+06AC:  CALL   43F
+06AD:  GOTO   6A6
 ....................    } 
-077C:  RETURN
+06AE:  BCF    0A.3
+06AF:  BCF    0A.4
+06B0:  GOTO   776 (RETURN)
 .................... } 
 ....................  
 .................... void mostrar_tela_inicial() { 
@@ -2628,8 +2451,8 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 045D:  BCF    06.5
 045E:  BCF    03.5
 045F:  BSF    06.5
-....................          if (!pasou_fase_3) { 
-0460:  BTFSC  34.7
+....................          if (!passou_fase[2]) { 
+0460:  BTFSC  4B.2
 0461:  GOTO   46B
 ....................             output_d(listadisplay3[contador_tela_inicial]); 
 0462:  MOVF   49,W
@@ -2669,8 +2492,8 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 047C:  BCF    03.5
 047D:  BSF    06.6
 ....................  
-....................          if (!pasou_fase_2) { 
-047E:  BTFSC  34.6
+....................          if (!passou_fase[1]) { 
+047E:  BTFSC  4B.1
 047F:  GOTO   489
 ....................             output_d(listadisplay2[contador_tela_inicial]); 
 0480:  MOVF   49,W
@@ -2726,8 +2549,8 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 04A4:  BCF    03.5
 04A5:  BSF    06.4
 ....................  
-....................          if (!pasou_fase_4) { 
-04A6:  BTFSC  4B.0
+....................          if (!passou_fase[3]) { 
+04A6:  BTFSC  4B.3
 04A7:  GOTO   4B1
 ....................             output_d(listadisplay4[contador_tela_inicial]); 
 04A8:  MOVF   49,W
@@ -2767,8 +2590,8 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 04C2:  BCF    03.5
 04C3:  BSF    06.7
 ....................  
-....................          if (!pasou_fase_1) { 
-04C4:  BTFSC  34.5
+....................          if (!passou_fase[0]) { 
+04C4:  BTFSC  4B.0
 04C5:  GOTO   4CF
 ....................             output_d(listadisplay1[contador_tela_inicial]); 
 04C6:  MOVF   49,W
@@ -2801,9 +2624,9 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 04D9:  MOVLW  23
 04DA:  MOVWF  4E
 04DB:  CALL   43F
-04DC:  BSF    0A.3
+04DC:  BCF    0A.3
 04DD:  BCF    0A.4
-04DE:  GOTO   1EE (RETURN)
+04DE:  GOTO   743 (RETURN)
 ....................  
 .................... } 
 ....................  
@@ -2924,145 +2747,51 @@ CCS PCM C Compiler, Version 5.076, 56587               01-dez-24 10:37
 ....................  
 .................... void verificar_botoes() { 
 ....................    if (!input(S4) && !unidade_ativode) { 
-*
-0599:  BSF    03.5
-059A:  BSF    06.3
-059B:  BCF    03.5
-059C:  BTFSC  06.3
-059D:  GOTO   5A2
-059E:  BTFSC  33.4
-059F:  GOTO   5A2
 ....................       unidade_ativo = 1; 
-05A0:  BSF    33.0
 ....................       unidade_ativode = 1; 
-05A1:  BSF    33.4
 ....................    } 
 ....................  
 ....................    if (!input(S3) && !dezena_ativode) { 
-05A2:  BSF    03.5
-05A3:  BSF    06.2
-05A4:  BCF    03.5
-05A5:  BTFSC  06.2
-05A6:  GOTO   5AB
-05A7:  BTFSC  33.5
-05A8:  GOTO   5AB
 ....................       dezena_ativo = 1; 
-05A9:  BSF    33.1
 ....................       dezena_ativode = 1; 
-05AA:  BSF    33.5
 ....................    } 
 ....................    if (!input(S2) && !centena_ativode) { 
-05AB:  BSF    03.5
-05AC:  BSF    06.1
-05AD:  BCF    03.5
-05AE:  BTFSC  06.1
-05AF:  GOTO   5B4
-05B0:  BTFSC  33.6
-05B1:  GOTO   5B4
 ....................       centena_ativo = 1; 
-05B2:  BSF    33.2
 ....................       centena_ativode = 1; 
-05B3:  BSF    33.6
 ....................    } 
 ....................    if (!input(S1) && !milhar_ativode) { 
-05B4:  BSF    03.5
-05B5:  BSF    06.0
-05B6:  BCF    03.5
-05B7:  BTFSC  06.0
-05B8:  GOTO   5BD
-05B9:  BTFSC  33.7
-05BA:  GOTO   5BD
 ....................       milhar_ativo = 1; 
-05BB:  BSF    33.3
 ....................       milhar_ativode = 1; 
-05BC:  BSF    33.7
 ....................    } 
 ....................  
 ....................    if (unidade_ativode) { 
-05BD:  BTFSS  33.4
-05BE:  GOTO   5CB
 ....................       unidade_ativodecont--; 
-05BF:  MOVF   41,W
-05C0:  BTFSC  03.2
-05C1:  DECF   42,F
-05C2:  DECF   41,F
 ....................       if (!unidade_ativodecont) { 
-05C3:  MOVF   41,W
-05C4:  IORWF  42,W
-05C5:  BTFSS  03.2
-05C6:  GOTO   5CB
 ....................          unidade_ativodecont = V_CONTADOR_DECREMENTO; 
-05C7:  CLRF   42
-05C8:  MOVLW  C8
-05C9:  MOVWF  41
 ....................          unidade_ativode = 0; 
-05CA:  BCF    33.4
 ....................       } 
 ....................    } 
 ....................    if (dezena_ativode) { 
-05CB:  BTFSS  33.5
-05CC:  GOTO   5D9
 ....................       dezena_ativodecont--; 
-05CD:  MOVF   43,W
-05CE:  BTFSC  03.2
-05CF:  DECF   44,F
-05D0:  DECF   43,F
 ....................       if (!dezena_ativodecont) { 
-05D1:  MOVF   43,W
-05D2:  IORWF  44,W
-05D3:  BTFSS  03.2
-05D4:  GOTO   5D9
 ....................          dezena_ativodecont = V_CONTADOR_DECREMENTO; 
-05D5:  CLRF   44
-05D6:  MOVLW  C8
-05D7:  MOVWF  43
 ....................          dezena_ativode = 0; 
-05D8:  BCF    33.5
 ....................       } 
 ....................    } 
 ....................    if (centena_ativode) { 
-05D9:  BTFSS  33.6
-05DA:  GOTO   5E7
 ....................       centena_ativodecont--; 
-05DB:  MOVF   45,W
-05DC:  BTFSC  03.2
-05DD:  DECF   46,F
-05DE:  DECF   45,F
 ....................       if (!centena_ativodecont) { 
-05DF:  MOVF   45,W
-05E0:  IORWF  46,W
-05E1:  BTFSS  03.2
-05E2:  GOTO   5E7
 ....................          centena_ativodecont = V_CONTADOR_DECREMENTO; 
-05E3:  CLRF   46
-05E4:  MOVLW  C8
-05E5:  MOVWF  45
 ....................          centena_ativode = 0; 
-05E6:  BCF    33.6
 ....................       } 
 ....................    } 
 ....................    if (milhar_ativode) { 
-05E7:  BTFSS  33.7
-05E8:  GOTO   5F5
 ....................       milhar_ativodecont--; 
-05E9:  MOVF   47,W
-05EA:  BTFSC  03.2
-05EB:  DECF   48,F
-05EC:  DECF   47,F
 ....................       if (!milhar_ativodecont) { 
-05ED:  MOVF   47,W
-05EE:  IORWF  48,W
-05EF:  BTFSS  03.2
-05F0:  GOTO   5F5
 ....................          milhar_ativodecont = V_CONTADOR_DECREMENTO; 
-05F1:  CLRF   48
-05F2:  MOVLW  C8
-05F3:  MOVWF  47
 ....................          milhar_ativode = 0; 
-05F4:  BCF    33.7
 ....................       } 
 ....................    } 
-05F5:  RETURN
 ....................  
 .................... } 
 ....................  
