@@ -17,7 +17,7 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=3
+Days=4
 D1=22-11-2024
 D1_L=6
 D1_L1=[76160]Project Opened.
@@ -71,13 +71,17 @@ D3_L6=[34071]Started Editing.
 D3_L7=[37208]Stopped Editing.
 D3_L8=[37479]Started Editing.
 D3_L9=[38101]Stopped Editing.
+D4=11-12-2024
+D4_L=2
+D4_L1=[6682]Project Opened.
+D4_L2=[6702]Project Closed.
 
 [Opened Files]
 1=main.c
-t1=409
-Count=1
-2=..\..\Program Files (x86)\PICC\Drivers\string.h
-t2=12
+t1=70
+Count=2
+2=D:\Facu\MICRO\prova_C\main.h
+t2=1
 [main.c]
 Type=4
 
