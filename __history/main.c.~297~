@@ -270,59 +270,27 @@ int1 filter_bt_state(int1 state, int8 i) {
    return 0;
 }
 
-void atualiza_displayf() {
-   switch (d_index) {
-      case 0:
-         // ativa unidade
-         output_low(DM);
-         output_high(DU);
-      break; 
-       case 1:
-         // ativa dezena
-         output_low(DU);
-         output_high(DD);
-      break; 
-      case 2:
-         // ativa centena
-         output_low(DD);
-         output_high(DC);
-      break; 
-      case 3:
-         // ativa milhar
-         output_low(DC);
-         output_high(DM);
-      break; 
-   }
-   
-   output_d(display_numbers[digitos[d_index]]);
-   
-   d_index++;
-   if (d_index >= 4) {
-      d_index = 0;
-   }
-}
-
 //!void atualiza_displayf() {
 //!   switch (d_index) {
 //!      case 0:
 //!         // ativa unidade
-//!         output_high(DM);
-//!         output_low(DU);
+//!         output_low(DM);
+//!         output_high(DU);
 //!      break; 
 //!       case 1:
 //!         // ativa dezena
-//!         output_high(DU);
-//!         output_low(DD);
+//!         output_low(DU);
+//!         output_high(DD);
 //!      break; 
 //!      case 2:
 //!         // ativa centena
-//!         output_high(DD);
-//!         output_low(DC);
+//!         output_low(DD);
+//!         output_high(DC);
 //!      break; 
 //!      case 3:
 //!         // ativa milhar
-//!         output_high(DC);
-//!         output_low(DM);
+//!         output_low(DC);
+//!         output_high(DM);
 //!      break; 
 //!   }
 //!   
@@ -334,3 +302,35 @@ void atualiza_displayf() {
 //!   }
 //!}
 //!
+void atualiza_displayf() {
+   switch (d_index) {
+      case 0:
+         // ativa unidade
+         output_high(DM);
+         output_low(DU);
+      break; 
+       case 1:
+         // ativa dezena
+         output_high(DU);
+         output_low(DD);
+      break; 
+      case 2:
+         // ativa centena
+         output_high(DD);
+         output_low(DC);
+      break; 
+      case 3:
+         // ativa milhar
+         output_high(DC);
+         output_low(DM);
+      break; 
+   }
+   
+   output_d(display_numbers[digitos[d_index]]);
+   
+   d_index++;
+   if (d_index >= 4) {
+      d_index = 0;
+   }
+}
+

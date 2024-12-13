@@ -93,10 +93,6 @@ void main()
       delay_ms(500);
      
       while (!estado) {
-         if (atualiza_display) {
-            atualiza_display = 0;
-            atualiza_displayf();
-         }
          escolha_fase();
       }
       
@@ -333,4 +329,4 @@ void atualiza_displayf() {
 //!      d_index = 0;
 //!   }
 //!}
-//!
+

@@ -4,10 +4,10 @@
 
 #define  V_CONTADOR_DISPLAY  1
 
-#define  V_CONT_SEQUENCIA_FASE1  333
-#define  V_CONT_SEQUENCIA_FASE2  270
-#define  V_CONT_SEQUENCIA_FASE3  200
-#define  V_CONT_SEQUENCIA_FASE4  150
+#define  V_CONT_SEQUENCIA_FASE1  450
+#define  V_CONT_SEQUENCIA_FASE2  333
+#define  V_CONT_SEQUENCIA_FASE3  250
+#define  V_CONT_SEQUENCIA_FASE4  200
 
 #define  TAM_SEQUENCIA  20
 
@@ -22,7 +22,7 @@ int1 atualiza_display = 0;
 int16 cont_sequencia = 0;
 int1 atualiza_sequencia = 0;
 
-int16 pontos = 0;
+int8 pontos = 0;
 
 int8 estado = 0; // Estado do jogo : 0 - menu inicial ; 1 - fase 1 ; 2 - fase 2 ; 3 - fase 3 ; 4 - fase 4 ; 5 - falha
 
@@ -85,26 +85,13 @@ void main()
 //!      output_d(0);
 //!      output_low(DU);
 
-      digitos[0] = (pontos / 1000) % 10;
-      digitos[1] = (pontos / 100) % 10 ;
-      digitos[2] = (pontos / 10) % 10;
-      digitos[3] = pontos % 10;
-      
-      delay_ms(500);
-     
       while (!estado) {
-         if (atualiza_display) {
-            atualiza_display = 0;
-            atualiza_displayf();
-         }
          escolha_fase();
       }
       
       delay_ms(100);
       
       inicializa_fase();
-      
-      pontos = 0;
       
       while (estado) {
          if (pontos >= 25) {
@@ -157,6 +144,8 @@ void main()
             }
          }
       }
+      
+      delay_ms(250);  
    }
 
 }
@@ -228,28 +217,15 @@ void inicializa_fase() {
 
 void escolha_fase() {
    if (!input_state(S1)) {
-      while(!input_state(S1)) {
-         //
-      }
       estado = 1;
    }
-   
    if (!input_state(S2)) {
-      while(!input_state(S2)) {
-         //
-      }   
       estado = 2;
    }
    if (!input_state(S3)) {
-      while(!input_state(S3)) {
-         //
-      }   
       estado = 3;
    }
    if (!input_state(S4)) {
-      while(!input_state(S4)) {
-         //
-      }   
       estado = 4;
    }
 }
@@ -333,4 +309,4 @@ void atualiza_displayf() {
 //!      d_index = 0;
 //!   }
 //!}
-//!
+

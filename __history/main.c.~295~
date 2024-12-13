@@ -333,4 +333,4 @@ void atualiza_displayf() {
 //!      d_index = 0;
 //!   }
 //!}
-//!
+

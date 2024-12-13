@@ -1,95 +1,66 @@
 
-ROM used:   2695/8192 (33%)
-            2812/8192 (34%) including unused fragments
+ROM used:   862/4096 (21%)
+            862/4096 (21%) including unused fragments
 
-            1.9 Average locations per line
-            6.3 Average locations per statement
+            0.8 Average locations per line
+            4.9 Average locations per statement
 
-RAM used:   55/368 (15%) at main() level
-            65/368 (18%) worst case
+RAM used:   35/191 (18%) at main() level
+            42/191 (22%) worst case
 
-Stack used: 5 worst case (3 in main + 2 for interrupts)
+Stack used: 3 worst case (2 in main + 1 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  674   428 100  main.c
+  337   175 100  main.c
    26     0   0  main.h
-  684     0   0  ..\..\Program Files (x86)\PICC\Devices\16F877A.h
+  684     0   0  C:\Program Files (x86)\PICC\Devices\16F874A.h
 ----- -----
- 1384   428 Total
+ 1047   175 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
-0     16   1    0    453  5.6  @const678
-0     16   1    0    453  5.6  @const681
-0     16   1    0             @const684
-0     16   1    0             @const687
-0     26   1    0             @const690
-0     38   1    0             @const693
-0     36   1    0    453  5.6  @const696
-0     33   1    0    453  5.6  @const699
-0     43   2    0    453  5.6  @const702
-0     42   2    0    768  4.7  @const705
-0     39   1    0    453  5.6  @const708
-0     32   1    0    453  5.6  @const711
-0     40   1    0    453  5.6  @const714
-0     44   2    0    453  5.6  @const717
-0     47   2    0    453  5.6  @const720
-0     41   2    0    453  5.6  @const723
-0     28   1    0    453  5.6  @const726
-0     36   1    0    453  5.6  @const729
-0     36   1    0    453  5.6  @const732
-0     26   1    0    453  5.6  @const735
-0     17   1    0    453  5.6  @const738
-0    298  11    1    670  5.3  TIMER0_isr
-1    388  14    4   2845  6.9  MAIN
-0     37   1    2    453  5.6  @MUL88
-0     37   1    5    453  5.6  @DIV1616
-0     23   1    5    453  5.6  @MUL1616
-0     29   1    2    453  5.6  @ITOF
-0    117   4   13   2875  6.9  @MULFF
-0     31   1    4             @SFTOI
-0    104   4    0    313  4.4  fase1
-1    236   9    0    768  4.7  fase2
-1    140   5    2    466  5.5  fase3
-0     14   1    0     90  2.8  fase4
-0      9   0    0     67  1.8  atualiza_valores
-0     77   3    0    679  4.8  escolha_de_fase
-0    110   4    2    396  5.1  mostrar_falha
-0    152   6    1   1141  5.4  mostrar_tela_inicial
-0     77   3    1    459  2.8  atualiza_display
-0      8   0    2     82  3.1  delay
-0     93   3    0    931  3.9  verificar_botoes
- Inline         0    119  2.9  verificar_erro_nove
- Inline         0    156  3.3  verificar_erro_zero
- Inline         0     42  1.2  testar_listas
- Inline         1    453  5.6  atualizar_unidade
- Inline         1    453  5.6  atualizar_dezena
- Inline         1    453  5.6  atualizar_centena
- Inline         1    453  5.6  atualizar_milhar
+0     20   2    1             @delay_ms1
+0     14   2    0             @const648
+0     24   3    0    542  5.7  @const652
+0     24   3    0    431  5.6  @const655
+0     24   3    0    431  5.6  @const658
+0     24   3    0    431  5.6  @const661
+0     26   3    1    197  3.6  TIMER0_isr
+0    261  30    2   1964  7.4  MAIN
+0     37   4    5    431  5.6  @DIV1616
+0     36   4    0    298  5.8  get_prox_valor_sequencia
+0      8   1    0    431  5.6  @goto43257
+0     19   2    1    149  4.7  atualiza_sequenciaf
+0     90  10    5    901  6.1  inicializa_fase
+0      8   1    0    431  5.6  @goto43322
+0     26   3    0    373  3.2  escolha_fase
+0     50   6    3    320  5.1  filter_bt_state
+0     29   3    5    431  5.6  @WRITEBITA
+0     23   3    4    431  5.6  @READBITA
+0     62   7    1    431  5.6  atualiza_displayf
+0      8   1    0             @goto43406
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               42
-    Statements              428
-    Comments                126
-    Volume (V)              44074
-    Difficulty (D)          213.1
-    Effort to implement (E) 9392316
-    Time to implement (T)   144 hours, 57 minutes
-    Est Delivered Bugs (B)  15
-    Cyclomatic Complexity   224
-    Maintainability (MI)    118
+    Functions               17
+    Statements              175
+    Comments                169
+    Volume (V)              14492
+    Difficulty (D)          92.8
+    Effort to implement (E) 1345388
+    Time to implement (T)   20 hours, 46 minutes
+    Est Delivered Bugs (B)  4
+    Cyclomatic Complexity   86
+    Maintainability (MI)    48
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-0002E    43  0  
-0002F-007FF  1884  117  
-00800-00FFF   764  1284  
-01000-017FF     0  2048  
-01800-01FFF     0  2048  
+00004-00030    45  0  
+00031-007FF   813  1186  
+00800-00FFF     0  2048  
 
 
 

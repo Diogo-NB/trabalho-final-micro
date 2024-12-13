@@ -89,14 +89,13 @@ void main()
       digitos[1] = (pontos / 100) % 10 ;
       digitos[2] = (pontos / 10) % 10;
       digitos[3] = pontos % 10;
-      
-      delay_ms(500);
      
       while (!estado) {
          if (atualiza_display) {
             atualiza_display = 0;
             atualiza_displayf();
          }
+         
          escolha_fase();
       }
       
@@ -131,7 +130,7 @@ void main()
          }
          
          if (filter_bt_state(input_state(S2), 1)) {
-            if (!digitos[1]) {
+            if (!digitos[1]) {2
                pontos++;
                digitos[1] = get_prox_valor_sequencia(); 
             } else {
@@ -157,6 +156,8 @@ void main()
             }
          }
       }
+      
+      delay_ms(250);  
    }
 
 }
@@ -235,21 +236,12 @@ void escolha_fase() {
    }
    
    if (!input_state(S2)) {
-      while(!input_state(S2)) {
-         //
-      }   
       estado = 2;
    }
    if (!input_state(S3)) {
-      while(!input_state(S3)) {
-         //
-      }   
       estado = 3;
    }
    if (!input_state(S4)) {
-      while(!input_state(S4)) {
-         //
-      }   
       estado = 4;
    }
 }
@@ -333,4 +325,4 @@ void atualiza_displayf() {
 //!      d_index = 0;
 //!   }
 //!}
-//!
+

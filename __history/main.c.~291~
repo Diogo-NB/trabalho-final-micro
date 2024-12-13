@@ -90,6 +90,12 @@ void main()
       digitos[2] = (pontos / 10) % 10;
       digitos[3] = pontos % 10;
       
+      for (int8 i=0; i < 4; i++) {
+         
+      }
+      
+      atualiza_displayf();
+      
       delay_ms(500);
      
       while (!estado) {
@@ -97,6 +103,7 @@ void main()
             atualiza_display = 0;
             atualiza_displayf();
          }
+         
          escolha_fase();
       }
       
@@ -333,4 +340,4 @@ void atualiza_displayf() {
 //!      d_index = 0;
 //!   }
 //!}
-//!
+

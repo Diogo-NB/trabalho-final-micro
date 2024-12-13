@@ -1,6 +1,6 @@
 [PROJECT]
 Target=main.hex
-Processor_Text=PIC16F877A
+Processor_Text=PIC16F874A
 CCSVerions=5.076
 Compiler=PCM
 CCSVersion=5.076
@@ -8,7 +8,7 @@ CCSVersion=5.076
 FileList=main.c
 [Directories]
 Include=
-[C:\projects\trabalho_final_microcontroladores\main]
+[D:\Facu\MICRO\trabalho_final_v2\main]
 Type=4
 [mru-list]
 1=main.c
@@ -17,76 +17,32 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=4
-D1=22-11-2024
-D1_L=6
-D1_L1=[76160]Project Opened.
-D1_L2=[76176]Project Closed.
-D1_L3=[76229]Project Opened.
-D1_L4=[76247]Started Editing.
-D1_L5=[76888]Stopped Editing.
-TotalEdit=72
-TotalDebug=0
-D1_E=11
-D1_D=0
-D1_L6=[76888]Project Closed.
-D2=30-11-2024
-D2_L=24
-D2_L1=[51366]Project Opened.
-D2_L2=[51383]Project Closed.
-D2_L3=[51657]Project Opened.
-D2_L4=[51759]Started Editing.
-D2_L5=[52201]Stopped Editing.
-D2_E=57
-D2_D=0
-D2_L6=[52201]Project Closed.
-D2_L7=[52211]Project Opened.
-D2_L8=[52220]Project Closed.
-D2_L9=[63019]Project Opened.
-D2_L10=[63520]Project Closed.
-D2_L11=[64064]Project Opened.
-D2_L12=[64635]Started Editing.
-D2_L13=[66295]Stopped Editing.
-D2_L14=[66376]Started Editing.
-D2_L15=[67454]Stopped Editing.
-D2_L16=[68088]Started Editing.
-D2_L17=[68774]Stopped Editing.
-D2_L18=[68951]Started Editing.
-D2_L19=[69285]Stopped Editing.
-D2_L20=[69616]Started Editing.
-D2_L21=[70257]Stopped Editing.
-D2_L22=[70682]Project Closed.
-D2_L23=[70713]Project Opened.
-D2_L24=[70751]Project Closed.
-D3=01-12-2024
-D3_L=9
-D3_L1=[33502]Project Opened.
-D3_L2=[33814]Started Editing.
-D3_L3=[34042]Stopped Editing.
-D3_E=4
-D3_D=0
-D3_L4=[34042]Project Closed.
-D3_L5=[34063]Project Opened.
-D3_L6=[34071]Started Editing.
-D3_L7=[37208]Stopped Editing.
-D3_L8=[37479]Started Editing.
-D3_L9=[38101]Stopped Editing.
-D4=11-12-2024
-D4_L=2
-D4_L1=[6682]Project Opened.
-D4_L2=[6702]Project Closed.
+Days=2
+D1=12-12-2024
+D1_L=8
+D1_L1=[72785]Project Opened.
+D1_L2=[72795]Started Editing.
+D1_L3=[80082]Stopped Editing.
+D1_L4=[80446]Started Editing.
+D1_L5=[81170]Stopped Editing.
+D1_L6=[81268]Started Editing.
+D1_L7=[85570]Stopped Editing.
+D1_L8=[86361]Project Opened.
+D2=13-12-2024
+D2_L=1
+D2_L1=[88]Project Closed.
 
 [Opened Files]
 1=main.c
-t1=70
-Count=2
-2=D:\Facu\MICRO\prova_C\main.h
+t1=1
+2=main.h
 t2=1
+Count=2
 [main.c]
 Type=4
 
 [defines]
-buildcount=40
+buildcount=77
 [Units]
 Count=1
 1=main (main)
